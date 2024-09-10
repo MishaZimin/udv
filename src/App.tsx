@@ -1,10 +1,15 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/home.tsx";
+import NotFound from "./pages/not-found.tsx";
+
 function App() {
     return (
-        <>
-            <div className="flex h-svh">
-                <p className="mx-auto my-auto font-mono text-2xl">U D V</p>
-            </div>
-        </>
+        <Router>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="*" element={<NotFound />} />
+            </Routes>
+        </Router>
     );
 }
 
