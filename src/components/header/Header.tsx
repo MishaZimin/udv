@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 // import { HEADERMENU } from "../menu/menu.data";
 import Profile from "src/shared/image/Profile.svg";
 import Logout from "src/shared/image/Logout.svg";
+import { Menu } from "../menu/Menu";
+import { HEADERMENU } from "../menu/menu.data";
 
 const Header = () => {
     return (
@@ -34,6 +36,9 @@ const Header = () => {
                         </Link>
                     </div>
                 </header>
+                <div className="lg:w-[1024px] w-full mx-auto lg:px-0 px-[8px] pb-[32px]">
+                    <Menu menu={HEADERMENU} orientation="horizontal" />
+                </div>
             </div>
         </>
     );

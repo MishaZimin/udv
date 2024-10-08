@@ -1,11 +1,11 @@
 import Input from "src/shared/ui/input/Input";
 import { Checkbox } from "src/shared/ui/checkbox/Checkbox";
 import { useState } from "react";
-import { Radio } from "src/shared/ui/radio/Radio";
+// import { Radio } from "src/shared/ui/radio/Radio";
 
 export function Mail() {
     const [isChecked, setIsChecked] = useState<boolean>(false);
-    const [isRadio, setIsRadio] = useState<boolean>(false);
+    // const [isRadio, setIsRadio] = useState<boolean>(false);
 
     return (
         <>
@@ -17,10 +17,10 @@ export function Mail() {
                         checked={isChecked}
                         onChange={(newChecked) => setIsChecked(newChecked)}
                     />
-                    <Radio
+                    {/* <Radio
                         checked={isRadio}
                         onChange={(newRadio) => setIsRadio(newRadio)}
-                    />
+                    /> */}
                     <p className="text-[12px] ">Запомнить меня</p>
                 </div>
             </div>

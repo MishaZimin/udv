@@ -23,7 +23,7 @@ const Input = ({ inputType, mail }: IInput) => {
                     )}
                 />
                 {mail && (
-                    <p className="absolute  top-[8px] right-0 px-[12px] align-middle text-graphite opacity-[60%] text-[16px]">
+                    <p className="absolute  top-[8px] right-0 px-[12px] align-middle text-graphite opacity-[40%] text-[16px]">
                         @udv.ru
                     </p>
                 )}
