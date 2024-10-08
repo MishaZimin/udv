@@ -55,22 +55,22 @@ export const HEADERMENU: IMenuItem[] = [
 
 export const BENEFIT: IMenuItem[] = [
     {
-        icons: AdminSidebar,
+        icons: null,
         name: "Описание",
         link: "",
     },
     {
-        icons: AdminSidebar,
+        icons: null,
         name: "Правила",
         link: "",
     },
     {
-        icons: AdminSidebar,
+        icons: null,
         name: "Как подключить",
         link: "",
     },
     {
-        icons: AdminSidebar,
+        icons: null,
         name: "Особенности",
         link: "",
     },

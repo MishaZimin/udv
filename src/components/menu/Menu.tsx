@@ -16,10 +16,10 @@ export const Menu = ({ menu, orientation }: IMenu) => {
         <div className="flex">
             <div
                 className={clsx(
-                    "flex  bg-card p-[8px] gap-[8px] rounded-[16px]",
+                    "flex  bg-white p-[0px] gap-[8px] rounded-[16px]",
                     orientation === "vertical"
                         ? "flex-col w-[224px] "
-                        : "flex-row h-[54px] w-auto "
+                        : "flex-row h-[38px] w-auto "
                 )}>
                 {menu.map((item: IMenuItem) => (
                     <MenuItem

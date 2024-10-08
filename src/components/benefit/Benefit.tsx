@@ -2,13 +2,19 @@ import { Link } from "react-router-dom";
 import { NewTag } from "../newTag/NewTag";
 
 // eslint-disable-next-line no-empty-pattern
-export const Benefit = ({}: { title: string; subtext: string }) => {
+export const Benefit = ({
+    isNewTag,
+}: {
+    title: string;
+    subtext: string;
+    isNewTag: boolean;
+}) => {
     return (
         <>
             <Link
                 to={"/benefit"}
-                className="flex flex-col w-[320px] h-[240px] bg-card py-[16px] pl-[16px] pr-[16px] justify-between rounded-[16px] transition duration-300 transform hover:shadow-md gap-[8px]">
-                <NewTag />
+                className="mx-auto flex flex-col w-[320px] h-[240px] bg-card py-[16px] pl-[16px] pr-[16px] justify-between rounded-[16px] transition duration-300 transform hover:shadow-md gap-[8px]">
+                {isNewTag && <NewTag />}
 
                 <div>
                     {/* <p className="font-semibold text-[16px] text-left">

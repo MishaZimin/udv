@@ -24,7 +24,9 @@ export const MenuItem = ({ item, isActive }: MenuItemProps) => {
                 {item.icons != null && (
                     <img src={item.icons} className="w-[22px] h-[22px]" />
                 )}
-                <p className="text-graphite">{item.name}</p>
+                <p className="text-graphite text-[12px] md:text-[16px]">
+                    {item.name}
+                </p>
             </Link>
         </div>
     );

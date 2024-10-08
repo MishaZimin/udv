@@ -8,6 +8,9 @@
     p {
         @apply text-graphite font-base;
     }
+    body {
+        @apply overflow-y-scroll;
+    }
 }
 
 @layer base {

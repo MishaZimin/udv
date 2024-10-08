@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { Link } from "react-router-dom";
 
 interface IButton {
@@ -6,11 +7,21 @@ interface IButton {
     text: string;
     textColor: "dark" | "light";
     buttonType: "mint" | "white" | "red";
+    fullWidth?: boolean;
 }
 
-const Button = ({ onClick, link, text, textColor, buttonType }: IButton) => {
-    const baseClasses =
-        "py-[16px] px-[8px] rounded-[8px] text-center transition duration-300 transform";
+const Button = ({
+    onClick,
+    link,
+    text,
+    textColor,
+    buttonType,
+    fullWidth,
+}: IButton) => {
+    const baseClasses = clsx(
+        "py-[16px] px-[8px] rounded-[8px] text-center transition duration-300 transform",
+        fullWidth && "w-full"
+    );
     const textColorClass = {
         dark: "text-graphite",
         light: "text-white",

@@ -1,17 +1,27 @@
+import Input from "src/shared/ui/input/Input";
+import { Checkbox } from "src/shared/ui/checkbox/Checkbox";
+import { useState } from "react";
+import { Radio } from "src/shared/ui/radio/Radio";
+
 export function Mail() {
+    const [isChecked, setIsChecked] = useState<boolean>(false);
+    const [isRadio, setIsRadio] = useState<boolean>(false);
+
     return (
         <>
             <div className="flex flex-col gap-[12px]">
                 <p>Почта</p>
-                <div className="flex flex-row border-[1px] border-graphite border-opacity-[40%] rounded-[8px] active:border-mint">
-                    <input className=" px-[12px] pt-[8px] pb-[10px] rounded-[8px] w-[235px] bg-card focus:outline-none" />
-                    <p className="mx-auto my-auto text-graphite opacity-60 fonr-[16px] w-[65px]">
-                        @udv.ru
-                    </p>
-                </div>
-                <div className="flex flex-row gap-[8px]">
-                    <input className="focus:ring-mint" type="checkbox" />
-                    <p>Запомнить меня</p>
+                <Input inputType={"default"} mail={true} />
+                <div className="flex flex-row gap-[8px] h-[16px]">
+                    <Checkbox
+                        checked={isChecked}
+                        onChange={(newChecked) => setIsChecked(newChecked)}
+                    />
+                    <Radio
+                        checked={isRadio}
+                        onChange={(newRadio) => setIsRadio(newRadio)}
+                    />
+                    <p className="text-[12px] ">Запомнить меня</p>
                 </div>
             </div>
         </>

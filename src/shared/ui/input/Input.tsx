@@ -1,20 +1,33 @@
+import clsx from "clsx";
+
 interface IInput {
-    inputType: "default" | "focus" | "error";
+    inputType: "default" | "error";
     mail?: boolean;
 }
 
-const Input = ({ inputType }: IInput) => {
-    const baseClasses = "px-[12px] pt-[8px] pb-[10px] rounded-[8px]";
-    // const textColorClass = textColor === "dark" ? "text-text" : "text-white";
-
+const Input = ({ inputType, mail }: IInput) => {
+    const baseClasses =
+        "w-full px-[12px] pt-[8px] pb-[10px] rounded-[8px] border border-opacity-[40%] focus:outline-none focus:border-opacity-[80%] transition duration-300 transform";
     const inputTypeClasses = {
-        default: "",
-        focus: "",
-        error: "",
+        default: "border-graphite",
+        error: "border-rose border-opacity-[100%] focus:border-graphite",
     }[inputType];
+
     return (
         <>
-            <input className={`${baseClasses} ${inputTypeClasses}`} />
+            <div className="relative h-[40px]">
+                <input
+                    className={clsx(
+                        mail ? "pr-[88px]" : "",
+                        `${baseClasses} ${inputTypeClasses} ${mail}`
+                    )}
+                />
+                {mail && (
+                    <p className="absolute  top-[8px] right-0 px-[12px] align-middle text-graphite opacity-[60%] text-[16px]">
+                        @udv.ru
+                    </p>
+                )}
+            </div>
         </>
     );
 };

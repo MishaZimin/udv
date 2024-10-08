@@ -26,6 +26,7 @@ export default {
                 sidebar: "#F8F9FA",
 
                 yellow: "#D8F69A",
+                darkblue: "#003B4C",
 
                 // card: "#FFD8CA",
             },
