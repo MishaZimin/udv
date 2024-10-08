@@ -9,7 +9,7 @@
         @apply text-graphite font-base;
     }
     body {
-        scrollbar-gutter: stable;
+        @apply overflow-y-scroll;
     }
 }
 
