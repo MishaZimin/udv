@@ -8,12 +8,9 @@ const Layout = (props: Props) => {
     return (
         <>
             <Header />
-
-            <div className=" mx-auto h-svh lg:w-[1024px] w-full ">
+            {/* <div className="w-full "> */}
+            <div className="  h-svh lg:w-[1024px] w-full  mx-auto ">
                 <div className="pt-[190px]"></div>
-                {/* <div className="pb-[32px]">
-                    <Menu menu={HEADERMENU} orientation="horizontal" />
-                </div> */}
                 {props.children}
                 <div className="fixed bottom-[112px] right-[-16px] left-0">
                     <div className="mx-auto max-w-[1024px] relative">
@@ -23,6 +20,7 @@ const Layout = (props: Props) => {
                     </div>
                 </div>
             </div>
+            {/* </div> */}
         </>
     );
 };

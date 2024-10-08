@@ -9,11 +9,17 @@
         @apply text-graphite font-base;
     }
 }
-
-body,
-html {
-    @apply overflow-y-auto;
+::-webkit-scrollbar {
+    width: 0;
 }
+
+/* body {
+    overflow: overlay;
+} */
+
+/* html {
+    scrollbar-gutter: stable;
+} */
 
 @layer base {
     @font-face {

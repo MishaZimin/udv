@@ -10,7 +10,7 @@ import { HEADERMENU } from "../menu/menu.data";
 const Header = () => {
     return (
         <>
-            <div className="fixed z-10 w-full bg-white">
+            <div className="fixed z-10  bg-white mr-[50px] w-full">
                 <header className="flex justify-between align-middle py-auto h-[120px] lg:w-[1024px] w-full mx-auto lg:px-0 px-[8px]">
                     <div className="my-auto pb-[12px]">
                         <LogoUDV width={"w-[160px]"} />
