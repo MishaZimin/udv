@@ -40,6 +40,7 @@ export function Benefits() {
                             title={product.title}
                             subtext={product.total}
                             isNewTag={Math.random() < 0.4}
+                            link={"/benefit"}
                         />
                     )
                 )}

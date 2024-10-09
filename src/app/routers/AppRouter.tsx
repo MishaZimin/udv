@@ -11,6 +11,9 @@ import { AdminBenefitPage } from "src/pages/admin/AdminBenefit.tsx";
 import { AdminCategoriesPage } from "src/pages/admin/AdminCategories.tsx";
 import { AdminEmployeesPage } from "src/pages/admin/AdminEmployees.tsx";
 import { ProfilePage } from "src/pages/profile/ProfilePage.tsx";
+import { DetailsPage } from "src/pages/createBenefit/DetailsPage.tsx";
+import { CoverPage } from "src/pages/createBenefit/CoverPage.tsx";
+import { AvailabilityPage } from "src/pages/createBenefit/AvailabilityPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +27,21 @@ export function AppRouter() {
                     <Route path="/exit" element={<ExitPage />} />
                     <Route path="/check-mail" element={<CheckMailPage />} />
                     <Route path="/benefit" element={<BenefitPage />} />
+
+                    <Route path="/create-benefit" element={<DetailsPage />} />
+                    <Route
+                        path="/create-benefit/details"
+                        element={<DetailsPage />}
+                    />
+
+                    <Route
+                        path="/create-benefit/cover"
+                        element={<CoverPage />}
+                    />
+                    <Route
+                        path="/create-benefit/availability"
+                        element={<AvailabilityPage />}
+                    />
 
                     <Route path="/profile" element={<ProfilePage />} />
 

@@ -3,16 +3,18 @@ import { NewTag } from "../newTag/NewTag";
 
 // eslint-disable-next-line no-empty-pattern
 export const Benefit = ({
+    link,
     isNewTag,
 }: {
     title: string;
     subtext: string;
     isNewTag: boolean;
+    link: string;
 }) => {
     return (
         <>
             <Link
-                to={"/benefit"}
+                to={link}
                 className="mx-auto flex flex-col w-[320px] h-[240px] bg-card py-[16px] pl-[16px] pr-[16px] justify-between rounded-[16px] transition duration-300 transform hover:shadow-md gap-[8px]">
                 {isNewTag && <NewTag />}
 

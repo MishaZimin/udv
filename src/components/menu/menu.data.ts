@@ -35,6 +35,24 @@ export const ADMINMENU: IMenuItem[] = [
     },
 ];
 
+export const CREATEBENEFIT: IMenuItem[] = [
+    {
+        icons: AdminSidebar,
+        name: "Детали",
+        link: "/create-benefit/details",
+    },
+    {
+        icons: Feedback,
+        name: "Обложка",
+        link: "/create-benefit/cover",
+    },
+    {
+        icons: Employs,
+        name: "Доступность",
+        link: "/create-benefit/availability",
+    },
+];
+
 export const HEADERMENU: IMenuItem[] = [
     {
         icons: AdminSidebar,

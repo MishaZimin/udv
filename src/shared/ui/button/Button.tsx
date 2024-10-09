@@ -5,8 +5,8 @@ interface IButton {
     onClick?: () => void;
     link?: string;
     text: string;
-    textColor: "dark" | "light";
-    buttonType: "mint" | "white" | "red";
+    textColor: "dark" | "light" | "unActive";
+    buttonType: "mint" | "white" | "red" | "unActive";
     fullWidth?: boolean;
 }
 
@@ -25,11 +25,14 @@ const Button = ({
     const textColorClass = {
         dark: "text-graphite",
         light: "text-white",
+        unActive: "text-graphite opacity-[40%]",
     }[textColor];
     const buttonTypeClasses = {
         mint: "bg-mint hover:bg-minthover active:bg-mintactive",
         white: "bg-white bg-opacity-[20%] border-[1px] border-graphite hover:bg-graphite hover:bg-opacity-[4%] hover:border-opacity-[0%] active:bg-graphite active:bg-opacity-[8%] active:border-opacity-[0%]",
         red: "bg-rose hover:bg-rosehover active:bg-roseactive",
+        unActive:
+            "bg-opacity-[8%] bg-graphite  hover:bg-opacity-[16%] active:bg-opacity-[24%]",
     }[buttonType];
 
     const content = <p className={textColorClass}>{text}</p>;

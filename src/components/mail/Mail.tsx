@@ -5,13 +5,20 @@ import { useState } from "react";
 
 export function Mail() {
     const [isChecked, setIsChecked] = useState<boolean>(false);
-    // const [isRadio, setIsRadio] = useState<boolean>(false);
+    const [mail, setMail] = useState<string>("");
+
+    console.log(mail);
 
     return (
         <>
             <div className="flex flex-col gap-[12px]">
                 <p>Почта</p>
-                <Input inputType={"default"} mail={true} />
+                <Input
+                    inputType={"default"}
+                    mail={true}
+                    onChange={setMail}
+                    value={mail}
+                />
                 <div className="flex flex-row gap-[8px] h-[16px]">
                     <Checkbox
                         checked={isChecked}
