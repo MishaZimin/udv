@@ -10,6 +10,7 @@ export function DetailsPage() {
 
     const blocks = useBlockStore((state) => state.blocks);
     const addBlock = useBlockStore((state) => state.addBlock);
+    const deleteBlock = useBlockStore((state) => state.deleteBlock);
 
     return (
         <CreateBenefitLayout>
@@ -32,12 +33,20 @@ export function DetailsPage() {
                         <BlockInf key={block.id} id={block.id} />
                     ))}
                 </div>
-                <Button
-                    text={"Добавить блок"}
-                    textColor={"light"}
-                    buttonType={"mint"}
-                    onClick={addBlock}
-                />
+                <div className="flex flex-col gap-[8px]">
+                    <Button
+                        text={"Удалить блок"}
+                        textColor={"light"}
+                        buttonType={"red"}
+                        onClick={deleteBlock}
+                    />
+                    <Button
+                        text={"Добавить блок"}
+                        textColor={"light"}
+                        buttonType={"mint"}
+                        onClick={addBlock}
+                    />
+                </div>
             </div>
         </CreateBenefitLayout>
     );

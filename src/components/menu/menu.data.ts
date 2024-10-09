@@ -1,11 +1,12 @@
 import AdminSidebar from "src/shared/image/AdminSidebar.svg";
 import Admin from "src/shared/image/Admin.svg";
 import Profile from "src/shared/image/Profile.svg";
-
 import Employs from "src/shared/image/Employs.svg";
-
 import Categories from "src/shared/image/Categories.svg";
 import Feedback from "src/shared/image/Feedback.svg";
+import Details from "src/shared/image/Details.svg";
+import Cover from "src/shared/image/Cover.svg";
+import Availability from "src/shared/image/Availability.svg";
 
 export interface IMenuItem {
     icons: string | null;
@@ -37,17 +38,17 @@ export const ADMINMENU: IMenuItem[] = [
 
 export const CREATEBENEFIT: IMenuItem[] = [
     {
-        icons: AdminSidebar,
+        icons: Details,
         name: "Детали",
         link: "/create-benefit/details",
     },
     {
-        icons: Feedback,
+        icons: Cover,
         name: "Обложка",
         link: "/create-benefit/cover",
     },
     {
-        icons: Employs,
+        icons: Availability,
         name: "Доступность",
         link: "/create-benefit/availability",
     },

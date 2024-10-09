@@ -1,9 +1,11 @@
-import { AdminSidebar } from "src/components/adminSidebar/AdminSidebar";
-import Layout from "src/components/layout/Layout";
-import { ExpUDV } from "src/components/expUDV/exp";
-import CreateBenefit from "src/shared/image/CreateBenefit.svg";
-import { Benefit } from "src/components/benefit/Benefit";
 import { Link } from "react-router-dom";
+import { AdminSidebar } from "src/components/adminSidebar/AdminSidebar";
+import { ExpUDV } from "src/components/expUDV/exp";
+
+import Layout from "src/components/layout/Layout";
+import CreateBenefit from "src/shared/image/CreateBenefit.svg";
+
+import { AdminBenefit } from "src/components/adminBenefit/AdminBenefut";
 
 export function AdminBenefitPage() {
     return (
@@ -12,7 +14,7 @@ export function AdminBenefitPage() {
                 <div className="flex flex-col gap-[32px] w-full">
                     <ExpUDV />
                     <div className="flex ">
-                        <div className="grid grid-cols-2 gap-[32px] h-[400px] bg-white p-[0px] rounded-[16px]">
+                        <div className="grid grid-cols-2 gap-[32px]  bg-white p-[0px] rounded-[16px] mb-[32px]">
                             <Link
                                 to={"/create-benefit/details"}
                                 className="w-[320px] h-[240px] bg-white rounded-[16px] border-dashed border border-graphite border-opacity-[40%] hover:shadow-md">
@@ -26,24 +28,11 @@ export function AdminBenefitPage() {
                                     </p>
                                 </div>
                             </Link>
-                            <Benefit
-                                title={""}
-                                subtext={""}
-                                isNewTag={false}
-                                link={"/create-benefit/details"}
-                            />
-                            <Benefit
-                                title={""}
-                                subtext={""}
-                                isNewTag={false}
-                                link={"/create-benefit/details"}
-                            />
-                            <Benefit
-                                title={""}
-                                subtext={""}
-                                isNewTag={false}
-                                link={"/create-benefit/details"}
-                            />
+                            <AdminBenefit />
+                            <AdminBenefit />
+                            <AdminBenefit />
+                            <AdminBenefit />
+                            <AdminBenefit />
                         </div>
                     </div>
                 </div>

@@ -11,7 +11,7 @@ export function CreateBenefitLayout(props: Props) {
             <div className="mx-auto h-svh w-[1024px]">
                 <div className="flex flex-col">
                     <div className="flex flex-row gap-[8px] py-[32px]">
-                        <BackButton />
+                        <BackButton link={"/admin/benefit"} />
                         <p className="font-semibold text-[32px]">
                             Создание бенефита
                         </p>
