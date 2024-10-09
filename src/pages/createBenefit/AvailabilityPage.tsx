@@ -1,7 +1,6 @@
 import { useCheckboxStore } from "./store/useCheckboxStore";
 import { CreateBenefitLayout } from "./CreateBenefitLayout";
 import { Checkbox } from "src/shared/ui/checkbox/Checkbox";
-import Button from "src/shared/ui/button/Button";
 
 export function AvailabilityPage() {
     const { checkboxes, toggleCheckbox } = useCheckboxStore();
