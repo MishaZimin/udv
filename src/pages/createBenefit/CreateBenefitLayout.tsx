@@ -17,9 +17,7 @@ export function CreateBenefitLayout(props: Props) {
                         </p>
                     </div>
                     <div className="flex flex-row gap-[32px] mb-[32px]">
-                        <div>
-                            <Menu menu={CREATEBENEFIT} orientation="vertical" />
-                        </div>
+                        <Menu menu={CREATEBENEFIT} orientation="vertical" />
                         <div className="w-full bg-white p-[0px] rounded-[16px]">
                             <div className="flex flex-col gap-[24px]">
                                 {props.children}
