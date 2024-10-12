@@ -19,7 +19,7 @@ const Button = ({
     fullWidth,
 }: IButton) => {
     const baseClasses = clsx(
-        "py-[16px] px-[8px] rounded-[8px] text-center transition duration-300 transform",
+        "py-[16px] px-[8px] rounded-[8px] text-center transition duration-300 transform font-semibold",
         fullWidth && "w-full"
     );
     const textColorClass = {
@@ -29,10 +29,9 @@ const Button = ({
     }[textColor];
     const buttonTypeClasses = {
         mint: "bg-mint hover:bg-minthover active:bg-mintactive",
-        white: "bg-white bg-opacity-[20%] border-[1px] border-graphite hover:bg-graphite hover:bg-opacity-[4%] hover:border-opacity-[0%] active:bg-graphite active:bg-opacity-[8%] active:border-opacity-[0%]",
+        white: "bg-none border-opacity-[20%] border border-graphite hover:bg-graphite hover:bg-opacity-[4%] hover:border-opacity-[0%] active:bg-graphite active:bg-opacity-[8%] active:border-opacity-[0%]",
         red: "bg-rose hover:bg-rosehover active:bg-roseactive",
-        unActive:
-            "bg-opacity-[8%] bg-graphite  hover:bg-opacity-[16%] active:bg-opacity-[24%]",
+        unActive: "bg-opacity-[8%] bg-graphite cursor-default ",
     }[buttonType];
 
     const content = <p className={textColorClass}>{text}</p>;

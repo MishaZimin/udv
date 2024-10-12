@@ -28,7 +28,7 @@ export function Benefits() {
 
     return (
         <>
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-[32px] pb-[48px] pt-[16px] ">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-[32px] pb-[32px] pt-[16px] ">
                 {products.map(
                     (product: {
                         id: Key | null | undefined;

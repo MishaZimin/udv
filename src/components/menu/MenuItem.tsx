@@ -13,7 +13,7 @@ export const MenuItem = ({ item, isActive }: MenuItemProps) => {
             <Link
                 to={item.link}
                 className={clsx(
-                    "flex flex-row gap-[8px] py-[8px] pl-[8px] pr-[10px] rounded-[8px] bg-graphite cursor-pointer bg-opacity-[0%]  transition duration-300 transform",
+                    "flex flex-row items-center gap-[8px] py-[8px] pl-[8px] pr-[10px] rounded-[8px] bg-graphite cursor-pointer bg-opacity-[0%]  transition duration-300 transform",
                     {
                         "bg-opacity-[8%] ": isActive,
                     },

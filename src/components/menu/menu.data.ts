@@ -57,7 +57,7 @@ export const CREATEBENEFIT: IMenuItem[] = [
 export const HEADERMENU: IMenuItem[] = [
     {
         icons: AdminSidebar,
-        name: "Бенефиты",
+        name: "Мои бенефиты",
         link: "/",
     },
     {

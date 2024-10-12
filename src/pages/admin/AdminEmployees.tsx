@@ -8,7 +8,7 @@ export function AdminEmployeesPage() {
             <AdminSidebar>
                 <div className="w-full bg-white rounded-[16px]">
                     <div className="flex flex-row gap-[32px]  text-left  py-[0px]">
-                        <div className="w-[48px] h-[48px] rounded-full bg-white my-auto"></div>
+                        <div className="min-w-[48px] h-[48px] rounded-full bg-white my-auto"></div>
                         <div className="w-full flex flex-row  gap-[32px]">
                             <p className="my-auto text-left w-[35%] text-opacity-[60%]">
                                 Сотрудник

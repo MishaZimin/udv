@@ -16,9 +16,9 @@ export function AvailabilityPage() {
                             <Checkbox
                                 checked={checkbox.checked}
                                 onChange={() => toggleCheckbox(checkbox.id)}
+                                text={checkbox.label}
                             />
                         </div>
-                        <p>{checkbox.label}</p>
                     </div>
                 ))}
             </div>

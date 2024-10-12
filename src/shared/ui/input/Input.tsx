@@ -10,9 +10,9 @@ interface IInput {
 
 const Input = ({ inputType, mail, onChange, placeholder, value }: IInput) => {
     const baseClasses =
-        "w-full px-[12px] pt-[8px] pb-[10px] rounded-[8px] border border-opacity-[40%] focus:outline-none focus:border-opacity-[80%] transition duration-300 transform";
+        "bg-transparent w-full px-[12px] pt-[8px] pb-[10px] rounded-[8px] border border-opacity-[40%] focus:outline-none focus:border-opacity-[80%] transition duration-300 transform";
     const inputTypeClasses = {
-        default: "border-graphite",
+        default: "border-graphite ",
         error: "border-rose border-opacity-[100%] focus:border-graphite",
     }[inputType];
 

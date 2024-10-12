@@ -9,10 +9,10 @@ const Layout = (props: Props) => {
         <>
             <Header />
             {/* <div className="w-full "> */}
-            <div className="  h-svh lg:w-[1024px] w-full  mx-auto ">
+            <div className="  h-full lg:w-[1024px] w-full  mx-auto ">
                 <div className="pt-[190px]"></div>
                 {props.children}
-                <div className="fixed bottom-[112px] right-[-16px] left-0">
+                <div className="fixed bottom-[84px] right-[-16px] left-0">
                     <div className="mx-auto max-w-[1024px] relative">
                         <div className="absolute right-[8px]">
                             <Feedback />

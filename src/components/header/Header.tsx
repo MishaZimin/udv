@@ -1,8 +1,6 @@
 import { LogoUDV } from "src/shared/ui/logo/logo";
 import { Link } from "react-router-dom";
-// import { Menu } from "../menu/Menu";
-// import { HEADERMENU } from "../menu/menu.data";
-import Profile from "src/shared/image/Profile.svg";
+
 import Logout from "src/shared/image/Logout.svg";
 import { Menu } from "../menu/Menu";
 import { HEADERMENU } from "../menu/menu.data";
@@ -20,12 +18,13 @@ const Header = () => {
                     </div> */}
                     <div className="flex mt-[32px] mb-[48px] gap-[16px]">
                         <Link to={"/profile"}>
-                            <div className="w-[40px] rounded-full bg-card duration-300 transform hover:shadow-sm">
-                                <img
+                            <div className="">
+                                {/* <img
                                     src={Profile}
                                     alt="avatar"
                                     className="w-full p-[8px]"
-                                />
+                                /> */}
+                                <p className="mt-[9px]">Имя Фамилия</p>
                             </div>
                         </Link>
                         <Link to={"/exit"}>

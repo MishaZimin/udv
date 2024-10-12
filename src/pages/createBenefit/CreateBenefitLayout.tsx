@@ -12,7 +12,7 @@ export function CreateBenefitLayout(props: Props) {
                 <div className="flex flex-col">
                     <div className="flex flex-row gap-[8px] py-[32px]">
                         <BackButton link={"/admin/benefit"} />
-                        <p className="font-semibold text-[32px]">
+                        <p className="font-semibold text-[32px] leading-[40px]">
                             Создание бенефита
                         </p>
                     </div>

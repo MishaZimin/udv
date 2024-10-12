@@ -17,13 +17,13 @@ export function AdminBenefitPage() {
                         <div className="grid grid-cols-2 gap-[32px]  bg-white p-[0px] rounded-[16px] mb-[32px]">
                             <Link
                                 to={"/create-benefit/details"}
-                                className="w-[320px] h-[240px] bg-white rounded-[16px] border-dashed border border-graphite border-opacity-[40%] hover:shadow-md">
+                                className="border-dashed w-[320px] h-[240px] bg-white rounded-[16px] border border-graphite border-opacity-[40%] hover:shadow-md ">
                                 <div className="flex flex-col justify-center h-full">
                                     <img
                                         className="mx-auto"
                                         src={CreateBenefit}
                                     />
-                                    <p className="font-semibold text-center">
+                                    <p className="font-semibold text-center opacity-[80%] leading-[20px]">
                                         Создать бенефит
                                     </p>
                                 </div>

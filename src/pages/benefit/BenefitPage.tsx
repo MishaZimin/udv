@@ -8,9 +8,10 @@ export function BenefitPage() {
         <>
             <div className="mx-auto h-svh w-[1024px]">
                 <div className="flex flex-col">
-                    <div className="flex flex-row gap-[8px] py-[32px]">
+                    <div className="flex flex-row items-center gap-[8px] py-[32px]">
                         <BackButton link={"/"} />
-                        <p className="font-semibold text-[32px]">
+
+                        <p className="font-semibold text-[32px] leading-[40px]">
                             Развивающая среда
                         </p>
                     </div>
