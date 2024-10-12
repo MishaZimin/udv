@@ -23,7 +23,7 @@ const Button = ({
         fullWidth && "w-full"
     );
     const textColorClass = {
-        dark: "text-graphite",
+        dark: "text-graphite text-opacity-[80%]",
         light: "text-white",
         unActive: "text-graphite opacity-[40%]",
     }[textColor];
