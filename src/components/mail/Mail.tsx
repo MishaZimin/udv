@@ -25,10 +25,6 @@ export function Mail() {
                         onChange={(newChecked) => setIsChecked(newChecked)}
                         text={"Запомнить меня"}
                     />
-                    {/* <Radio
-                        checked={isRadio}
-                        onChange={(newRadio) => setIsRadio(newRadio)}
-                    /> */}
                     <p className="text-[12px] "></p>
                 </div>
             </div>

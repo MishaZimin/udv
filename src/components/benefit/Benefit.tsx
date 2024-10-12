@@ -1,42 +1,52 @@
 import { Link } from "react-router-dom";
 import { NewTag } from "../newTag/NewTag";
+// import Taxi from "src/shared/image/Taxi.png";
 
-// eslint-disable-next-line no-empty-pattern
 export const Benefit = ({
-    link,
-    isNewTag,
+  title,
+  subtext,
+  link,
+  isNewTag,
+  image,
 }: {
-    title: string;
-    subtext: string;
-    isNewTag: boolean;
-    link: string;
+  title: string;
+  subtext: string;
+  image?: string | null;
+  isNewTag: boolean;
+  link: string;
 }) => {
-    return (
-        <>
-            <Link
-                to={link}
-                className="mx-auto flex flex-col w-[320px]  bg-card py-[16px] pl-[16px] pr-[24px] justify-between rounded-[16px] transition duration-300 transform hover:shadow-md  gap-[16px]">
-                {isNewTag && <NewTag />}
+  return (
+    <>
+      <Link
+        to={link}
+        className="animation mx-auto flex w-[320px] flex-col justify-between gap-[16px] rounded-[16px] bg-card py-[16px] pl-[16px] pr-[24px] hover:shadow-md"
+      >
+        {isNewTag && <NewTag />}
+        <div className="flex flex-col gap-[8px]">
+          <p className="text-left text-[16px] font-semibold leading-[20px]">
+            {title}
+          </p>
+          <p className="text-left text-[12px] font-normal leading-[16px]">
+            {subtext}
+          </p>
+        </div>
 
-                {/* <p className="font-semibold text-[16px] text-left">
-                        {title}
-                    </p>
-                    <p className="font-normal  text-[12px] text-left">
-                        {subtext}
-                    </p> */}
-                <div className="flex flex-col gap-[8px]">
-                    <p className="font-semibold text-left text-[16px] leading-[20px]">
-                        Развивающая среда
-                    </p>
-                    <p className="font-normal text-[12px] text-left leading-[16px]">
-                        Постоянная льгота
-                    </p>
-                </div>
-
-                <div className="h-[148px] w-[288px] bg-graphite rounded-[8px] opacity-[4%]">
-                    <img className="" />
-                </div>
-            </Link>
-        </>
-    );
+        <div className="flex h-[148px] w-[288px] items-center justify-center overflow-hidden rounded-[8px] bg-graphite bg-opacity-[4%]">
+          {image ? (
+            <img
+              className="h-[140px] w-[280px] object-contain"
+              src={image}
+              alt="Taxi"
+            />
+          ) : null
+          // <img
+          //   className="h-[140px] w-[280px] object-contain"
+          //   src={""}
+          //   alt="Taxi"
+          // />
+          }
+        </div>
+      </Link>
+    </>
+  );
 };

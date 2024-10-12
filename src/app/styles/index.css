@@ -18,6 +18,10 @@
     .custom-shadow {
         box-shadow: 0px 1px 16px 0px rgba(0, 0, 0, 0.16);
     }
+
+    .animation {
+        @apply transition duration-300 transform;
+    }
 }
 ::-webkit-scrollbar {
     width: 0;
