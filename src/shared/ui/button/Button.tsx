@@ -19,11 +19,11 @@ const Button = ({
   fullWidth,
 }: IButton) => {
   const baseClasses = clsx(
-    "py-[16px] px-[8px] rounded-[8px] text-center animation font-semibold",
+    "py-[16px] px-[8px] rounded-[8px] text-center animation font-semibold ",
     fullWidth && "w-full",
   );
   const textColorClass = {
-    dark: "text-graphite text-opacity-[80%]",
+    dark: "text-graphite",
     light: "text-white",
     unActive: "text-graphite opacity-[40%]",
   }[textColor];
@@ -35,7 +35,7 @@ const Button = ({
     unActive: "bg-opacity-[8%] bg-graphite cursor-default ",
   }[buttonType];
 
-  const content = <p className={textColorClass}>{text}</p>;
+  const content = <p className={`leading-[20px] ${textColorClass}`}>{text}</p>;
 
   const combinedClassName = `${baseClasses} ${buttonTypeClasses}`;
 

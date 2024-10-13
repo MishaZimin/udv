@@ -17,7 +17,7 @@ export function AdminBenefitPage() {
             <div className="mb-[32px] grid grid-cols-2 gap-[32px] rounded-[16px] bg-white p-[0px]">
               <Link
                 to={"/create-benefit/details"}
-                className="h-[240px] w-[320px] rounded-[16px] border border-dashed border-graphite border-opacity-[40%] bg-white hover:shadow-md"
+                className="animation h-[240px] w-[320px] rounded-[16px] border border-dashed border-graphite border-opacity-[20%] bg-white hover:shadow-md"
               >
                 <div className="flex h-full flex-col justify-center">
                   <img className="mx-auto" src={CreateBenefit} />

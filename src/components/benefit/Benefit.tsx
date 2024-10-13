@@ -31,19 +31,20 @@ export const Benefit = ({
           </p>
         </div>
 
-        <div className="flex h-[148px] w-[288px] items-center justify-center overflow-hidden rounded-[8px] bg-graphite bg-opacity-[4%]">
-          {image ? (
-            <img
-              className="h-[140px] w-[280px] object-contain"
-              src={image}
-              alt="Taxi"
-            />
-          ) : null
-          // <img
-          //   className="h-[140px] w-[280px] object-contain"
-          //   src={""}
-          //   alt="Taxi"
-          // />
+        <div className="flex h-[148px] w-[288px] items-center justify-center overflow-hidden rounded-[8px] bg-card">
+          {
+            image ? (
+              <img
+                className="h-[140px] w-[280px] object-contain"
+                src={image}
+                alt="Taxi"
+              />
+            ) : null
+            // <img
+            //   className="h-[140px] w-[280px] object-contain"
+            //   src={""}
+            //   alt="Taxi"
+            // />
           }
         </div>
       </Link>

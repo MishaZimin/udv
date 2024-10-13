@@ -1,7 +1,7 @@
-import clsx from 'clsx';
+import clsx from "clsx";
 
 interface IInput {
-  inputType: 'default' | 'error';
+  inputType: "default" | "error";
   mail?: boolean;
   onChange: (value: string) => void;
   placeholder?: string;
@@ -10,10 +10,10 @@ interface IInput {
 
 const Input = ({ inputType, mail, onChange, placeholder, value }: IInput) => {
   const baseClasses =
-    'bg-transparent w-full px-[12px] pt-[8px] pb-[10px] rounded-[8px] border border-opacity-[40%] focus:outline-none focus:border-opacity-[80%] animation';
+    "bg-transparent w-full px-[12px] pt-[8px] pb-[10px] rounded-[8px] border  focus:outline-none focus:border-opacity-[80%] animation";
   const inputTypeClasses = {
-    default: 'border-graphite ',
-    error: 'border-rose border-opacity-[100%] focus:border-graphite',
+    default: "border-graphite border-opacity-[20%]",
+    error: "border-rose border-opacity-[100%] focus:border-graphite",
   }[inputType];
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -29,12 +29,12 @@ const Input = ({ inputType, mail, onChange, placeholder, value }: IInput) => {
           placeholder={placeholder}
           onChange={handleChange}
           className={clsx(
-            mail ? 'pr-[88px]' : '',
+            mail ? "pr-[88px]" : "",
             `${baseClasses} ${inputTypeClasses} ${mail}`,
           )}
         />
         {mail && (
-          <p className="absolute  top-[10px] right-0 px-[12px] align-middle text-graphite opacity-[60%] text-[16px]">
+          <p className="absolute right-0 top-[10px] px-[12px] align-middle text-[16px] text-graphite opacity-[60%]">
             @udv.ru
           </p>
         )}

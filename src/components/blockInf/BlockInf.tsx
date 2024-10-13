@@ -30,7 +30,7 @@ export function BlockInf({ id }: BlockInfProps) {
   };
 
   return (
-    <div className="flex flex-col gap-[16px]">
+    <div className="flex flex-col gap-[8px]">
       <p className="text-[20px] font-semibold">Блок с информацией</p>
       <Input
         inputType={"default"}
@@ -42,7 +42,7 @@ export function BlockInf({ id }: BlockInfProps) {
         value={description}
         onChange={handleDescriptionChange}
         placeholder="Описание блока"
-        className="animation min-h-[120px] w-full rounded-[8px] border border-graphite border-opacity-[40%] px-[12px] pb-[10px] pt-[8px] focus:border-opacity-[80%] focus:outline-none"
+        className="animation min-h-[120px] w-full rounded-[8px] border border-graphite border-opacity-[20%] px-[12px] pb-[10px] pt-[8px] focus:border-opacity-[80%] focus:outline-none"
       />
     </div>
   );

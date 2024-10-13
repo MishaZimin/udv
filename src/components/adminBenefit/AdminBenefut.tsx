@@ -4,8 +4,13 @@ import { Benefit } from "src/components/benefit/Benefit";
 
 import Delete from "src/shared/image/Delete.svg";
 import Pencil from "src/shared/image/Pencil.svg";
+import { useModal } from "../modal/useModal";
+import Modal from "../modal/Modal";
+import Button from "src/shared/ui/button/Button";
 
 export function AdminBenefit() {
+  const { isOpen, openModal, closeModal } = useModal();
+
   return (
     <div className="relative">
       <Benefit
@@ -21,13 +26,30 @@ export function AdminBenefit() {
         >
           <img src={Pencil} />
         </Link>
-        <Link
-          to={""}
+        <button
+          onClick={openModal}
           className="animation cursor-pointer rounded-[8px] p-[4px] hover:bg-graphite hover:bg-opacity-[8%]"
         >
           <img src={Delete} />
-        </Link>
+        </button>
       </div>
+      <Modal isOpen={isOpen} onClose={closeModal}>
+        <div className="flex flex-col gap-[32px]">
+          <p className="text-center text-[20px] font-semibold leading-[28px]">
+            Вы уверены, <br />
+            что хотите удалить бенефит?
+          </p>
+          <div className="flex flex-col gap-[8px]">
+            <Button text={"Удалить"} textColor={"light"} buttonType={"red"} />
+            <Button
+              onClick={closeModal}
+              text={"Отмена"}
+              textColor={"dark"}
+              buttonType={"white"}
+            />
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 }

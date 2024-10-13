@@ -16,7 +16,7 @@ export function Checkbox({ checked, onChange, text }: CheckboxProps) {
       <div
         className={clsx(
           checked && "border-mint bg-mint",
-          "animation flex h-[16px] w-[16px] items-center justify-center rounded-[4px] border hover:border-mint",
+          "animation flex h-[16px] w-[16px] items-center justify-center rounded-[4px] border border-graphite border-opacity-[20%] hover:border-mint",
         )}
       >
         {checked && (
@@ -24,7 +24,7 @@ export function Checkbox({ checked, onChange, text }: CheckboxProps) {
         )}
       </div>
 
-      <p className="text-[14px] text-black">{text}</p>
+      <p className="text-[16px] text-black">{text}</p>
     </button>
   );
 }

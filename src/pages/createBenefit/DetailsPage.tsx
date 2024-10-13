@@ -15,7 +15,7 @@ export function DetailsPage() {
   return (
     <CreateBenefitLayout>
       <div className="flex flex-col gap-[24px]">
-        <div className="flex flex-col gap-[16px]">
+        <div className="flex flex-col gap-[8px]">
           <p className="text-[20px] font-semibold">Название бенефита</p>
           <Input
             inputType={"default"}
