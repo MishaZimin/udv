@@ -23,10 +23,10 @@ export const Benefit = ({
       >
         {isNewTag && <NewTag />}
         <div className="flex flex-col gap-[8px]">
-          <p className="text-left text-[16px] font-semibold leading-[20px]">
+          <p className="h-[20px] text-left text-[16px] font-semibold leading-[20px]">
             {title}
           </p>
-          <p className="text-left text-[12px] font-normal leading-[16px]">
+          <p className="h-[16px] text-left text-[12px] font-normal leading-[16px]">
             {subtext}
           </p>
         </div>

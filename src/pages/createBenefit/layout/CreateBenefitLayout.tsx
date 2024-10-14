@@ -1,14 +1,14 @@
+import { useEffect } from "react";
 import { Menu } from "src/components/menu/Menu";
 import { BackButton } from "src/shared/ui/button/BackButton";
 import { CREATEBENEFIT } from "src/components/menu/menu.data";
-import Button from "src/shared/ui/button/Button";
-import { validateFields } from "./modal/validate";
-import { useEffect } from "react";
+import { validateFields } from "../modal/validate";
 
-interface Props {
+export function CreateBenefitLayout({
+  children,
+}: {
   children: React.ReactNode;
-}
-export function CreateBenefitLayout(props: Props) {
+}) {
   useEffect(() => {
     console.log(validateFields());
   });
@@ -26,15 +26,7 @@ export function CreateBenefitLayout(props: Props) {
           <div className="mb-[32px] flex flex-row gap-[32px]">
             <Menu menu={CREATEBENEFIT} orientation="vertical" />
             <div className="w-full rounded-[16px] bg-white p-[0px]">
-              <div className="flex flex-col gap-[24px]">
-                {props.children}
-                <Button
-                  link={"/"}
-                  text={"Создать бенефит"}
-                  textColor={validateFields() ? "light" : "unActive"}
-                  buttonType={validateFields() ? "mint" : "unActive"}
-                />
-              </div>
+              <div className="flex flex-col gap-[24px]">{children}</div>
             </div>
           </div>
         </div>

@@ -3,6 +3,10 @@ import create from "zustand";
 interface BlockState {
   name: string;
   setName: (name: string) => void;
+
+  subtext: string;
+  setSubtext: (subtext: string) => void;
+
   blocks: { id: number; title: string; description: string }[];
   addBlock: () => void;
   deleteBlock: () => void;
@@ -12,6 +16,9 @@ interface BlockState {
 export const useBlockStore = create<BlockState>((set) => ({
   name: "",
   setName: (name: string) => set({ name }),
+
+  subtext: "",
+  setSubtext: (subtext: string) => set({ subtext }),
 
   blocks: [{ id: 0, title: "", description: "" }],
   addBlock: () =>
