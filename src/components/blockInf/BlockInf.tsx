@@ -14,10 +14,9 @@ export function BlockInf({ id }: BlockInfProps) {
   const updateBlock = useBlockStore((state: any) => state.updateBlock);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [title, setTitle] = useState(block?.title || "");
+  const [title] = useState(block?.title || "");
   const [description, setDescription] = useState(block?.description || "");
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // const handleTitleChange = (value: string) => {
   //   setTitle(value);
   //   updateBlock(id, value, description);
