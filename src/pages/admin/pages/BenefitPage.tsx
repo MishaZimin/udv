@@ -2,14 +2,12 @@ import { Link } from "react-router-dom";
 import Layout from "src/components/layout/Layout";
 
 import { AdminBenefit } from "src/components/admin-benefit/AdminBenefut";
-import CreateBenefit from "src/shared/image/CreateBenefit.svg";
+import CreateBenefit from "src/shared/assets/svgs/CreateBenefit.svg";
 
 export function AdminBenefitPage() {
   return (
     <Layout>
-      {/* <AdminLayout> */}
       <div className="flex w-full flex-col gap-[32px]">
-        {/* <ExpUDV /> */}
         <div className="flex">
           <div className="mb-[32px] grid grid-cols-3 gap-[32px] rounded-[16px] bg-white p-[0px] pt-[16px]">
             <Link
@@ -23,18 +21,51 @@ export function AdminBenefitPage() {
                 </p>
               </div>
             </Link>
-            <AdminBenefit />
-            <AdminBenefit />
-            <AdminBenefit />
-            <AdminBenefit />
-            <AdminBenefit />
-            <AdminBenefit />
-
-            <AdminBenefit />
+            <AdminBenefit
+              title={"Такси"}
+              subtext={"Поездки между офисами и в командировках"}
+              isNewTag={Math.random() < 0.4}
+              link={"/benefit"}
+            />
+            <AdminBenefit
+              title={"Такси"}
+              subtext={"Поездки между офисами и в командировках"}
+              isNewTag={Math.random() < 0.4}
+              link={"/benefit"}
+            />
+            <AdminBenefit
+              title={"Такси"}
+              subtext={"Поездки между офисами и в командировках"}
+              isNewTag={Math.random() < 0.4}
+              link={"/benefit"}
+            />
+            <AdminBenefit
+              title={"Такси"}
+              subtext={"Поездки между офисами и в командировках"}
+              isNewTag={Math.random() < 0.4}
+              link={"/benefit"}
+            />
+            <AdminBenefit
+              title={"Такси"}
+              subtext={"Поездки между офисами и в командировках"}
+              isNewTag={Math.random() < 0.4}
+              link={"/benefit"}
+            />
+            <AdminBenefit
+              title={"Такси"}
+              subtext={"Поездки между офисами и в командировках"}
+              isNewTag={Math.random() < 0.4}
+              link={"/benefit"}
+            />
+            <AdminBenefit
+              title={"Такси"}
+              subtext={"Поездки между офисами и в командировках"}
+              isNewTag={Math.random() < 0.4}
+              link={"/benefit"}
+            />
           </div>
         </div>
       </div>
-      {/* </AdminLayout> */}
     </Layout>
   );
 }

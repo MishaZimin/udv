@@ -1,11 +1,11 @@
-import { useCardStore } from "../stores/useCardStore";
-import { useCheckboxStore } from "../stores/useCheckboxStore";
-import { useImageStore } from "../stores/useImageStore";
+import { useCardStore } from "..";
+import { useCheckboxStore } from "..";
+import { useImageStore } from "..";
 
 export const validateFields = () => {
+  const { name, subtext, description } = useCardStore.getState();
   const { imageSrc } = useImageStore.getState();
   const { checkboxes } = useCheckboxStore.getState();
-  const { name, subtext, description } = useCardStore.getState();
 
   const isNameValid = name.trim() !== "";
   const isSubtextValid = subtext.trim() !== "";

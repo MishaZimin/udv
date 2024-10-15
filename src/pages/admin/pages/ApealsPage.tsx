@@ -11,7 +11,7 @@ export function AdminApealsPage() {
           <Button
             text={"Посмотреть обращения"}
             textColor={"light"}
-            buttonType={"mint"}
+            buttonType={"primary"}
             fullWidth={true}
           />
         </div>

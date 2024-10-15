@@ -1,6 +1,6 @@
 import Button from "src/shared/ui/button/Button";
 import { LogoUDV } from "src/shared/ui/logo/logo";
-import { CheckMail } from "src/components/mail/CheckMail";
+import { CheckMail } from "src/components/mail/ui/CheckMail";
 import { useGoBack } from "src/shared/hooks/useGoBack";
 import { AuthLayout } from "..";
 
@@ -14,15 +14,15 @@ export function CheckMailPage() {
           text="Вернуться назад"
           textColor="dark"
           onClick={useGoBack()}
-          buttonType="white"
+          buttonType="secondary"
         />
         <Button
           text="Сотрудник"
           textColor="light"
           link={"/"}
-          buttonType="mint"
+          buttonType="primary"
         />
-        <Button text="HR" textColor="light" link={"/"} buttonType="mint" />
+        <Button text="HR" textColor="light" link={"/"} buttonType="primary" />
       </div>
     </AuthLayout>
   );

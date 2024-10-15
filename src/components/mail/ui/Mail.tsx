@@ -6,8 +6,6 @@ export function Mail() {
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [mail, setMail] = useState<string>("");
 
-  console.log(mail);
-
   return (
     <>
       <div className="flex flex-col gap-[12px]">

@@ -1,9 +1,9 @@
 import { LogoUDV } from "src/shared/ui/logo/logo";
 import { Link } from "react-router-dom";
 
-import Logout from "src/shared/image/Logout.svg";
+import Logout from "src/shared/assets/svgs/Logout.svg";
 import { Menu } from "../menu/ui/Menu";
-import { HEADERMENU } from "../menu/menu.data";
+import { HEADERMENU } from "../menu/data/menu.data";
 import { useModal } from "../modal/hooks/useModal";
 import Modal from "../modal/ui/Modal";
 import Button from "src/shared/ui/button/Button";
@@ -57,7 +57,7 @@ const Header = () => {
               onClick={closeModal}
               text={"Отмена"}
               textColor={"dark"}
-              buttonType={"white"}
+              buttonType={"secondary"}
             />
           </div>
         </div>

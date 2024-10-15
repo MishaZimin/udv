@@ -1,20 +1,15 @@
 import { Link } from "react-router-dom";
 import { NewTag } from "../new-tag/NewTag";
-// import Taxi from "src/shared/image/Taxi.png";
 
-export const Benefit = ({
-  title,
-  subtext,
-  link,
-  isNewTag,
-  image,
-}: {
+type Props = {
   title: string;
   subtext: string;
   image?: string | null;
   isNewTag: boolean;
   link: string;
-}) => {
+};
+
+export const Benefit = ({ title, subtext, link, isNewTag, image }: Props) => {
   return (
     <>
       <Link

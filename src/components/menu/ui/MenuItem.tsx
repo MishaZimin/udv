@@ -1,13 +1,13 @@
 import clsx from "clsx";
 import { Link } from "react-router-dom";
-import { IMenuItem } from "../menu.data";
+import { MenuProps } from "../data/menu.data";
 
-interface MenuItemProps {
-  item: IMenuItem;
+type Props = {
+  item: MenuProps;
   isActive: boolean;
-}
+};
 
-export const MenuItem = ({ item, isActive }: MenuItemProps) => {
+export const MenuItem = ({ item, isActive }: Props) => {
   return (
     <div>
       <Link

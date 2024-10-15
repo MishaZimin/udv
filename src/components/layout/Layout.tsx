@@ -1,8 +1,8 @@
 import Header from "src/components/header/Header";
 import { Feedback } from "src/components/feedback/Feedback";
-interface Props {
+type Props = {
   children: React.ReactNode;
-}
+};
 
 const Layout = (props: Props) => {
   return (

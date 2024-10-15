@@ -1,12 +1,12 @@
 // src/pages/components/SubtextInput.tsx
 import Input from "src/shared/ui/input/Input";
 
-interface SubtextInputProps {
+type Props = {
   subtext: string;
   setSubtext: (value: string) => void;
-}
+};
 
-export function SubtextInput({ subtext, setSubtext }: SubtextInputProps) {
+export function SubtextInput({ subtext, setSubtext }: Props) {
   return (
     <div className="flex flex-col gap-[8px]">
       {/* <p className="text-[20px] font-semibold">Подпись в карточке</p> */}

@@ -2,7 +2,7 @@ export function NotFound() {
   return (
     <>
       <div className="flex h-svh">
-        <p className="mx-auto my-auto text-2xl pb-[32px]">not found</p>
+        <p className="mx-auto my-auto pb-[32px] text-2xl">error</p>
       </div>
     </>
   );

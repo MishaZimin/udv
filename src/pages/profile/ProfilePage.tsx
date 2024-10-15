@@ -1,20 +1,5 @@
 import { BackButton } from "src/shared/ui/button/BackButton";
 
-// interface IProfile {
-//     name: string;
-//     level: string;
-//     exp: string;
-//     packageBenefit: string;
-//     job: string;
-// }
-// {
-//     name,
-//     level,
-//     exp,
-//     packageBenefit,
-//     job,
-// }: IProfile
-
 export function ProfilePage() {
   return (
     <>

@@ -1,6 +1,6 @@
-import create from "zustand";
+import { create } from "zustand";
 
-export interface CardState {
+type Props = {
   name: string;
   setName: (name: string) => void;
 
@@ -9,9 +9,9 @@ export interface CardState {
 
   description: string;
   setDescription: (description: string) => void;
-}
+};
 
-export const useCardStore = create<CardState>((set) => ({
+export const useCardStore = create<Props>((set) => ({
   name: "",
   setName: (name: string) => set({ name }),
 

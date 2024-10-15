@@ -1,14 +1,14 @@
 import clsx from "clsx";
 import { Link } from "react-router-dom";
 
-interface IButton {
+type Props = {
   onClick?: () => void;
   link?: string;
   text: string;
   textColor: "dark" | "light" | "unActive";
-  buttonType: "mint" | "white" | "red" | "unActive";
+  buttonType: "primary" | "secondary" | "red" | "unActive";
   fullWidth?: boolean;
-}
+};
 
 const Button = ({
   onClick,
@@ -17,7 +17,7 @@ const Button = ({
   textColor,
   buttonType,
   fullWidth,
-}: IButton) => {
+}: Props) => {
   const baseClasses = clsx(
     "py-[16px] px-[8px] rounded-[8px] text-center animation font-semibold ",
     fullWidth && "w-full",
@@ -28,8 +28,8 @@ const Button = ({
     unActive: "text-graphite opacity-[40%]",
   }[textColor];
   const buttonTypeClasses = {
-    mint: "bg-mint hover:bg-minthover active:bg-mintactive",
-    white:
+    primary: "bg-mint hover:bg-minthover active:bg-mintactive",
+    secondary:
       "bg-none border-opacity-[20%] border border-graphite hover:bg-graphite hover:bg-opacity-[4%] hover:border-opacity-[0%] active:bg-graphite active:bg-opacity-[8%] active:border-opacity-[0%]",
     red: "bg-rose hover:bg-rosehover active:bg-roseactive",
     unActive: "bg-opacity-[8%] bg-graphite cursor-default ",

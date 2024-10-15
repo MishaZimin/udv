@@ -1,9 +1,9 @@
-import BackButtonIcon from "src/shared/image/BackButton.svg";
+import BackButtonIcon from "src/shared/assets/svgs/BackButton.svg";
 import { Link, useNavigate } from "react-router-dom";
 
-interface Props {
+type Props = {
   link: string | "back";
-}
+};
 
 export function BackButton(props: Props) {
   const navigate = useNavigate();

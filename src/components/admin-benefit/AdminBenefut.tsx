@@ -2,22 +2,31 @@ import { Link } from "react-router-dom";
 
 import { Benefit } from "src/components/benefit/Benefit";
 
-import Delete from "src/shared/image/Delete.svg";
-import Pencil from "src/shared/image/Pencil.svg";
+import Delete from "src/shared/assets/svgs/Delete.svg";
+import Pencil from "src/shared/assets/svgs/Pencil.svg";
 import { useModal } from "../modal/hooks/useModal";
 import Modal from "../modal/ui/Modal";
 import Button from "src/shared/ui/button/Button";
 
-export function AdminBenefit() {
+type Props = {
+  title: string;
+  subtext: string;
+  image?: string | null;
+  isNewTag: boolean;
+  link: string;
+};
+
+export function AdminBenefit({ title, subtext, link, isNewTag, image }: Props) {
   const { isOpen, openModal, closeModal } = useModal();
 
   return (
     <div className="relative">
       <Benefit
-        title={"Такси"}
-        subtext={"Поездки между офисами и в командировках"}
-        isNewTag={false}
-        link={"/benefit"}
+        title={title}
+        subtext={subtext}
+        isNewTag={isNewTag}
+        link={link}
+        image={image}
       />
       <div className="absolute bottom-[8px] right-[8px] flex h-[30px] w-[60px] flex-row rounded-[8px] bg-graphite bg-opacity-[4%]">
         <Link
@@ -45,7 +54,7 @@ export function AdminBenefit() {
               onClick={closeModal}
               text={"Отмена"}
               textColor={"dark"}
-              buttonType={"white"}
+              buttonType={"secondary"}
             />
           </div>
         </div>

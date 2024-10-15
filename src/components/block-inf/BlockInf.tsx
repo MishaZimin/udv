@@ -1,12 +1,9 @@
-interface DescriptionAreaProps {
+type Props = {
   description: string;
   setDescription: (value: string) => void;
-}
+};
 
-export function DescriptionArea({
-  description,
-  setDescription,
-}: DescriptionAreaProps) {
+export function DescriptionArea({ description, setDescription }: Props) {
   return (
     <div className="flex flex-col gap-[8px]">
       <textarea

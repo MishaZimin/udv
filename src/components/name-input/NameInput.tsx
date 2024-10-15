@@ -1,12 +1,12 @@
 // src/pages/components/NameInput.tsx
 import Input from "src/shared/ui/input/Input";
 
-interface NameInputProps {
+type Props = {
   name: string;
   setName: (value: string) => void;
-}
+};
 
-export function NameInput({ name, setName }: NameInputProps) {
+export function NameInput({ name, setName }: Props) {
   return (
     <div className="flex flex-col gap-[8px]">
       {/* <p className="text-[20px] font-semibold">Название бенефита</p> */}

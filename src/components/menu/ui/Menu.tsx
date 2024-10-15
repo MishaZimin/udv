@@ -1,14 +1,14 @@
 import clsx from "clsx";
 import { MenuItem } from "./MenuItem";
 import { useLocation } from "react-router-dom";
-import { IMenuItem } from "../menu.data";
+import { MenuProps } from "../data/menu.data";
 
-interface IMenu {
-  menu: IMenuItem[];
+type Props = {
+  menu: MenuProps[];
   orientation: "horizontal" | "vertical";
-}
+};
 
-export const Menu = ({ menu, orientation }: IMenu) => {
+export const Menu = ({ menu, orientation }: Props) => {
   const location = useLocation();
   // const path = `/${location.pathname.split("/")[1]}`;
 
@@ -22,7 +22,7 @@ export const Menu = ({ menu, orientation }: IMenu) => {
             : "h-[38px] w-auto flex-row",
         )}
       >
-        {menu.map((item: IMenuItem) => (
+        {menu.map((item: MenuProps) => (
           <MenuItem
             key={item.name}
             item={item}

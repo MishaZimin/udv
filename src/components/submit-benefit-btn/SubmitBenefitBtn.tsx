@@ -8,7 +8,7 @@ export function SubmitButton() {
       link={"/"}
       text={"Создать бенефит"}
       textColor={"light"}
-      buttonType={"mint"}
+      buttonType={"primary"}
     />
   ) : (
     <Button

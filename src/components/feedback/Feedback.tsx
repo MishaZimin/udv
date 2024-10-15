@@ -1,4 +1,4 @@
-import Feedbackline from "src/shared/image/feedback-line.svg";
+import Feedbackline from "src/shared/assets/svgs/feedback-line.svg";
 
 export function Feedback() {
   return (

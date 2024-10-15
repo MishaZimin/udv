@@ -4,6 +4,8 @@ import { SubmitButton } from "src/components/submit-benefit-btn/SubmitBenefitBtn
 import { NameInput } from "src/components/name-input/NameInput";
 import { SubtextInput } from "src/components/subtext-input/SubtextInput";
 import { DescriptionArea } from "src/components/block-inf/BlockInf";
+import { useEffect } from "react";
+import { validateFields } from "../modal/validate";
 
 export function DetailsPage() {
   const name = useCardStore((state) => state.name);
@@ -14,6 +16,10 @@ export function DetailsPage() {
 
   const description = useCardStore((state) => state.description);
   const setDescription = useCardStore((state) => state.setDescription);
+
+  useEffect(() => {
+    if (validateFields()) return console.log(name, subtext, description);
+  });
 
   return (
     <CreateBenefitLayout>

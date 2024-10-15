@@ -1,13 +1,13 @@
 import clsx from "clsx";
-import CheckboxIcon from "src/shared/image/Checkbox.svg";
+import CheckboxIcon from "src/shared/assets/svgs/Checkbox.svg";
 
-interface CheckboxProps {
+type Props = {
   checked: boolean;
   onChange: (checked: boolean) => void;
   text: string;
-}
+};
 
-export function Checkbox({ checked, onChange, text }: CheckboxProps) {
+export function Checkbox({ checked, onChange, text }: Props) {
   return (
     <button
       onClick={() => onChange(!checked)}

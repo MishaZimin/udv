@@ -1,19 +1,23 @@
-export function Employee({
-  name,
-  jobTitle,
-  experience,
-}: {
+import Profile from "src/shared/assets/svgs/Profile.svg";
+
+type Props = {
   name: string;
   jobTitle: string;
   experience: string;
-}) {
+  post: string;
+};
+
+export function Employee({ name, jobTitle, experience, post }: Props) {
   return (
-    <div className="flex flex-row gap-[32px] border-t py-[16px] text-left">
-      <div className="my-auto h-[48px] min-w-[48px] rounded-full bg-graphite bg-opacity-[8%]"></div>
-      <div className="flex w-full flex-row items-center gap-[32px]">
-        <p className="w-[35%] text-left">{name}</p>
-        <p className="w-[35%] text-left">{jobTitle}</p>
-        <p className="w-[30%] text-left">{experience}</p>
+    <div className="flex flex-row gap-[32px] border-b px-[8px] py-[16px] text-left">
+      <div className="min-w-[22px]rounded-full my-auto mt-0 h-[22px] bg-opacity-[8%] bg-none">
+        <img className="w-[22px]" src={Profile} />
+      </div>
+      <div className="flex w-full flex-row items-start gap-[32px]">
+        <p className="w-[28%] text-left">{name}</p>
+        <p className="w-[28%] text-left">{jobTitle}</p>
+        <p className="w-[14%] text-left">{experience}</p>
+        <p className="w-[28%] text-left">{post}</p>
       </div>
     </div>
   );

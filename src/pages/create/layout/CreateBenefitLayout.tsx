@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Menu } from "src/components/menu/ui/Menu";
 import { BackButton } from "src/shared/ui/button/BackButton";
-import { CREATEBENEFIT } from "src/components/menu/menu.data";
+import { CREATEBENEFIT } from "src/components/menu/data/menu.data";
 import { validateFields } from "../modal/validate";
 import { Preview } from "src/components/preview/Preview";
 

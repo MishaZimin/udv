@@ -1,14 +1,14 @@
 import clsx from "clsx";
 
-interface IInput {
+type Props = {
   inputType: "default" | "error";
   mail?: boolean;
   onChange: (value: string) => void;
   placeholder?: string;
   value: string;
-}
+};
 
-const Input = ({ inputType, mail, onChange, placeholder, value }: IInput) => {
+const Input = ({ inputType, mail, onChange, placeholder, value }: Props) => {
   const baseClasses =
     "bg-transparent w-full px-[12px] pt-[8px] pb-[10px] rounded-[8px] border  focus:outline-none focus:border-opacity-[80%] animation";
   const inputTypeClasses = {
