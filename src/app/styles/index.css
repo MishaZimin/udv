@@ -5,47 +5,24 @@
 @tailwind utilities;
 
 @layer base {
-    p {
-        @apply text-graphite font-base leading-[22px];
-    }
+  p {
+    @apply font-base leading-[22px] text-graphite;
+  }
 }
 
 @layer utilities {
-    .custom-border {
-        border: 1px dashed black;
-    }
+  .custom-border {
+    border: 1px dashed black;
+  }
 
-    .custom-shadow {
-        box-shadow: 0px 1px 16px 0px rgba(0, 0, 0, 0.16);
-    }
+  .custom-shadow {
+    box-shadow: 0px 1px 16px 0px rgba(0, 0, 0, 0.16);
+  }
 
-    .animation {
-        @apply transition duration-300 transform;
-    }
+  .animation {
+    @apply transform transition duration-300;
+  }
 }
 ::-webkit-scrollbar {
-    width: 0;
-}
-
-/* body {
-    overflow: overlay;
-} */
-
-/* html {
-    scrollbar-gutter: stable;
-} */
-
-@layer base {
-    @font-face {
-        font-family: "Circe-Regular";
-        src: url("./app/fonts/Circe-Regular.ttf") format("truetype");
-        font-weight: normal;
-        font-style: normal;
-    }
-    @font-face {
-        font-family: "Circe-ExtraBold";
-        src: url("./app/fonts/Circe-ExtraBold.ttf") format("truetype");
-        font-weight: normal;
-        font-style: normal;
-    }
+  width: 0;
 }

@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import { Benefit } from "src/components/benefit/Benefit";
 
-import { BenefitServise } from "src/api/benefit.servise";
+import { BenefitServise } from "src/shared/api/api";
 import { Key } from "react";
 
 export function Benefits() {

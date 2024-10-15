@@ -2,10 +2,10 @@ import { LogoUDV } from "src/shared/ui/logo/logo";
 import { Link } from "react-router-dom";
 
 import Logout from "src/shared/image/Logout.svg";
-import { Menu } from "../menu/Menu";
+import { Menu } from "../menu/ui/Menu";
 import { HEADERMENU } from "../menu/menu.data";
-import { useModal } from "../modal/useModal";
-import Modal from "../modal/Modal";
+import { useModal } from "../modal/hooks/useModal";
+import Modal from "../modal/ui/Modal";
 import Button from "src/shared/ui/button/Button";
 
 const Header = () => {
@@ -14,14 +14,14 @@ const Header = () => {
   return (
     <>
       <div className="fixed z-10 mr-[50px] w-full bg-white">
-        <header className="py-auto mx-auto flex h-[120px] w-full justify-between px-[8px] align-middle lg:w-[1024px] lg:px-0">
-          <div className="my-auto pb-[12px]">
+        <header className="py-auto mx-auto flex h-[102px] w-full justify-between px-[8px] align-middle lg:w-[1024px] lg:px-0">
+          <div className="my-auto">
             <LogoUDV width={"w-[160px]"} />
           </div>
-          <div className="mb-[48px] mt-[32px] flex gap-[16px]">
+          <div className="mb-[32px] mt-[32px] flex gap-[16px]">
             <Link to={"/profile"}>
-              <div className="">
-                <p className="mt-[9px]">Имя Фамилия</p>
+              <div className="flex h-full items-center">
+                <p className="">Имя Фамилия</p>
               </div>
             </Link>
             {/* <Link to={"/exit"}> */}

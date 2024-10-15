@@ -1,7 +1,6 @@
 import Input from "src/shared/ui/input/Input";
 import { Checkbox } from "src/shared/ui/checkbox/Checkbox";
 import { useState } from "react";
-// import { Radio } from "src/shared/ui/radio/Radio";
 
 export function Mail() {
   const [isChecked, setIsChecked] = useState<boolean>(false);

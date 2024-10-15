@@ -1,10 +1,10 @@
 import { Benefit } from "src/components/benefit/Benefit";
-import { useImageStore } from "src/pages/createBenefit/store/useImageStore";
-import { useBlockStore } from "src/pages/createBenefit/store/useBlockStore";
+import { useImageStore } from "src/pages/create/stores/useImageStore";
+import { useCardStore } from "src/pages/create/stores/useCardStore";
 
 export function Preview() {
-  const name = useBlockStore((state) => state.name);
-  const subtext = useBlockStore((state) => state.subtext);
+  const name = useCardStore((state) => state.name);
+  const subtext = useCardStore((state) => state.subtext);
   const { imageSrc } = useImageStore();
 
   return (

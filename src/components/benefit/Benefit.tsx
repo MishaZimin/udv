@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { NewTag } from "../newTag/NewTag";
+import { NewTag } from "../new-tag/NewTag";
 // import Taxi from "src/shared/image/Taxi.png";
 
 export const Benefit = ({
@@ -31,7 +31,7 @@ export const Benefit = ({
           </p>
         </div>
 
-        <div className="flex h-[148px] w-[288px] items-center justify-center overflow-hidden rounded-[8px] bg-card">
+        <div className="flex h-[148px] w-[288px] items-center justify-center overflow-hidden rounded-[8px] bg-graphite bg-opacity-[4%]">
           {
             image ? (
               <img

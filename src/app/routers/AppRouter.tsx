@@ -1,18 +1,21 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { NotFound } from "../../pages/errors/ErrorPage.tsx";
-import { HomePage } from "../../pages/home/HomePage.tsx";
-import { AuthPage } from "src/pages/auth/AuthPage.tsx";
-import { CheckMailPage } from "src/pages/auth/CheckMailPage.tsx";
+
+import { NotFound } from "src/pages/errors/ErrorPage.tsx";
+import { HomePage } from "src/pages/home/HomePage.tsx";
+import { AuthPage } from "src/pages/auth";
+import { CheckMailPage } from "src/pages/auth";
 import { BenefitPage } from "src/pages/benefit/BenefitPage.tsx";
-import { AdminApealsPage } from "src/pages/admin/AdminApeals.tsx";
-import { AdminBenefitPage } from "src/pages/admin/AdminBenefit.tsx";
-import { AdminCategoriesPage } from "src/pages/admin/AdminCategories.tsx";
-import { AdminEmployeesPage } from "src/pages/admin/AdminEmployees.tsx";
 import { ProfilePage } from "src/pages/profile/ProfilePage.tsx";
-import { DetailsPage } from "src/pages/createBenefit/pages/DetailsPage.tsx";
-import { CoverPage } from "src/pages/createBenefit/pages/CoverPage.tsx";
-import { AvailabilityPage } from "src/pages/createBenefit/pages/AvailabilityPage.tsx";
+
+import { AdminApealsPage } from "src/pages/admin";
+import { AdminBenefitPage } from "src/pages/admin";
+import { AdminCategoriesPage } from "src/pages/admin";
+import { AdminEmployeesPage } from "src/pages/admin";
+
+import { DetailsPage } from "src/pages/create";
+import { CoverPage } from "src/pages/create";
+import { AvailabilityPage } from "src/pages/create";
 
 const queryClient = new QueryClient();
 

@@ -24,7 +24,7 @@ export function Checkbox({ checked, onChange, text }: CheckboxProps) {
         )}
       </div>
 
-      <p className="text-[16px] text-black">{text}</p>
+      <p className="text-[14px] leading-[20px] text-black">{text}</p>
     </button>
   );
 }

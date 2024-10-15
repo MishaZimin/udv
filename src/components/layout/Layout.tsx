@@ -8,7 +8,7 @@ const Layout = (props: Props) => {
   return (
     <>
       <Header />
-      <div className="mx-auto h-full w-full pt-[190px] lg:w-[1024px]">
+      <div className="mx-auto h-full w-full pt-[172px] lg:w-[1024px]">
         {props.children}
         <Feedback />
       </div>
