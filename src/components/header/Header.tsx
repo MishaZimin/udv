@@ -20,8 +20,8 @@ const Header = () => {
           </div>
           <div className="mb-[32px] mt-[32px] flex gap-[16px]">
             <Link to={"/profile"}>
-              <div className="flex h-full items-center">
-                <p className="">Имя Фамилия</p>
+              <div className="flex items-center h-full">
+                <p className="">Константин Сергеев</p>
               </div>
             </Link>
             {/* <Link to={"/exit"}> */}

@@ -9,7 +9,7 @@ export function ProfilePage() {
             <div className="flex flex-row gap-[8px]">
               <BackButton link="back" />
               <p className="text-[28px] font-semibold leading-[36px]">
-                Имя Фамилия
+                Константин Сергеев
                 {/* {name} */}
               </p>
             </div>

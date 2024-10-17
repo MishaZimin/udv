@@ -27,13 +27,13 @@ UDV частично компенсирует оплату питания в р�
     <>
       <div className="mx-auto h-svh w-[728px]">
         <div className="flex flex-col">
-          <div className="flex flex-row items-center gap-[8px] py-[32px]">
+          <div className="fixed flex w-[728px] flex-row items-center gap-[8px] bg-white py-[32px]">
             <BackButton link="back" />
             <p className="text-[32px] font-semibold leading-[40px]">
               Компенсация питания
             </p>
           </div>
-          <div className="prose mb-[32px] ml-[64px] w-[600px]">
+          <div className="prose mb-[32px] ml-[64px] w-[600px] pt-[104px]">
             <Markdown>{mardownText}</Markdown>
           </div>
         </div>
