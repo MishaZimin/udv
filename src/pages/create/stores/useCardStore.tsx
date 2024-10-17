@@ -1,4 +1,8 @@
 import { create } from "zustand";
+import {
+  getFromLocalStorage,
+  saveToLocalStorage,
+} from "../../../shared/modal/local-storage";
 
 type Props = {
   name: string;
@@ -12,12 +16,21 @@ type Props = {
 };
 
 export const useCardStore = create<Props>((set) => ({
-  name: "",
-  setName: (name: string) => set({ name }),
+  name: getFromLocalStorage("name"),
+  setName: (name: string) => {
+    set({ name });
+    saveToLocalStorage("name", name);
+  },
 
-  subtext: "",
-  setSubtext: (subtext: string) => set({ subtext }),
+  subtext: getFromLocalStorage("subtext"),
+  setSubtext: (subtext: string) => {
+    set({ subtext });
+    saveToLocalStorage("subtext", subtext);
+  },
 
-  description: "",
-  setDescription: (description: string) => set({ description }),
+  description: getFromLocalStorage("description"),
+  setDescription: (description: string) => {
+    set({ description });
+    saveToLocalStorage("description", description);
+  },
 }));

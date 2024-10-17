@@ -11,7 +11,6 @@ export function AvailabilityPage() {
       <div className="flex flex-row gap-[32px]">
         <div className="flex w-full flex-col gap-[24px]">
           <div className="flex flex-col gap-[16px]">
-            {/* <p className="text-[20px] font-semibold">Доступность</p> */}
             <p>Выберите кому будет доступен бенефит</p>
           </div>
           <div className="flex flex-col gap-[16px]">

@@ -1,17 +1,15 @@
-import { Link } from "react-router-dom";
-
 import { Benefit } from "src/components/benefit/Benefit";
 
-import Delete from "src/shared/assets/svgs/Delete.svg";
-import Pencil from "src/shared/assets/svgs/Pencil.svg";
 import { useModal } from "../modal/hooks/useModal";
 import Modal from "../modal/ui/Modal";
 import Button from "src/shared/ui/button/Button";
+import { ChangeBtn } from "../change/Change";
+import Delete from "src/shared/assets/svgs/Delete.svg";
 
 type Props = {
   title: string;
   subtext: string;
-  image?: string | null;
+  image?: string;
   isNewTag: boolean;
   link: string;
 };
@@ -29,12 +27,13 @@ export function AdminBenefit({ title, subtext, link, isNewTag, image }: Props) {
         image={image}
       />
       <div className="absolute bottom-[8px] right-[8px] flex h-[30px] w-[60px] flex-row rounded-[8px] bg-graphite bg-opacity-[4%]">
-        <Link
-          to={"/create-benefit/details"}
-          className="animation cursor-pointer rounded-[8px] p-[4px] hover:bg-graphite hover:bg-opacity-[8%]"
-        >
-          <img src={Pencil} />
-        </Link>
+        <ChangeBtn
+          title={title}
+          subtext={subtext}
+          isNewTag={isNewTag}
+          link={link}
+          image={image}
+        />
         <button
           onClick={openModal}
           className="animation cursor-pointer rounded-[8px] p-[4px] hover:bg-graphite hover:bg-opacity-[8%]"

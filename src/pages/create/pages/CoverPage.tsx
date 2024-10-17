@@ -1,6 +1,6 @@
-import { CreateBenefitLayout } from "../layout/CreateBenefitLayout";
 import { CoverDropArea } from "src/components/cover-drop-area/CoverDropArea";
 import { SubmitButton } from "src/components/submit-benefit-btn/SubmitBenefitBtn";
+import { CreateBenefitLayout } from "../layout/CreateBenefitLayout";
 
 export function CoverPage() {
   return (
