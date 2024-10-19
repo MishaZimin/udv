@@ -2,7 +2,7 @@ import { create } from "zustand";
 import {
   getFromLocalStorage,
   saveToLocalStorage,
-} from "../../../shared/modal/local-storage";
+} from "../../../shared/model/local-storage";
 
 type Props = {
   name: string;

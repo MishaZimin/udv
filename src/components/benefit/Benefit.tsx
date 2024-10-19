@@ -27,20 +27,9 @@ export const Benefit = ({ title, subtext, link, isNewTag, image }: Props) => {
         </div>
 
         <div className="flex h-[148px] w-[288px] items-center justify-center overflow-hidden rounded-[8px] bg-graphite bg-opacity-[0%]">
-          {
-            image ? (
-              <img
-                className="h-full w-full object-contain"
-                src={image}
-                alt="Taxi"
-              />
-            ) : null
-            // <img
-            //   className="h-[140px] w-[280px] object-contain"
-            //   src={""}
-            //   alt="Taxi"
-            // />
-          }
+          {image ? (
+            <img className="object-contain w-full h-full" src={image} alt="" />
+          ) : null}
         </div>
       </Link>
     </>

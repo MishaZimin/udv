@@ -1,5 +1,5 @@
 // src/pages/components/SubmitButton.tsx
-import { validateFields } from "src/pages/create/modal/validate";
+import { validateFields } from "src/pages/create/model/validate";
 import Button from "src/shared/ui/button/Button";
 
 export function SubmitButton() {

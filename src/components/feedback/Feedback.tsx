@@ -10,7 +10,7 @@ export function Feedback() {
               href="https://tally.so/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-bottom animation flex flex-row items-center gap-[8px] rounded-full bg-darkblue px-[16px] pb-[14px] pt-[12px] hover:bg-opacity-[90%]"
+              className="text-bottom animation hover:bg-darkbluehover active:bg-darkblueactive flex flex-row items-center gap-[8px] rounded-full bg-darkblue px-[16px] pb-[14px] pt-[12px]"
             >
               <p className="text-[20px] font-semibold leading-[28px] text-yellow">
                 Фидбек

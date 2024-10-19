@@ -42,19 +42,21 @@ export function AdminBenefit({ title, subtext, link, isNewTag, image }: Props) {
         </button>
       </div>
       <Modal isOpen={isOpen} onClose={closeModal}>
-        <div className="flex flex-col gap-[32px]">
-          <p className="text-center text-[20px] font-semibold leading-[28px]">
-            Вы уверены, <br />
-            что хотите удалить бенефит?
-          </p>
-          <div className="flex flex-col gap-[8px]">
-            <Button text={"Удалить"} textColor={"light"} buttonType={"red"} />
-            <Button
-              onClick={closeModal}
-              text={"Отмена"}
-              textColor={"dark"}
-              buttonType={"secondary"}
-            />
+        <div className="relative z-10 w-[400px] rounded-[16px] bg-card p-6 px-[40px] py-[48px]">
+          <div className="flex flex-col gap-[32px]">
+            <p className="text-center text-[20px] font-semibold leading-[28px]">
+              Вы уверены, <br />
+              что хотите удалить бенефит?
+            </p>
+            <div className="flex flex-col gap-[8px]">
+              <Button text={"Удалить"} textColor={"light"} buttonType={"red"} />
+              <Button
+                onClick={closeModal}
+                text={"Отмена"}
+                textColor={"dark"}
+                buttonType={"secondary"}
+              />
+            </div>
           </div>
         </div>
       </Modal>

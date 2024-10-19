@@ -6,7 +6,7 @@ type Props = {
   link?: string;
   text: string;
   textColor: "dark" | "light" | "unActive";
-  buttonType: "primary" | "secondary" | "red" | "unActive";
+  buttonType: "primary" | "secondary" | "red" | "yellow" | "unActive";
   fullWidth?: boolean;
 };
 
@@ -33,6 +33,7 @@ const Button = ({
       "bg-none border-opacity-[20%] border border-graphite hover:bg-graphite hover:bg-opacity-[4%] hover:border-opacity-[0%] active:bg-graphite active:bg-opacity-[8%] active:border-opacity-[0%]",
     red: "bg-rose hover:bg-rosehover active:bg-roseactive",
     unActive: "bg-opacity-[8%] bg-graphite cursor-default ",
+    yellow: "bg-yellow hover:bg-yellowhover active:yellowactive rounded-full ",
   }[buttonType];
 
   const content = <p className={`leading-[20px] ${textColorClass}`}>{text}</p>;

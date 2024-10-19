@@ -1,3 +1,4 @@
+import Survey from "src/components/survey/Survey";
 import { BackButton } from "src/shared/ui/button/BackButton";
 
 export function ProfilePage() {
@@ -14,6 +15,7 @@ export function ProfilePage() {
               </p>
             </div>
           </div>
+          <Survey />
           <div className="flex w-full flex-row justify-center gap-[48px] rounded-[16px] bg-card py-[32px]">
             <div className="flex flex-col gap-[4px]">
               <p className="">
@@ -26,25 +28,10 @@ export function ProfilePage() {
               </p>
             </div>
             <div className="flex flex-col gap-[4px]">
-              <p className="">Уровень</p>
-              <p className="text-[16px] font-semibold leading-[20px]">
-                Junior
-                {/* {level} */}
-              </p>
-            </div>
-            <div className="flex flex-col gap-[4px]">
               <p className="">Опыт в компании</p>
               <p className="text-[16px] font-semibold leading-[20px]">
                 1 год 1 месяц
                 {/* {exp} */}
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-[4px]">
-              <p className="">Пакет бенефитов</p>
-              <p className="text-[16px] font-semibold leading-[20px]">
-                Startert pack
-                {/* {packageBenefit} */}
               </p>
             </div>
             <div className="flex flex-col gap-[4px]">
