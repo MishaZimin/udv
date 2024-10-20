@@ -2,9 +2,9 @@ import clsx from "clsx";
 import CheckboxIcon from "src/shared/assets/svgs/Checkbox.svg";
 
 type Props = {
+  text: string;
   checked: boolean;
   onChange: (checked: boolean) => void;
-  text: string;
 };
 
 export function Checkbox({ checked, onChange, text }: Props) {

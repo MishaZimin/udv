@@ -5,7 +5,7 @@ import { NameInput } from "src/components/name-input/NameInput";
 import { SubtextInput } from "src/components/subtext-input/SubtextInput";
 import { DescriptionArea } from "src/components/block-inf/BlockInf";
 import { useEffect } from "react";
-import { validateFields } from "../model/validate";
+import { validateFields } from "../helpers/validate";
 
 export function DetailsPage() {
   const name = useCardStore((state) => state.name);
