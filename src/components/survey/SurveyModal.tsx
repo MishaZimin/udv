@@ -1,5 +1,7 @@
 import Modal from "../modal/ui/Modal";
 import { benefits } from "../benefits/data/benefits.data";
+import Button from "src/shared/ui/button/Button";
+import { useState } from "react";
 
 type Props = {
   isOpen: boolean;
@@ -8,6 +10,18 @@ type Props = {
 };
 
 const SurveyMoodal = ({ isOpen, closeModal, closeBtn }: Props) => {
+  const [selectedBenefits, setSelectedBenefits] = useState<number[]>([]);
+
+  const toggleBenefit = (id: number) => {
+    setSelectedBenefits((prev: number[]) =>
+      prev.includes(id)
+        ? prev.filter((benefitId: number) => benefitId !== id)
+        : [...prev, id],
+    );
+  };
+
+  console.log(selectedBenefits);
+
   return (
     <>
       <Modal isOpen={isOpen} onClose={closeModal} closeBtn={closeBtn}>
@@ -20,26 +34,29 @@ const SurveyMoodal = ({ isOpen, closeModal, closeBtn }: Props) => {
               {benefits.map((benefit) => (
                 <button
                   key={benefit.id}
-                  className="animation rounded-full bg-graphite bg-opacity-[4%] px-[16px] py-[12px] hover:bg-opacity-[8%]"
+                  onClick={() => toggleBenefit(benefit.id)}
+                  className={`animation rounded-full px-[16px] py-[12px] ${
+                    selectedBenefits.includes(benefit.id)
+                      ? "bg-black text-white"
+                      : "bg-graphite bg-opacity-[4%] hover:bg-opacity-[8%]"
+                  }`}
                 >
-                  <p className="text-center">{benefit.title}</p>
+                  <p
+                    className={`text-center leading-[22px] ${
+                      selectedBenefits.includes(benefit.id) ? "text-white" : ""
+                    }`}
+                  >
+                    {benefit.title}
+                  </p>
                 </button>
               ))}
             </div>
-            <button
-              className="animation h-[60px] rounded-full bg-yellow text-center hover:bg-yellowhover active:bg-yellowactive"
-              onClick={closeModal}
-            >
-              <p className="my-auto text-[20px] font-semibold leading-[28px]">
-                Отправить
-              </p>
-            </button>
-
-            {/* <Button
+            <Button
               text={"Отправить"}
               textColor={"dark"}
               buttonType={"yellow"}
-            /> */}
+              onClick={closeModal}
+            />
           </div>
         </div>
       </Modal>

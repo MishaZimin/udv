@@ -16,7 +16,7 @@ export const Menu = ({ menu, orientation }: Props) => {
     <div className="flex">
       <div
         className={clsx(
-          "flex gap-[16px] rounded-[16px] bg-white p-[0px]",
+          "flex gap-[8px] rounded-[16px] bg-white p-[0px]",
           orientation === "vertical"
             ? "w-[224px] flex-col"
             : "h-[38px] w-auto flex-row",

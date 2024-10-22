@@ -31,7 +31,7 @@ export function AdminBenefitPage() {
             >
               <div className="flex h-full flex-col justify-center">
                 <img className="mx-auto" src={CreateBenefit} />
-                <p className="text-center font-semibold leading-[20px] opacity-[80%]">
+                <p className="text-center font-semibold leading-[20px]">
                   Создать бенефит
                 </p>
               </div>

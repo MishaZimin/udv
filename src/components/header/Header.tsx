@@ -1,7 +1,5 @@
 import { LogoUDV } from "src/shared/ui/logo/logo";
 import { Link } from "react-router-dom";
-
-import Logout from "src/shared/assets/svgs/Logout.svg";
 import { Menu } from "../menu/ui/Menu";
 import { HEADERMENU } from "../menu/data/menu.data";
 import { useModal } from "../modal/hooks/useModal";
@@ -24,15 +22,12 @@ const Header = () => {
                 <p className="">Константин Сергеев</p>
               </div>
             </Link>
-            {/* <Link to={"/exit"}> */}
             <button
               onClick={openModal}
-              className="my-[1px] flex transform flex-row gap-[8px] rounded-[8px] bg-graphite bg-opacity-0 px-[16px] py-[8px] duration-300 hover:bg-opacity-[4%] focus:bg-opacity-[8%]"
+              className="animation rounded-[8px] border border-graphite border-opacity-20 px-4 py-2 hover:border-opacity-[0%] hover:bg-graphite hover:bg-opacity-[4%] active:bg-opacity-[8%]"
             >
-              <img src={Logout} className="m-auto" />
-              <p>Выйти</p>
+              <p className="my-auto">Выйти</p>
             </button>
-            {/* </Link> */}
           </div>
         </header>
         <div className="mx-auto w-full px-[8px] pb-[32px] lg:w-[1024px] lg:px-0">

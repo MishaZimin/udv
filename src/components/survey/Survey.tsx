@@ -2,6 +2,7 @@ import closeLine from "src/shared/assets/svgs/closeLine.svg";
 import { useModal } from "../modal/hooks/useModal";
 import SurveyMoodal from "./SurveyModal";
 import { useState } from "react";
+import Button from "src/shared/ui/button/Button";
 
 const Survey = () => {
   const { isOpen, openModal, closeModal } = useModal();
@@ -10,7 +11,7 @@ const Survey = () => {
     <>
       {!close && (
         <div className="relative">
-          <div className="mb-[16px] flex h-[122px] w-full flex-row justify-between gap-[8px] rounded-[16px] bg-card p-[32px]">
+          <div className="mb-[16px] flex w-full flex-row items-end justify-between gap-[8px] rounded-[16px] bg-card p-[32px]">
             <div className="my-auto flex flex-col gap-[8px]">
               <p className="text-[20px] font-semibold leading-[28px]">
                 Какими бенефитами пользуетесь?
@@ -19,12 +20,12 @@ const Survey = () => {
                 Ответьте, чтобы сделать сервис лучше
               </p>
             </div>
-            <button
+            <Button
               onClick={openModal}
-              className="my-auto rounded-[8px] bg-yellow px-[24px] py-[12px]"
-            >
-              <p className="font-semibold">Пройти опрос</p>
-            </button>
+              text={"Пройти опрос"}
+              textColor={"darkblue"}
+              buttonType={"yellow"}
+            />
           </div>
           <button
             onClick={() => setClose(true)}

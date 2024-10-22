@@ -14,7 +14,7 @@ export const Benefit = ({ title, subtext, link, isNewTag, image }: Props) => {
     <>
       <Link
         to={link}
-        className="animation mx-auto flex w-[320px] flex-col justify-between gap-[16px] rounded-[16px] bg-card py-[16px] pl-[16px] pr-[24px] hover:shadow-md"
+        className="animation mx-auto flex w-[320px] flex-col justify-between gap-[16px] rounded-[16px] bg-card py-[16px] pl-[16px] pr-[24px]"
       >
         {isNewTag && <NewTag />}
         <div className="flex flex-col gap-[8px]">
@@ -28,7 +28,7 @@ export const Benefit = ({ title, subtext, link, isNewTag, image }: Props) => {
 
         <div className="flex h-[148px] w-[288px] items-center justify-center overflow-hidden rounded-[8px] bg-graphite bg-opacity-[0%]">
           {image ? (
-            <img className="object-contain w-full h-full" src={image} alt="" />
+            <img className="h-full w-full object-contain" src={image} alt="" />
           ) : null}
         </div>
       </Link>

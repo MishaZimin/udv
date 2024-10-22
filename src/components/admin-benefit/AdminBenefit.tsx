@@ -26,7 +26,7 @@ export function AdminBenefit({ title, subtext, link, isNewTag, image }: Props) {
         link={link}
         image={image}
       />
-      <div className="absolute bottom-[8px] right-[8px] flex h-[30px] w-[60px] flex-row rounded-[8px] bg-graphite bg-opacity-[4%]">
+      <div className="absolute bottom-[8px] right-[8px] flex h-[30px] w-[60px] flex-row rounded-[8px] bg-card">
         <ChangeBtn
           title={title}
           subtext={subtext}

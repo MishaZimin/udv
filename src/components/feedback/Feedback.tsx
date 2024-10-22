@@ -1,4 +1,4 @@
-import Feedbackline from "src/shared/assets/svgs/feedback-line.svg";
+// import Feedbackline from "src/shared/assets/svgs/feedback-line.svg";
 
 export function Feedback() {
   return (
@@ -10,12 +10,12 @@ export function Feedback() {
               href="https://tally.so/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-bottom animation hover:bg-darkbluehover active:bg-darkblueactive bg-darkblue flex flex-row items-center gap-[8px] rounded-full px-[16px] pb-[14px] pt-[12px]"
+              className="text-bottom animation flex flex-row items-center gap-[8px] rounded-full bg-darkblue px-[24px] py-[16px] hover:bg-darkbluehover active:bg-darkblueactive"
             >
-              <p className="text-yellow text-[20px] font-semibold leading-[28px]">
+              <p className="text-[16px] font-semibold leading-[20px] text-yellow">
                 Фидбек
               </p>
-              <img className="h-[28px] w-[28px]" src={Feedbackline} />
+              {/* <img className="h-[28px] w-[28px]" src={Feedbackline} /> */}
             </a>
           </div>
         </div>

@@ -1,10 +1,10 @@
-import AdminSidebar from "src/shared/assets/svgs/AdminSidebar.svg";
-import Employs from "src/shared/assets/svgs/Employs.svg";
-import Feedback from "src/shared/assets/svgs/Feedback.svg";
-import Details from "src/shared/assets/svgs/Details.svg";
-import Cover from "src/shared/assets/svgs/Cover.svg";
-import Availability from "src/shared/assets/svgs/Availability.svg";
-import BenefitSettings from "src/shared/assets/svgs/BenefitSettings.svg";
+// import AdminSidebar from "src/shared/assets/svgs/AdminSidebar.svg";
+// import Employs from "src/shared/assets/svgs/Employs.svg";
+// import Feedback from "src/shared/assets/svgs/Feedback.svg";
+// import Details from "src/shared/assets/svgs/Details.svg";
+// import Cover from "src/shared/assets/svgs/Cover.svg";
+// import Availability from "src/shared/assets/svgs/Availability.svg";
+// import BenefitSettings from "src/shared/assets/svgs/BenefitSettings.svg";
 
 export type MenuProps = {
   icons: string | null;
@@ -14,40 +14,40 @@ export type MenuProps = {
 
 export const CREATEBENEFIT: MenuProps[] = [
   {
-    icons: Details,
-    name: "Детали",
+    icons: null,
+    name: "1. Детали",
     link: "/create-benefit/details",
   },
   {
-    icons: Cover,
-    name: "Обложка",
+    icons: null,
+    name: "2. Обложка",
     link: "/create-benefit/cover",
   },
   {
-    icons: Availability,
-    name: "Доступность",
+    icons: null,
+    name: "3. Доступность",
     link: "/create-benefit/availability",
   },
 ];
 
 export const HEADERMENU: MenuProps[] = [
   {
-    icons: AdminSidebar,
+    icons: null,
     name: "Мои бенефиты",
     link: "/",
   },
   {
-    icons: BenefitSettings,
+    icons: null,
     name: "Настройка бенефитов",
     link: "/admin/benefit",
   },
   {
-    icons: Feedback,
+    icons: null,
     name: "Обращения",
     link: "/admin/apeals",
   },
   {
-    icons: Employs,
+    icons: null,
     name: "Сотрудники",
     link: "/admin/employees",
   },

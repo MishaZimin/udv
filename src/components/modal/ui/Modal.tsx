@@ -21,7 +21,7 @@ const Modal = ({ isOpen, onClose, children, closeBtn }: Props) => {
         {closeBtn && (
           <button
             onClick={onClose}
-            className="absolute right-[12px] top-[12px] z-50 h-[28px] w-[28px]"
+            className="absolute right-[16px] top-[16px] z-50 h-[28px] w-[28px]"
           >
             <img className="h-[28px] w-[28px]" src={closeLine} />
           </button>
