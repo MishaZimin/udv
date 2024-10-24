@@ -8,6 +8,9 @@
   p {
     @apply font-base leading-[22px] text-graphite;
   }
+  h1 {
+    @apply font-base text-[20px] font-semibold leading-[28px] text-graphite;
+  }
 }
 
 @layer utilities {

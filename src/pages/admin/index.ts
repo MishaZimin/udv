@@ -1,6 +1,4 @@
-export * from "./pages/ApealsPage";
-export * from "./pages/BenefitPage";
-export * from "./pages/CategoriesPage";
-export * from "./pages/EmployeesPage";
-
-export * from "./layout/AdminLayout";
+export * from "./ui/ApealsPage";
+export * from "./ui/BenefitPage";
+export * from "./ui/CategoriesPage";
+export * from "./ui/EmployeesPage";

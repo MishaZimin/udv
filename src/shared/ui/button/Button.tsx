@@ -16,17 +16,15 @@ type Props = {
   fullWidth?: boolean;
 };
 
-const Button = ({
+export const Button = ({
   onClick,
   link,
   text,
   textColor,
   buttonType,
-  fullWidth,
 }: Props) => {
   const baseClasses = clsx(
     "py-4 px-6 rounded-[8px] text-center animation font-semibold ",
-    fullWidth && "w-full",
   );
   const textColorClass = {
     dark: "text-graphite",
@@ -62,5 +60,3 @@ const Button = ({
     </button>
   );
 };
-
-export default Button;

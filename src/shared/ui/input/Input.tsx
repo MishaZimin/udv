@@ -8,9 +8,15 @@ type Props = {
   value: string;
 };
 
-const Input = ({ inputType, mail, onChange, placeholder, value }: Props) => {
+export const Input = ({
+  inputType,
+  mail,
+  onChange,
+  placeholder,
+  value,
+}: Props) => {
   const baseClasses =
-    "bg-transparent w-full px-[12px] pt-[8px] pb-[10px] rounded-[8px] border  focus:outline-none focus:border-opacity-[80%] animation";
+    "bg-transparent w-full px-[12px] pt-[8px] pb-[10px] rounded-[8px] border h-10 focus:outline-none focus:border-opacity-[80%] animation";
   const inputTypeClasses = {
     default: "border-graphite border-opacity-[20%]",
     error: "border-rose border-opacity-[100%] focus:border-graphite",
@@ -34,7 +40,7 @@ const Input = ({ inputType, mail, onChange, placeholder, value }: Props) => {
           )}
         />
         {mail && (
-          <p className="absolute right-0 top-[10px] px-[12px] align-middle text-[16px] text-graphite opacity-[60%]">
+          <p className="absolute right-0 top-[8px] px-[12px] align-middle text-[16px] text-graphite opacity-[60%]">
             @udv.ru
           </p>
         )}
@@ -42,5 +48,3 @@ const Input = ({ inputType, mail, onChange, placeholder, value }: Props) => {
     </>
   );
 };
-
-export default Input;

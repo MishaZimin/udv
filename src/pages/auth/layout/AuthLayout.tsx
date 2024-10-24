@@ -1,11 +1,11 @@
-export function AuthLayout({ children }: { children: React.ReactNode }) {
+export const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <div className="flex h-screen">
-        <div className="mx-auto my-auto flex w-[400px] flex-col justify-between gap-[40px] rounded-[16px] bg-card px-[40px] py-[48px]">
+        <div className="mx-auto my-auto flex w-full flex-col justify-between gap-[40px] rounded-[16px] bg-none px-[40px] py-[48px] sm:w-[400px] sm:bg-card">
           {children}
         </div>
       </div>
     </>
   );
-}
+};

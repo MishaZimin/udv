@@ -5,7 +5,7 @@ type Props = {
   onChange: (checked: boolean) => void;
 };
 
-export function Radio({ checked, onChange }: Props) {
+export const Radio = ({ checked, onChange }: Props) => {
   console.log(checked);
   return (
     <button
@@ -20,4 +20,4 @@ export function Radio({ checked, onChange }: Props) {
       )}
     </button>
   );
-}
+};

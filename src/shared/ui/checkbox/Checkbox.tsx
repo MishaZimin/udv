@@ -7,7 +7,7 @@ type Props = {
   onChange: (checked: boolean) => void;
 };
 
-export function Checkbox({ checked, onChange, text }: Props) {
+export const Checkbox = ({ checked, onChange, text }: Props) => {
   return (
     <button
       onClick={() => onChange(!checked)}
@@ -27,4 +27,4 @@ export function Checkbox({ checked, onChange, text }: Props) {
       <p className="text-[14px] leading-[20px] text-black">{text}</p>
     </button>
   );
-}
+};

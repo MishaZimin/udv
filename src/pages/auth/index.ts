@@ -1,4 +1,4 @@
-export * from "./pages/AuthPage";
-export * from "./pages/CheckMailPage";
+export * from "./ui/AuthPage";
+export * from "./ui/CheckMailPage";
 
 export * from "./layout/AuthLayout";

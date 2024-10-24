@@ -1,25 +1,22 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import { NotFound } from "src/pages/errors/ErrorPage.tsx";
-import { HomePage } from "src/pages/home/HomePage.tsx";
-import { AuthPage } from "src/pages/auth";
-import { CheckMailPage } from "src/pages/auth";
-import { BenefitPage } from "src/pages/benefit/BenefitPage.tsx";
-import { ProfilePage } from "src/pages/profile/ProfilePage.tsx";
-
-import { AdminApealsPage } from "src/pages/admin";
-import { AdminBenefitPage } from "src/pages/admin";
-import { AdminCategoriesPage } from "src/pages/admin";
-import { AdminEmployeesPage } from "src/pages/admin";
-
-import { DetailsPage } from "src/pages/create";
-import { CoverPage } from "src/pages/create";
-import { AvailabilityPage } from "src/pages/create";
+import { NotFound } from "src/pages/errors";
+import { HomePage } from "src/pages/home";
+import { BenefitPage } from "src/pages/benefit";
+import { ProfilePage } from "src/pages/profile";
+import { AuthPage, CheckMailPage } from "src/pages/auth";
+import { DetailsPage, CoverPage, AvailabilityPage } from "src/pages/settings";
+import {
+  AdminApealsPage,
+  AdminBenefitPage,
+  AdminCategoriesPage,
+  AdminEmployeesPage,
+} from "src/pages/admin";
 
 const queryClient = new QueryClient();
 
-export function AppRouter() {
+export const AppRouter = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
@@ -48,4 +45,4 @@ export function AppRouter() {
       </Router>
     </QueryClientProvider>
   );
-}
+};
