@@ -1,40 +1,74 @@
-import { Link } from "react-router-dom";
-
+import { useState, useEffect } from "react";
 import Pencil from "src/shared/assets/svgs/Pencil.svg";
 import { useCardStore, useImageStore } from "src/pages/settings";
+import { IBenefitCard } from "src/widgets/benefits";
+import { useNavigate } from "react-router-dom";
+import { saveToLocalStorage } from "src/shared/lib/local-storage";
+import { useBenefit } from "src/pages/benefit/model/hooks/useBenefit";
+import Loader from "src/shared/ui/loader/Loader";
 
 type Props = {
-  title: string;
-  subtext: string;
-  description?: string;
-  image?: string;
+  benefit: IBenefitCard;
   isNewTag: boolean;
   link: string;
 };
 
-export const ChangeBenefit = ({
-  title,
-  subtext,
-  description,
-  image,
-}: Props) => {
+export const ChangeBenefit = ({ benefit }: Props) => {
+  const navigate = useNavigate();
+
   const setName = useCardStore((state) => state.setName);
   const setSubtext = useCardStore((state) => state.setSubtext);
-  const setImageSrc = useImageStore((state) => state.setImageSrc);
   const setDescription = useCardStore((state) => state.setDescription);
+  const setImageSrc = useImageStore((state) => state.setImageSrc);
+
+  const [shouldFetch, setShouldFetch] = useState(false);
+
+  const { benefitData, error, isLoading } = useBenefit(
+    shouldFetch ? benefit.id : undefined,
+  );
+
+  useEffect(() => {
+    if (benefitData && !isLoading && !error) {
+      console.log("change benefit/benefitData: ", benefitData);
+      setName(benefitData.name);
+      setSubtext(benefitData.card_name);
+      setImageSrc(
+        benefitData.cover_path
+          ? "89.169.137.145:8000/benefits/images/" + benefitData.cover_path
+          : "",
+      );
+      setDescription(benefitData.text);
+
+      console.log("change benefit/setImageSrc: ", benefitData.cover_path);
+
+      saveToLocalStorage("edit-benefit-id", benefit.id);
+      navigate("/create-benefit/details");
+    }
+  }, [
+    benefitData,
+    isLoading,
+    error,
+    navigate,
+    setName,
+    setSubtext,
+    setImageSrc,
+    setDescription,
+    benefit.id,
+  ]);
+
+  const handleButtonClick = () => {
+    setShouldFetch(true);
+  };
 
   return (
-    <Link
-      to={"/create-benefit/details"}
-      onClick={() => {
-        setName(title);
-        setSubtext(subtext);
-        setDescription(description ? description : "");
-        setImageSrc(image ? image : "");
-      }}
-      className="animation cursor-pointer rounded-[8px] p-[4px] hover:bg-graphite hover:bg-opacity-[8%]"
-    >
-      <img src={Pencil} />
-    </Link>
+    <>
+      {isLoading && <Loader />}
+      <button
+        onClick={handleButtonClick}
+        className="animation cursor-pointer rounded-[8px] p-[4px] hover:bg-graphite hover:bg-opacity-[8%]"
+      >
+        <img src={Pencil} />
+      </button>
+    </>
   );
 };

@@ -1,7 +1,6 @@
 import { useCheckboxStore } from "../stores/useCheckboxStore";
-import { CreateBenefitLayout } from "../layout/CreateBenefitLayout";
+import { CreateBenefitLayout } from "../layout/ui/CreateBenefitLayout";
 import { Checkbox } from "src/shared/ui/checkbox/Checkbox";
-import { SubmitButton } from "src/features/submit-benefit-btn/ui/SubmitBenefitBtn";
 
 export const AvailabilityPage = () => {
   const { checkboxes, toggleCheckbox } = useCheckboxStore();
@@ -25,7 +24,6 @@ export const AvailabilityPage = () => {
             </div>
           ))}
         </div>
-        <SubmitButton />
       </div>
     </CreateBenefitLayout>
   );

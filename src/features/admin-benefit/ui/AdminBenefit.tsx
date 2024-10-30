@@ -1,37 +1,18 @@
 import { Benefit } from "src/entities/benefit";
 import { AdminAction } from "src/features/admin-actions/ui/AdminAction";
+import { IBenefitCard } from "src/widgets/benefits";
 
 type Props = {
-  title: string;
-  subtext: string;
-  image?: string;
+  benefit: IBenefitCard;
   isNewTag: boolean;
   link: string;
 };
 
-export const AdminBenefit = ({
-  title,
-  subtext,
-  link,
-  isNewTag,
-  image,
-}: Props) => {
+export const AdminBenefit = ({ link, isNewTag, benefit }: Props) => {
   return (
     <div className="relative">
-      <Benefit
-        title={title}
-        subtext={subtext}
-        isNewTag={isNewTag}
-        link={link}
-        image={image}
-      />
-      <AdminAction
-        title={title}
-        subtext={subtext}
-        isNewTag={isNewTag}
-        link={link}
-        image={image}
-      />
+      <Benefit benefit={benefit} isNewTag={isNewTag} link={link} />
+      <AdminAction isNewTag={isNewTag} link={link} benefit={benefit} />
     </div>
   );
 };

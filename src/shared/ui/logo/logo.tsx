@@ -3,10 +3,10 @@ import Logo from "src/shared/assets/svgs/Logo.svg";
 import LogoMini from "src/shared/assets/svgs/LogoMini.svg";
 
 type Props = {
-  type: "default" | "mini";
+  type?: "default" | "mini";
 };
 
-export const LogoUDV = ({ type }: Props) => {
+export const LogoUDV = ({ type = "default" }: Props) => {
   return (
     <>
       {type === "default" ? (

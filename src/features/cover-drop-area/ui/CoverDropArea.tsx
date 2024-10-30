@@ -1,6 +1,6 @@
 import { useImageStore } from "src/pages/settings/stores/useImageStore";
-import { useDragAndDrop } from "src/pages/settings/hooks/useDragAndDrop";
-import { useImageUpload } from "src/pages/settings/hooks/useImageUpload";
+import { useDragAndDrop } from "../hooks/useDragAndDrop";
+import { useImageUpload } from "../hooks/useImageUpload";
 
 export const CoverDropArea = () => {
   const { setImageSrc } = useImageStore();
@@ -28,7 +28,7 @@ export const CoverDropArea = () => {
         onDrop={handleDrop}
       >
         <div className="my-auto">
-          <p className="text-center font-semibold">
+          <p className="font-semibold text-center">
             Загрузите картинку 1280 x 720
           </p>
           <p className="text-center">

@@ -1,13 +1,25 @@
 import { Modal } from "src/shared/ui/modal";
 import { Button } from "src/shared/ui";
+import { useDeleteBenefit } from "../model/useDeleteBenefit";
 
 type Props = {
   isOpen: boolean;
   closeModal: () => void;
   closeBtn: boolean;
+  benefitId: number;
 };
 
-export const DeleteModal = ({ isOpen, closeModal }: Props) => {
+export const DeleteModal = ({ isOpen, closeModal, benefitId }: Props) => {
+  const { mutate: deleteBenefit } = useDeleteBenefit();
+
+  const handleDelete = () => {
+    deleteBenefit(benefitId, {
+      onSuccess: () => {
+        closeModal();
+      },
+    });
+  };
+
   return (
     <>
       <Modal isOpen={isOpen} onClose={closeModal}>
@@ -18,7 +30,12 @@ export const DeleteModal = ({ isOpen, closeModal }: Props) => {
               что хотите удалить бенефит?
             </p>
             <div className="flex flex-col gap-[8px]">
-              <Button text={"Удалить"} textColor={"light"} buttonType={"red"} />
+              <Button
+                onClick={handleDelete}
+                text={"Удалить"}
+                textColor={"light"}
+                buttonType={"red"}
+              />
               <Button
                 onClick={closeModal}
                 text={"Отмена"}

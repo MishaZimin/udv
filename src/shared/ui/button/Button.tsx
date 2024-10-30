@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { Link } from "react-router-dom";
 
 type Props = {
-  onClick?: () => void;
+  onClick?: (() => void) | ((e: React.MouseEvent<HTMLButtonElement>) => void);
   link?: string;
   text: string;
   textColor: "dark" | "light" | "yellow" | "darkblue" | "unActive";

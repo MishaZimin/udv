@@ -1,9 +1,16 @@
 import { useState } from "react";
-import { Input, Checkbox } from "src/shared/ui";
+import { Input, Checkbox, Button } from "src/shared/ui";
+import { useLogin } from "../model/hooks/useLogin";
 
 export const Mail = () => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [mail, setMail] = useState<string>("");
+  const { mutate: login } = useLogin();
+  //, isLoading, isError, isSuccess
+
+  const hadleClick = () => {
+    login({ email: mail });
+  };
 
   return (
     <>
@@ -20,12 +27,19 @@ export const Mail = () => {
         <div className="flex h-[20px] flex-row gap-[8px]">
           <Checkbox
             checked={isChecked}
-            onChange={(newChecked) => setIsChecked(newChecked)}
+            onChange={setIsChecked}
             text={"Запомнить меня"}
           />
           <p className="text-[12px]"></p>
         </div>
       </div>
+
+      <Button
+        buttonType="primary"
+        onClick={hadleClick}
+        text="Получить ссылку для входа"
+        textColor="light"
+      />
     </>
   );
 };

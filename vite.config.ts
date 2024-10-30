@@ -7,23 +7,27 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      registerType: "autoUpdate",
+      registerType: "prompt",
+      workbox: {
+        disableDevLogs: true,
+        runtimeCaching: [],
+      },
       devOptions: {
         enabled: true,
       },
       manifest: {
-        name: "My Todo App",
-        short_name: "TodoApp",
-        description: "A simple to-do application",
+        name: "udv",
+        short_name: "udv",
+        description: "udv",
         theme_color: "#ffffff",
         icons: [
           {
-            src: "icon-192x192.png",
+            src: "src/shared/assets/svgs/Logo2.svg",
             sizes: "192x192",
             type: "image/png",
           },
           {
-            src: "icon-512x512.png",
+            src: "src/shared/assets/svgs/Logo2.svg",
             sizes: "512x512",
             type: "image/png",
           },

@@ -10,7 +10,7 @@ export const validateFields = () => {
   const isNameValid = name.trim() !== "";
   const isSubtextValid = subtext.trim() !== "";
   const isDescriptionValid = description.trim() !== "";
-  const isImageValid = imageSrc !== null;
+  const isImageValid = imageSrc !== null && imageSrc.trim() !== "";
   const isCheckboxValid = checkboxes.some((checkbox) => checkbox.checked);
 
   return (

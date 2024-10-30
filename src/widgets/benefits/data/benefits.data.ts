@@ -15,6 +15,29 @@ export type IBenefit = {
   image: string;
 };
 
+export type IBenefitCard = {
+  id: number;
+  name: string;
+  card_name: string;
+  cover_url: string;
+};
+
+export type Benefit = {
+  name: string;
+  card_name: string;
+  text: string;
+  categories: number[];
+};
+
+export const benefitCards: IBenefitCard[] = [
+  {
+    id: 1,
+    name: "Страхование",
+    card_name: "ДМС, детский, родственников, командировок",
+    cover_url: "",
+  },
+];
+
 export const benefits: IBenefit[] = [
   {
     id: 1,

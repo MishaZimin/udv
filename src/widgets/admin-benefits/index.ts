@@ -1,1 +1,1 @@
-export * from "./ui/AdminBenefits";
+export * from "../benefits/ui/AdminBenefits";

@@ -1,5 +1,6 @@
 import { Modal } from "src/shared/ui/modal";
 import { Button } from "src/shared/ui";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   isOpen: boolean;
@@ -8,6 +9,15 @@ type Props = {
 };
 
 export const ExitModal = ({ isOpen, closeModal }: Props) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    localStorage.removeItem("isAdministrator");
+    localStorage.removeItem("token");
+
+    navigate("/auth");
+  };
+
   return (
     <>
       <Modal isOpen={isOpen} onClose={closeModal}>
@@ -19,7 +29,7 @@ export const ExitModal = ({ isOpen, closeModal }: Props) => {
             </p>
             <div className="flex flex-col gap-[8px]">
               <Button
-                link={"/auth"}
+                onClick={handleClick}
                 text={"Выйти"}
                 textColor={"light"}
                 buttonType={"red"}

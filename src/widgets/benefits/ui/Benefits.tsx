@@ -1,42 +1,27 @@
-// import { useQuery } from "@tanstack/react-query";
-// import { BenefitServise } from "src/shared/api/api";
-// import { Key } from "react";
-
 import { Benefit } from "src/entities/benefit";
-import { benefits } from "..";
-import { IBenefit } from "..";
+import { IBenefitCard } from "..";
+import { useBenefits } from "../model/hooks/useBenefits";
+import Loader from "src/shared/ui/loader/Loader";
 
 export const Benefits = () => {
-  // const {
-  //   data: products,
-  //   error,
-  //   isLoading,
-  // } = useQuery({
-  //   queryKey: ["products"],
-  //   queryFn: () => BenefitServise.getProducts(),
-  //   select: ({ products }) => products,
-  // });
+  const { benefits, error, isLoading } = useBenefits();
+  if (isLoading) {
+    return <Loader />;
+  }
 
-  // console.log(products);
+  if (error) {
+    return <p>error</p>;
+  }
 
-  // if (isLoading) {
-  //   return <></>;
-  // }
-
-  // if (error) {
-  //   return <p>error</p>;
-  // }
+  console.log("benefits: ", benefits);
 
   return (
     <>
       <div className="grid gap-[32px] pb-[32px] pt-[16px] md:grid-cols-2 lg:grid-cols-3">
-        {benefits.map((benefit: IBenefit) => (
-          <div className="md:w-full lg:w-[320px]">
+        {benefits.map((benefit: IBenefitCard) => (
+          <div key={benefit.id} className="md:w-full lg:w-[320px]">
             <Benefit
-              key={benefit.id}
-              title={benefit.title}
-              subtext={benefit.subtext}
-              image={benefit.image}
+              benefit={benefit}
               isNewTag={Math.random() < 0.4}
               link={"/benefit"}
             />

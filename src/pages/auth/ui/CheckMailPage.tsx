@@ -1,18 +1,20 @@
 import { Button, LogoUDV } from "src/shared/ui";
 import { CheckMail } from "src/widgets/mail/ui/CheckMail";
-import { useGoBack } from "src/shared/hooks/useGoBack";
 import { AuthLayout } from "..";
+import { useNavigate } from "react-router-dom";
 
 export const CheckMailPage = () => {
+  const navigate = useNavigate();
+
   return (
     <AuthLayout>
-      <LogoUDV type="default" />
+      <LogoUDV />
       <CheckMail />
       <div className="flex flex-col gap-[8px]">
         <Button
           text="Вернуться назад"
           textColor="dark"
-          onClick={useGoBack()}
+          onClick={() => navigate(-1)}
           buttonType="secondary"
         />
         <Button

@@ -1,11 +1,3 @@
-// import AdminSidebar from "src/shared/assets/svgs/AdminSidebar.svg";
-// import Employs from "src/shared/assets/svgs/Employs.svg";
-// import Feedback from "src/shared/assets/svgs/Feedback.svg";
-// import Details from "src/shared/assets/svgs/Details.svg";
-// import Cover from "src/shared/assets/svgs/Cover.svg";
-// import Availability from "src/shared/assets/svgs/Availability.svg";
-// import BenefitSettings from "src/shared/assets/svgs/BenefitSettings.svg";
-
 export type NavbarProps = {
   icons: string | null;
   name: string;

@@ -1,12 +1,10 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://dummyjson.com";
+axios.defaults.baseURL = "http://89.169.137.145:8000";
 
-export const BenefitServise = {
-    async getProducts() {
-        const response = await axios.get("/products", {
-            params: { limit: 11 },
-        });
-        return response.data;
-    },
+export const BenefitApi = {
+  async getBenefits() {
+    const response = await axios.get("/benefits/all");
+    return response.data;
+  },
 };

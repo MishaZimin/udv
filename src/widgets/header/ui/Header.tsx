@@ -7,9 +7,29 @@ import {
   // EditEmployeeModal,
   // InvitingEmployeeModal,
 } from "src/features/modals";
+import { getFromLocalStorage } from "src/shared/lib/local-storage";
+import { useProfile } from "src/entities/profile-info/model/hooks/useProfile";
+import Loader from "src/shared/ui/loader/Loader";
 
 export const Header = () => {
   const { isOpen, openModal, closeModal } = useModal();
+  const { profile, error, isLoading } = useProfile();
+
+  const isAdmin = getFromLocalStorage("isAdministrator");
+
+  function formatName(fullName: string): string {
+    const [lastName, firstName] = fullName.split(" ");
+    if (!lastName || !firstName) return fullName;
+    return `${lastName} ${firstName[0]}.`;
+  }
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <p>error</p>;
+  }
 
   return (
     <>
@@ -21,15 +41,19 @@ export const Header = () => {
             </div>
 
             <div className="hidden sm:block">
-              <LogoUDV type="default" />
+              <LogoUDV />
             </div>
           </div>
 
           <div className="flex gap-4 mt-8 mb-8 mr-4 sm:mr-10 lg:mr-0">
             <Link to={"/profile"}>
               <div className="flex items-center h-full">
-                <p className="block text-right sm:hidden">Константин С.</p>
-                <p className="hidden text-right sm:block">Константин Сергеев</p>
+                <p className="block text-right sm:hidden">
+                  {formatName(profile.full_name)}
+                </p>
+                <p className="hidden text-right sm:block">
+                  {profile.full_name}
+                </p>
               </div>
             </Link>
             <button
@@ -40,9 +64,11 @@ export const Header = () => {
             </button>
           </div>
         </header>
-        <div className="mx-auto flex h-[70px] w-full items-start lg:w-[1024px]">
-          <Navbar navbar={HEADERNAVBAR} orientation="horizontal" />
-        </div>
+        {isAdmin && (
+          <div className="mx-auto flex h-[70px] w-full items-start lg:w-[1024px]">
+            <Navbar navbar={HEADERNAVBAR} orientation="horizontal" />
+          </div>
+        )}
       </div>
 
       <ExitModal isOpen={isOpen} closeModal={closeModal} closeBtn={true} />

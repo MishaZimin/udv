@@ -6,7 +6,6 @@ type Props = {
 };
 
 export const Radio = ({ checked, onChange }: Props) => {
-  console.log(checked);
   return (
     <button
       onClick={() => onChange(!checked)}

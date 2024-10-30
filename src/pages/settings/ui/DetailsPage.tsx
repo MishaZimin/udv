@@ -1,9 +1,6 @@
 import { useCardStore } from "../stores/useCardStore";
-import { CreateBenefitLayout } from "../layout/CreateBenefitLayout";
-import { SubmitButton } from "src/features/submit-benefit-btn/ui/SubmitBenefitBtn";
+import { CreateBenefitLayout } from "../layout/ui/CreateBenefitLayout";
 import { DescriptionArea } from "src/entities/description-area";
-import { useEffect } from "react";
-import { validateFields } from "../helpers/validate";
 import { Input } from "src/shared/ui";
 
 export const DetailsPage = () => {
@@ -15,10 +12,6 @@ export const DetailsPage = () => {
 
   const description = useCardStore((state) => state.description);
   const setDescription = useCardStore((state) => state.setDescription);
-
-  useEffect(() => {
-    if (validateFields()) return console.log(name, subtext, description);
-  });
 
   return (
     <CreateBenefitLayout>
@@ -43,7 +36,6 @@ export const DetailsPage = () => {
             setDescription={setDescription}
           />
         </div>
-        <SubmitButton />
       </div>
     </CreateBenefitLayout>
   );
