@@ -1,20 +1,20 @@
-import { Employee } from "src/entities/employee";
+// import { Employee } from "src/entities/employee";
 
-type Employee = {
-  administration: boolean;
-  email: string;
-  employment_date: string;
-  full_name: string;
-  place_of_employment: string;
-  position: string;
-  user_uuid: string;
-};
+// type Employee = {
+//   administration: boolean;
+//   email: string;
+//   employment_date: string;
+//   full_name: string;
+//   place_of_employment: string;
+//   position: string;
+//   user_uuid: string;
+// };
 
-type EmployeesProps = {
-  employees: Employee[];
-};
+// type EmployeesProps = {
+//   employees: Employee[];
+// };
 
-export const Employees = ({ employees }: EmployeesProps) => {
+export const Employees = () => {
   return (
     <div className="w-full overflow-x-auto bg-white">
       <div className="it flex flex-row gap-[32px] border-b px-[8px] py-[16px] text-left">
