@@ -45,15 +45,19 @@ export const Header = () => {
             </div>
           </div>
 
-          <div className="flex gap-4 mt-8 mb-8 mr-4 sm:mr-10 lg:mr-0">
+          <div className="mb-8 mr-4 mt-8 flex gap-4 sm:mr-10 lg:mr-0">
             <Link to={"/profile"}>
-              <div className="flex items-center h-full">
-                <p className="block text-right sm:hidden">
-                  {formatName(profile.full_name)}
-                </p>
-                <p className="hidden text-right sm:block">
-                  {profile.full_name}
-                </p>
+              <div className="flex h-full items-center">
+                {profile.full_name ? (
+                  <>
+                    <p className="block text-right sm:hidden">
+                      {formatName(profile.full_name)}
+                    </p>
+                    <p className="hidden text-right sm:block">
+                      {profile.full_name}
+                    </p>
+                  </>
+                ) : null}
               </div>
             </Link>
             <button
