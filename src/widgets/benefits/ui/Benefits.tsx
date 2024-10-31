@@ -5,10 +5,10 @@ import Loader from "src/shared/ui/loader/Loader";
 
 export const Benefits = () => {
   const { benefits, error, isLoading } = useBenefits();
+
   if (isLoading) {
     return <Loader />;
   }
-
   if (error) {
     return <p>error</p>;
   }

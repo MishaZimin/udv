@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "http://89.169.137.145:8000";
+axios.defaults.baseURL = "https://udv-benefits.ru";
 
 export const BenefitApi = {
   async getBenefits() {

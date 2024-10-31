@@ -1,6 +1,20 @@
 import { Employee } from "src/entities/employee";
 
-export const Employees = () => {
+type Employee = {
+  administration: boolean;
+  email: string;
+  employment_date: string;
+  full_name: string;
+  place_of_employment: string;
+  position: string;
+  user_uuid: string;
+};
+
+type EmployeesProps = {
+  employees: Employee[];
+};
+
+export const Employees = ({ employees }: EmployeesProps) => {
   return (
     <div className="w-full overflow-x-auto bg-white">
       <div className="it flex flex-row gap-[32px] border-b px-[8px] py-[16px] text-left">
@@ -19,7 +33,12 @@ export const Employees = () => {
           <img className="w-[22px]" src={""} />
         </div>
       </div>
-      <Employee
+      {/* {employees.map((employee: Props) => {
+        <Employee
+        employee={employee}
+      />
+      })} */}
+      {/* <Employee
         name={"Константин Сергеев"}
         jobTitle={"Продуктовый дизайнер"}
         experience={"до 3 месяцев"}
@@ -48,7 +67,7 @@ export const Employees = () => {
         jobTitle={"Менеджер"}
         experience={"до 3 лет"}
         post={"popov_pavel@udv.ru"}
-      />
+      /> */}
     </div>
   );
 };

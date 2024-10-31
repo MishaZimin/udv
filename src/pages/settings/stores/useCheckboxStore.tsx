@@ -7,6 +7,7 @@ import {
 type Props = {
   checkboxes: { id: number; label: string; checked: boolean }[];
   toggleCheckbox: (id: number) => void;
+  setCheckboxesFromResponse: (selectedIds: number[]) => void;
 };
 
 export const useCheckboxStore = create<Props>((set) => ({
@@ -24,6 +25,18 @@ export const useCheckboxStore = create<Props>((set) => ({
           ? { ...checkbox, checked: !checkbox.checked }
           : checkbox,
       );
+
+      saveToLocalStorage("checkboxes", updatedCheckboxes);
+
+      return { checkboxes: updatedCheckboxes };
+    }),
+
+  setCheckboxesFromResponse: (selectedIds: number[]) =>
+    set((state) => {
+      const updatedCheckboxes = state.checkboxes.map((checkbox) => ({
+        ...checkbox,
+        checked: selectedIds.includes(checkbox.id),
+      }));
 
       saveToLocalStorage("checkboxes", updatedCheckboxes);
 

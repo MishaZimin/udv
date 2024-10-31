@@ -2,7 +2,7 @@ import axios from "axios";
 import { Benefit } from "./../data/benefits.data";
 import { getFromLocalStorage } from "src/shared/lib/local-storage";
 
-axios.defaults.baseURL = "http://89.169.137.145:8000";
+axios.defaults.baseURL = "https://udv-benefits.ru";
 const token = getFromLocalStorage("token");
 
 export const BenefitApi = {

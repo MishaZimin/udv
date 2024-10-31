@@ -13,7 +13,7 @@ export const useAuth = (urlToken: string) => {
       const response = await AuthApi.getAuth(urlToken);
       return response;
     },
-    retry: 1,
+    retry: 2,
   });
 
   return { token, error, isLoading };

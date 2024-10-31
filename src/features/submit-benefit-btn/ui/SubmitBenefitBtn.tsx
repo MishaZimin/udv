@@ -6,13 +6,17 @@ import {
   saveToLocalStorage,
 } from "src/shared/lib/local-storage";
 import { useEditBenefitLogic } from "../model/hooks/edit/useEditBenefitLogic";
+import Loader from "src/shared/ui/loader/Loader";
 
 export const SubmitButton = () => {
   const { handleSubmit, errorCreate } = useCreateBenefitLogic();
-  const { handleEdit, errorEdit } = useEditBenefitLogic();
+  const { handleEdit, errorEdit, isPending } = useEditBenefitLogic();
 
   if (errorCreate || errorEdit) {
     return <p>error</p>;
+  }
+  if (isPending) {
+    return <Loader />;
   }
 
   const handleClick = () => {

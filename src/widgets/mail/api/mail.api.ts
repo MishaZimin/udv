@@ -4,7 +4,7 @@ interface LoginRequest {
   email: string;
 }
 
-axios.defaults.baseURL = "http://89.169.137.145:8000";
+axios.defaults.baseURL = "https://udv-benefits.ru";
 
 export const LoginApi = {
   async postLogin(data: LoginRequest) {

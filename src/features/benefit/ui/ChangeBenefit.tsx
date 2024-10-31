@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import Pencil from "src/shared/assets/svgs/Pencil.svg";
-import { useCardStore, useImageStore } from "src/pages/settings";
+import {
+  useCardStore,
+  useCheckboxStore,
+  useImageStore,
+} from "src/pages/settings";
 import { IBenefitCard } from "src/widgets/benefits";
 import { useNavigate } from "react-router-dom";
 import { saveToLocalStorage } from "src/shared/lib/local-storage";
@@ -17,19 +21,23 @@ export const ChangeBenefit = ({ benefit }: Props) => {
   const navigate = useNavigate();
 
   const setName = useCardStore((state) => state.setName);
+  const name = useCardStore((state) => state.name);
+
   const setSubtext = useCardStore((state) => state.setSubtext);
   const setDescription = useCardStore((state) => state.setDescription);
   const setImageSrc = useImageStore((state) => state.setImageSrc);
+  const { setCheckboxesFromResponse } = useCheckboxStore();
 
   const [shouldFetch, setShouldFetch] = useState(false);
 
   const { benefitData, error, isLoading } = useBenefit(
     shouldFetch ? benefit.id : undefined,
+    true,
   );
 
   useEffect(() => {
     if (benefitData && !isLoading && !error) {
-      console.log("change benefit/benefitData: ", benefitData);
+      console.log("change benefit/benefitData: ", benefitData, name);
       setName(benefitData.name);
       setSubtext(benefitData.card_name);
       setImageSrc(
@@ -38,6 +46,7 @@ export const ChangeBenefit = ({ benefit }: Props) => {
           : "",
       );
       setDescription(benefitData.text);
+      setCheckboxesFromResponse(benefitData.categories);
 
       console.log("change benefit/setImageSrc: ", benefitData.cover_path);
 
@@ -53,7 +62,9 @@ export const ChangeBenefit = ({ benefit }: Props) => {
     setSubtext,
     setImageSrc,
     setDescription,
+    setCheckboxesFromResponse,
     benefit.id,
+    name,
   ]);
 
   const handleButtonClick = () => {

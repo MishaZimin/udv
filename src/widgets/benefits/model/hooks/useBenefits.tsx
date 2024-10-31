@@ -12,8 +12,8 @@ export const useBenefits = () => {
       const response = await BenefitApi.getBenefits();
       return response;
     },
-    retry: 1,
-    // staleTime: 1000,
+    // retry: 1,
+    staleTime: 0,
   });
 
   return { benefits, error, isLoading };

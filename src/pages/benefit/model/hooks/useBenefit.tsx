@@ -1,21 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import { BenefitApi } from "src/widgets/benefits/api/benefit.api";
 
-export const useBenefit = (id?: number) => {
+export const useBenefit = (id?: number, isEdit?: boolean) => {
   const {
     data: benefitData,
     error,
     isLoading,
   } = useQuery({
-    queryKey: ["benefit", id],
+    queryKey: ["benefit", id, isEdit],
     queryFn: async () => {
       if (!id) return null;
       const response = await BenefitApi.getBenefit(id);
       return response;
     },
-    enabled: !!id,
-    // retry: 1,
-    // staleTime: 5000,
+    staleTime: 0,
   });
 
   return { benefitData, error, isLoading };
