@@ -14,7 +14,7 @@ export const AdminEmployeesPage = () => {
   console.log(employees);
   return (
     <Layout>
-      <Employees />
+      <Employees employees={employees} />
     </Layout>
   );
 };

@@ -34,7 +34,7 @@ export const Benefit = ({ link, isNewTag, benefit }: Props) => {
               src={
                 benefit.cover_url[0] == "b"
                   ? benefit.cover_url
-                  : "http://" + benefit.cover_url
+                  : benefit.cover_url
               }
               alt="benefit img"
             />

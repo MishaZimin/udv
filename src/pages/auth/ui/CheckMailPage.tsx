@@ -17,13 +17,13 @@ export const CheckMailPage = () => {
           onClick={() => navigate(-1)}
           buttonType="secondary"
         />
-        <Button
+        {/* <Button
           text="Сотрудник"
           textColor="light"
           link={"/"}
           buttonType="primary"
         />
-        <Button text="HR" textColor="light" link={"/"} buttonType="primary" />
+        <Button text="HR" textColor="light" link={"/"} buttonType="primary" /> */}
       </div>
     </AuthLayout>
   );

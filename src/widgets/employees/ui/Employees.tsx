@@ -1,20 +1,20 @@
-// import { Employee } from "src/entities/employee";
+import { Employee } from "src/entities/employee";
 
-// type Employee = {
-//   administration: boolean;
-//   email: string;
-//   employment_date: string;
-//   full_name: string;
-//   place_of_employment: string;
-//   position: string;
-//   user_uuid: string;
-// };
+type Employee = {
+  administration: boolean;
+  email: string;
+  employment_date: string;
+  full_name: string;
+  place_of_employment: string;
+  position: string;
+  user_uuid: string;
+};
 
-// type EmployeesProps = {
-//   employees: Employee[];
-// };
+type EmployeesProps = {
+  employees: Employee[];
+};
 
-export const Employees = () => {
+export const Employees = ({ employees }: EmployeesProps) => {
   return (
     <div className="w-full overflow-x-auto bg-white">
       <div className="it flex flex-row gap-[32px] border-b px-[8px] py-[16px] text-left">
@@ -33,41 +33,9 @@ export const Employees = () => {
           <img className="w-[22px]" src={""} />
         </div>
       </div>
-      {/* {employees.map((employee: Props) => {
-        <Employee
-        employee={employee}
-      />
-      })} */}
-      {/* <Employee
-        name={"Константин Сергеев"}
-        jobTitle={"Продуктовый дизайнер"}
-        experience={"до 3 месяцев"}
-        post={"andreev_andrey@udv.ru"}
-      />
-      <Employee
-        name={"Иван Иванов"}
-        jobTitle={"Разработчик"}
-        experience={"до 1 года"}
-        post={"morozov_dmintry@udv.ru"}
-      />
-      <Employee
-        name={"Александр Петров"}
-        jobTitle={"Аналитик"}
-        experience={"до 3 лет"}
-        post={"elena_sidorova@udv.ru"}
-      />
-      <Employee
-        name={"Вася Пупкин"}
-        jobTitle={"HR"}
-        experience={"больше 3 лет"}
-        post={"volkov@udv.ru"}
-      />
-      <Employee
-        name={"Роман Максимов"}
-        jobTitle={"Менеджер"}
-        experience={"до 3 лет"}
-        post={"popov_pavel@udv.ru"}
-      /> */}
+      {employees.map((employee: Employee) => {
+        return <Employee employee={employee} />;
+      })}
     </div>
   );
 };
