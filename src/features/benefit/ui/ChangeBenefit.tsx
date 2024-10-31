@@ -42,7 +42,7 @@ export const ChangeBenefit = ({ benefit }: Props) => {
       setSubtext(benefitData.card_name);
       setImageSrc(
         benefitData.cover_path
-          ? "89.169.137.145:8000/benefits/images/" + benefitData.cover_path
+          ? "https://udv-benefits.ru/benefits/images/" + benefitData.cover_path
           : "",
       );
       setDescription(benefitData.text);

@@ -19,7 +19,7 @@ export const Mail = () => {
           <p className="leading-[20px]">Почта</p>
           <Input
             inputType={"default"}
-            mail={true}
+            mail={false}
             onChange={setMail}
             value={mail}
           />

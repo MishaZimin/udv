@@ -6,13 +6,22 @@ type Props = {
   onClose: () => void;
   children: ReactNode;
   closeBtn?: boolean;
+  position?: "center" | "right";
 };
 
-export const Modal = ({ isOpen, onClose, children, closeBtn }: Props) => {
+export const Modal = ({
+  isOpen,
+  onClose,
+  children,
+  closeBtn,
+  position,
+}: Props) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
+    <div
+      className={`fixed inset-0 z-50 flex items-end ${position == "right" ? "justify-end" : "justify-center"} sm:items-center`}
+    >
       <div
         className="fixed inset-0 bg-black opacity-[24%]"
         onClick={onClose}

@@ -14,6 +14,7 @@ type Props = {
     | "darkblue"
     | "unActive";
   fullWidth?: boolean;
+  size?: "sm";
 };
 
 export const Button = ({
@@ -22,10 +23,9 @@ export const Button = ({
   text,
   textColor,
   buttonType,
+  size,
 }: Props) => {
-  const baseClasses = clsx(
-    "py-4 px-6 rounded-[8px] text-center animation font-semibold ",
-  );
+  const baseClasses = clsx(" rounded-[8px] text-center animation  ");
   const textColorClass = {
     dark: "text-graphite",
     light: "text-white",
@@ -48,7 +48,7 @@ export const Button = ({
 
   const content = <p className={`leading-[20px] ${textColorClass}`}>{text}</p>;
 
-  const combinedClassName = `${baseClasses} ${buttonTypeClasses}`;
+  const combinedClassName = `${baseClasses} ${buttonTypeClasses} ${size ? "py-2 px-4" : "py-4 px-6 font-semibold"}`;
 
   return link ? (
     <Link to={link} className={combinedClassName}>
