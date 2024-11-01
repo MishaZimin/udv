@@ -12,6 +12,7 @@ export const SecondQuestion = () => {
   ];
 
   const toggleSmile = (id: number) => {
+    console.log(id);
     setSelectedSmile((prev) => (prev === id ? null : id));
   };
 
@@ -25,10 +26,10 @@ export const SecondQuestion = () => {
           <button
             key={smile.id}
             onClick={() => toggleSmile(smile.id)}
-            className={`h-[50px] w-[50px] rounded-full bg-graphite bg-opacity-[4%] sm:h-16 sm:w-16 ${
+            className={`h-[50px] w-[50px] rounded-full bg-graphite sm:h-16 sm:w-16 ${
               selectedSmile === smile.id
-                ? "bg-opacity-100"
-                : "hover:bg-opacity-[8%]"
+                ? ""
+                : "bg-opacity-[4%] hover:bg-opacity-[8%]"
             }`}
           >
             <p className="text-[32px]">{smile.smile}</p>
