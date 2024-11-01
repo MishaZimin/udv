@@ -9,6 +9,14 @@ export const Apeals = () => {
     setIsChecked(!isChecked);
   };
 
+  const handleClick = () => {
+    window.open(
+      "https://tally.so/forms/np7DvJ",
+      "_blank",
+      "noopener,noreferrer",
+    );
+  };
+
   return (
     <>
       <div className="flex flex-col gap-10">
@@ -34,7 +42,8 @@ export const Apeals = () => {
           <div className="flex flex-col gap-2">
             <div>
               <Button
-                // link={""}
+                onClick={handleClick}
+                // link={"https://tally.so/forms/np7DvJ"}
                 text={"Посмотреть обращения"}
                 textColor={"light"}
                 buttonType={"primary"}

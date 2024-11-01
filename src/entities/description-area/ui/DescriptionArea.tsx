@@ -10,9 +10,12 @@ export const DescriptionArea = ({ description, setDescription }: Props) => {
 
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setDescription(e.target.value);
+
     if (textareaRef.current) {
-      textareaRef.current.style.height = "auto";
-      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+      requestAnimationFrame(() => {
+        textareaRef.current!.style.height = "auto"; // сначала сбрасываем высоту
+        textareaRef.current!.style.height = `${textareaRef.current!.scrollHeight}px`;
+      });
     }
   };
 
