@@ -1,17 +1,11 @@
 import axios from "axios";
 import { getFromLocalStorage } from "src/shared/lib/local-storage";
+import { Employee } from "../model/type/employee.type";
 
 axios.defaults.baseURL = "https://udv-benefits.ru";
 
 export const AddEmployeesApi = {
-  async addEmployee(userData: {
-    full_name: string;
-    place_of_employment: string;
-    position: string;
-    employment_date: string;
-    email: string;
-    administration: boolean;
-  }) {
+  async addEmployee(userData: Employee) {
     const response = await axios.post("/admin/users/add", userData, {
       headers: {
         Accept: "application/json",

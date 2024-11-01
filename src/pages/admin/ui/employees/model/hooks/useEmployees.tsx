@@ -6,14 +6,15 @@ export const useEmployees = () => {
     data: employees,
     error,
     isLoading,
+    refetch,
   } = useQuery({
     queryKey: ["employees"],
     queryFn: async () => {
       const response = await EmployeesApi.getEmployees();
       return response;
     },
-    // retry: 1,
+    retry: 1,
   });
 
-  return { employees, error, isLoading };
+  return { employees, error, isLoading, refetch };
 };

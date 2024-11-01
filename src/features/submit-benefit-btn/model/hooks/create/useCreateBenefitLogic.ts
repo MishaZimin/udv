@@ -7,7 +7,7 @@ import { urlToFile } from "../../utils/UrlToFile";
 
 export const useCreateBenefitLogic = () => {
   const { mutateAsync: createBenefit, error } = useCreateBenefit();
-  const { mutate: uploadCover } = useUploadBenefitCover();
+  const { mutateAsync: uploadCover } = useUploadBenefitCover();
 
   const errorCreate = error;
 
@@ -34,9 +34,13 @@ export const useCreateBenefitLogic = () => {
 
       const benefitId = data.success.id;
       const imageFile = await urlToFile(imageSrc, "cover");
-
+      console.log("imageSrc: ", imageSrc);
       console.log("imageFile: ", imageFile);
-      uploadCover({ benefitId, imageFile });
+
+      await uploadCover({ benefitId, imageFile });
+
+      console.log("benefitId: ", benefitId);
+      console.log("imageFile: ", imageFile);
     } catch (error) {
       console.error("error create benefit:", error);
     }

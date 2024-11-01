@@ -1,6 +1,8 @@
 import { Modal } from "src/shared/ui/modal";
 import { Button } from "src/shared/ui";
-// import { useDeleteEmployee } from "../model/hooks/useDeleteEmployee";
+import { useDeleteEmployee } from "../model/hooks/useDeleteEmployee";
+import { useEmployees } from "src/pages/admin/ui/employees/model/hooks/useEmployees";
+import Loader from "src/shared/ui/loader/Loader";
 
 type Props = {
   isOpen: boolean;
@@ -14,20 +16,30 @@ export const DeleteEmployeeModal = ({
   closeModal,
   employeeId,
 }: Props) => {
-  // const { mutate: deleteBenefit } = useDeleteEmployee();
-
-  // const handleDelete = () => {
-  //   deleteBenefit(employeeId, {
-  //     onSuccess: () => {
-  //       closeModal();
-  //     },
-  //   });
-  // };
+  const { mutate: deleteBenefit, isPending, error } = useDeleteEmployee();
+  const { refetch } = useEmployees();
 
   const handleDelete = () => {
-    console.log(employeeId);
-    closeModal();
+    deleteBenefit(employeeId, {
+      onSuccess: () => {
+        refetch();
+        closeModal();
+      },
+    });
   };
+
+  // const handleDelete = () => {
+  //   console.log(employeeId);
+  //   closeModal();
+  // };
+
+  if (isPending) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <>error</>;
+  }
 
   return (
     <>

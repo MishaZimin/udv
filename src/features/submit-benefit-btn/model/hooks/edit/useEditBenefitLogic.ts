@@ -10,7 +10,7 @@ import { urlToFile } from "../../utils/UrlToFile";
 
 export const useEditBenefitLogic = () => {
   const { mutate, error, isSuccess, isPending } = useEditBenefit();
-  const { mutate: uploadCover } = useUploadBenefitCover();
+  const { mutateAsync: uploadCover } = useUploadBenefitCover();
 
   const errorEdit = error;
   const isSuccessEdit = isSuccess;

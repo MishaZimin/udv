@@ -6,6 +6,7 @@ export const useBenefits = () => {
     data: benefits,
     error,
     isLoading,
+    refetch,
   } = useQuery({
     queryKey: ["benefits"],
     queryFn: async () => {
@@ -16,5 +17,5 @@ export const useBenefits = () => {
     staleTime: 0,
   });
 
-  return { benefits, error, isLoading };
+  return { benefits, error, isLoading, refetch };
 };

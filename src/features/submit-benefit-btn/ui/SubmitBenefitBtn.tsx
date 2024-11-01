@@ -7,10 +7,12 @@ import {
 } from "src/shared/lib/local-storage";
 import { useEditBenefitLogic } from "../model/hooks/edit/useEditBenefitLogic";
 import Loader from "src/shared/ui/loader/Loader";
+import { useBenefits } from "src/widgets/benefits/model/hooks/useBenefits";
 
 export const SubmitButton = () => {
   const { handleSubmit, errorCreate } = useCreateBenefitLogic();
   const { handleEdit, errorEdit, isPending } = useEditBenefitLogic();
+  const { refetch } = useBenefits();
 
   if (errorCreate || errorEdit) {
     return <p>error</p>;
@@ -19,12 +21,15 @@ export const SubmitButton = () => {
     return <Loader />;
   }
 
-  const handleClick = () => {
+  const handleClick = async () => {
     if (getFromLocalStorage("edit-benefit-id")) {
-      handleEdit();
+      await handleEdit();
     } else {
-      handleSubmit();
+      await handleSubmit();
     }
+
+    refetch();
+
     saveToLocalStorage("edit-benefit-id", null);
   };
 

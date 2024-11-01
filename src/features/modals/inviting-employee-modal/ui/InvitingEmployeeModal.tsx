@@ -4,6 +4,9 @@ import { Button } from "src/shared/ui";
 import Toggle from "src/shared/ui/toggle/Toggle";
 import { Input } from "src/shared/ui";
 import { useAddEmployee } from "../model/hooks/useAddEmployee";
+import { useEmployees } from "src/pages/admin/ui/employees/model/hooks/useEmployees";
+import Loader from "src/shared/ui/loader/Loader";
+import { AxiosError } from "axios";
 
 type Props = {
   isOpen: boolean;
@@ -16,7 +19,8 @@ export const InvitingEmployeeModal = ({
   closeModal,
   closeBtn,
 }: Props) => {
-  const { mutate: addEmployee, error } = useAddEmployee();
+  const { mutateAsync: addEmployee, error, isPending } = useAddEmployee();
+  const { refetch } = useEmployees();
 
   const [isChecked, setIsChecked] = useState(false);
   const [employeeData, setEmployeeData] = useState({
@@ -27,6 +31,7 @@ export const InvitingEmployeeModal = ({
     email: "",
     administration: false,
   });
+  const [validationError, setValidationError] = useState<string | null>(null);
 
   const handleChange = (field: keyof typeof employeeData, value: string) => {
     setEmployeeData((prev) => ({ ...prev, [field]: value }));
@@ -37,13 +42,46 @@ export const InvitingEmployeeModal = ({
     setEmployeeData((prev) => ({ ...prev, administration: !isChecked }));
   };
 
-  const handleSubmit = async () => {
-    await addEmployee(employeeData);
-    console.log(employeeData);
+  const isDateValid = (date: string) => {
+    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+    return dateRegex.test(date);
   };
 
+  const handleSubmit = async () => {
+    if (!isDateValid(employeeData.employment_date)) {
+      setValidationError("Дата должна быть в формате ГГГГ-ММ-ДД");
+      return;
+    }
+
+    const isFormValid = Object.values(employeeData).every(
+      (value) => value !== "",
+    );
+
+    if (!isFormValid) {
+      setValidationError("Пожалуйста, заполните все поля");
+      return;
+    }
+
+    setValidationError(null);
+    try {
+      await addEmployee(employeeData);
+      refetch();
+      closeModal();
+    } catch (err) {
+      const axiosError = err as AxiosError;
+      if (axiosError.response?.status === 400) {
+        setValidationError("Такой email уже занят");
+      } else {
+        setValidationError("error");
+      }
+    }
+  };
+
+  if (isPending) {
+    return <Loader />;
+  }
   if (error) {
-    return <p>error</p>;
+    return <p>Произошла ошибка при отправке данных</p>;
   }
 
   return (
@@ -93,6 +131,7 @@ export const InvitingEmployeeModal = ({
               inputType="default"
               value={employeeData.employment_date}
               onChange={(value) => handleChange("employment_date", value)}
+              placeholder={"2024-01-01"}
             />
           </div>
           <div className="flex flex-col gap-1">
@@ -117,6 +156,10 @@ export const InvitingEmployeeModal = ({
           </div>
         </div>
 
+        {validationError && (
+          <p className="pt-4 text-red-500">{validationError}</p>
+        )}
+
         <div className="flex flex-row gap-[8px] pt-6">
           <Button
             text={"Пригласить"}
@@ -126,7 +169,10 @@ export const InvitingEmployeeModal = ({
             size={"sm"}
           />
           <Button
-            onClick={closeModal}
+            onClick={() => {
+              setValidationError(null);
+              closeModal();
+            }}
             text={"Отмена"}
             textColor={"dark"}
             buttonType={"secondary"}

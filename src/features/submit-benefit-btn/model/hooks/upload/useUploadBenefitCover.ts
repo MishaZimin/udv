@@ -16,10 +16,10 @@ export const useUploadBenefitCover = () => {
       return response;
     },
     onSuccess: (data) => {
-      console.log("Upload success:", data);
+      console.log("upload success:", data);
     },
     onError: (error) => {
-      console.error("Error uploading cover:", error);
+      console.error("error uploading cover:", error);
     },
   });
 };

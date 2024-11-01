@@ -7,11 +7,6 @@ import Loader from "src/shared/ui/loader/Loader";
 
 export const AdminBenefits = () => {
   const { benefits, error, isLoading } = useBenefits();
-  // const name = useCardStore((state) => state.name);
-
-  // useEffect(() => {
-  //   console.log("benefits admin: ", benefits, name);
-  // }, [benefits, name]);
 
   if (isLoading) {
     return <Loader />;
@@ -19,9 +14,7 @@ export const AdminBenefits = () => {
   if (error) {
     return <p>error</p>;
   }
-  console.log("benefits admin: ", benefits, name);
-
-  // console.log("benefits admin: ", benefits);
+  console.log("benefits admin: ", benefits);
 
   return (
     <>

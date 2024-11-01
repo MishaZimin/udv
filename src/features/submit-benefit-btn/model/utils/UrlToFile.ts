@@ -3,12 +3,17 @@ export const urlToFile = async (url: RequestInfo, defaultFilename: string) => {
   const blob = await response.blob();
 
   const mimeType = blob.type;
-  let extension = "";
-  if (mimeType === "image/png") {
-    extension = ".png";
-  } else if (mimeType === "image/svg+xml") {
-    extension = ".svg";
-  } else {
+  const extensionMap: Record<string, string> = {
+    "image/png": ".png",
+    "image/jpeg": ".jpg",
+    "image/jpg": ".jpg",
+    "image/gif": ".gif",
+    "image/webp": ".webp",
+    "image/svg+xml": ".svg",
+  };
+
+  const extension = extensionMap[mimeType];
+  if (!extension) {
     throw new Error("Unsupported file type");
   }
 
