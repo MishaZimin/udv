@@ -14,13 +14,6 @@ export const SubmitButton = () => {
   const { handleEdit, errorEdit, isPending } = useEditBenefitLogic();
   const { refetch } = useBenefits();
 
-  if (errorCreate || errorEdit) {
-    return <p>error</p>;
-  }
-  if (isPending) {
-    return <Loader />;
-  }
-
   const handleClick = async () => {
     if (getFromLocalStorage("edit-benefit-id")) {
       await handleEdit();
@@ -28,10 +21,16 @@ export const SubmitButton = () => {
       await handleSubmit();
     }
 
-    refetch();
-
     saveToLocalStorage("edit-benefit-id", null);
+    refetch();
   };
+
+  if (errorCreate || errorEdit) {
+    return <p>error</p>;
+  }
+  if (isPending) {
+    return <Loader />;
+  }
 
   return validateFields() ? (
     <>

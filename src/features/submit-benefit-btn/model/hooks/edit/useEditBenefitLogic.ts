@@ -9,7 +9,7 @@ import { useUploadBenefitCover } from "../upload/useUploadBenefitCover";
 import { urlToFile } from "../../utils/UrlToFile";
 
 export const useEditBenefitLogic = () => {
-  const { mutate, error, isSuccess, isPending } = useEditBenefit();
+  const { mutateAsync, error, isSuccess, isPending } = useEditBenefit();
   const { mutateAsync: uploadCover } = useUploadBenefitCover();
 
   const errorEdit = error;
@@ -36,12 +36,15 @@ export const useEditBenefitLogic = () => {
 
     console.log("updatedData", updatedData);
 
-    mutate({ id: getFromLocalStorage("edit-benefit-id"), data: updatedData });
+    await mutateAsync({
+      id: getFromLocalStorage("edit-benefit-id"),
+      data: updatedData,
+    });
 
     const benefitId = getFromLocalStorage("edit-benefit-id");
     const imageFile = await urlToFile(imageSrc, "cover");
 
-    uploadCover({ benefitId, imageFile });
+    await uploadCover({ benefitId, imageFile });
   };
 
   return { handleEdit, errorEdit, isSuccessEdit, isPending };

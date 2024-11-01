@@ -20,7 +20,7 @@ export const EditEmployeeModal = ({
   employee,
   id,
 }: Props) => {
-  const { mutate: editEmployee, error, isPending } = useEditEmployee(id);
+  const { mutateAsync: editEmployee, error, isPending } = useEditEmployee(id);
   const { refetch } = useEmployees();
 
   const [isChecked, setIsChecked] = useState(employee?.administration || false);
@@ -164,7 +164,7 @@ export const EditEmployeeModal = ({
                   full_name: employee?.full_name || "",
                   place_of_employment: employee?.place_of_employment || "",
                   position: employee?.position || "",
-                  employment_date: employee?.employment_date || "",
+                  employment_date: "",
                   email: employee?.email || "",
                   administration: isChecked,
                 });
