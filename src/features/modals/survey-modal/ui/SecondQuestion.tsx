@@ -26,7 +26,7 @@ export const SecondQuestion = () => {
           <button
             key={smile.id}
             onClick={() => toggleSmile(smile.id)}
-            className={`h-[50px] w-[50px] rounded-full bg-graphite sm:h-16 sm:w-16 ${
+            className={`animation h-[50px] w-[50px] rounded-full bg-graphite sm:h-16 sm:w-16 ${
               selectedSmile === smile.id
                 ? ""
                 : "bg-opacity-[4%] hover:bg-opacity-[8%]"
