@@ -34,6 +34,7 @@ export const Apeals = () => {
           <div className="flex flex-col gap-2">
             <div>
               <Button
+                // link={""}
                 text={"Посмотреть обращения"}
                 textColor={"light"}
                 buttonType={"primary"}

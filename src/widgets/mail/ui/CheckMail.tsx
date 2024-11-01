@@ -5,11 +5,11 @@ export const CheckMail = () => {
         <p className="text-center text-[20px] font-semibold">Проверьте почту</p>
         <p className="font-normal">
           Ссылка для входа отправлена
-          <br /> на sotrudnik@udv.ru
+          <br /> на ваш почтовый ящик
         </p>
-        <p className="text-[14px] opacity-40">
+        {/* <p className="text-[14px] opacity-40">
           Запросить новую ссылку можно через 03:30
-        </p>
+        </p> */}
       </div>
     </>
   );
