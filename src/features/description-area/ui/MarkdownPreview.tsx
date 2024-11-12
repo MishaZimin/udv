@@ -7,7 +7,7 @@ interface Props {
 
 export const MarkdownPreview = ({ description }: Props) => {
   return (
-    <div className="animation prose min-h-[320px] min-w-full overflow-y-auto rounded-[8px] border border-graphite border-opacity-[20%] bg-white px-[12px] pb-[40px] pt-[8px]">
+    <div className="animation prose h-[320px] min-w-full overflow-y-auto rounded-[8px] border border-graphite border-opacity-[20%] bg-white px-[12px] pb-[8px] pt-[8px]">
       <ReactMarkdown
         components={{
           a: ({ href, children }) => (
