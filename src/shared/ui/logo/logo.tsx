@@ -1,5 +1,4 @@
 import Logo from "src/shared/assets/svgs/Logo.svg";
-
 import LogoMini from "src/shared/assets/svgs/LogoMini.svg";
 
 type Props = {

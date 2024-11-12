@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import { NotFound } from "src/pages/errors";
+import { NotFound } from "src/pages/error";
 import { HomePage } from "src/pages/home";
 import { BenefitPage } from "src/pages/benefit";
 import { ProfilePage } from "src/pages/profile";
@@ -13,7 +13,7 @@ import {
   AdminCategoriesPage,
   AdminEmployeesPage,
 } from "src/pages/admin";
-import { TokenPage } from "src/pages/auth/ui/TokenPage";
+import { TokenPage } from "src/pages/auth/ui/pages/TokenPage";
 import { ProtectedRoutes } from "./ProtentedRoute";
 import { AdminRoute } from "./AdminRoute";
 import { AuthRoutes } from "./AuthRoute";

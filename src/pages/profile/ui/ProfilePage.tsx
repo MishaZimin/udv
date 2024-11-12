@@ -1,6 +1,6 @@
 import { SurveyBanner } from "src/widgets/survey/ui/SurveyBanner";
 import { BackButton } from "src/shared/ui/button/BackButton";
-import { ProfileInfo } from "src/entities/profile-info/ui/ProfileInfo";
+import { ProfileInfo } from "src/widgets/profile-info/ui/ProfileInfo";
 import { Feedback } from "src/features/feedback/ui/Feedback";
 
 export const ProfilePage = () => {

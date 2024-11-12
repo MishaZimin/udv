@@ -1,9 +1,9 @@
-import { BackButton } from "src/shared/ui/button/BackButton";
+import { BackButton } from "src/shared/ui";
 import Markdown from "react-markdown";
 import { Feedback } from "src/features/feedback/ui/Feedback";
 import { useLocation } from "react-router-dom";
-import { useBenefit } from "../model/hooks/useBenefit";
-import Loader from "src/shared/ui/loader/Loader";
+import { useBenefit } from "..";
+import { Loader } from "src/shared/ui";
 
 export const BenefitPage = () => {
   const location = useLocation();
@@ -17,11 +17,8 @@ export const BenefitPage = () => {
   }
 
   if (error) {
-    return <p>error</p>;
+    return <p>error {error.message}</p>;
   }
-  console.log("benefitData:", benefitData.name, "|", benefitData.text);
-
-  // const mardownText = ``;
 
   return (
     <>
@@ -35,7 +32,20 @@ export const BenefitPage = () => {
             <Feedback />
           </div>
           <div className="prose mb-[32px] w-full px-2 pt-[144px] sm:px-10 sm:pt-[104px] md:ml-16 md:w-[600px]">
-            <Markdown>{benefitData.text}</Markdown>
+            <Markdown
+              components={{
+                a: ({ href, children }) => (
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="no-underline text-mint visited:text-mintactive hover:text-minthover">
+                    {children}
+                  </a>
+                ),
+              }}>
+              {benefitData.text}
+            </Markdown>
           </div>
         </div>
       </div>

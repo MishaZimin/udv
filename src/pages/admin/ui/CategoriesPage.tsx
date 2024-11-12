@@ -1,4 +1,4 @@
-import { Layout } from "src/app/layout/ui/Layout";
+import { Layout } from "src/shared/ui/layout/ui/Layout";
 
 export const AdminCategoriesPage = () => {
   return (

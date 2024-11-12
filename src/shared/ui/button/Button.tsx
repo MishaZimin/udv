@@ -12,7 +12,8 @@ type Props = {
     | "red"
     | "yellow"
     | "darkblue"
-    | "unActive";
+    | "unActive"
+    | "none";
   fullWidth?: boolean;
   size?: "sm";
 };
@@ -25,7 +26,9 @@ export const Button = ({
   buttonType,
   size,
 }: Props) => {
-  const baseClasses = clsx(" rounded-[8px] text-center animation  ");
+  const baseClasses = clsx(
+    "rounded-[8px] text-center animation leading-[22px]",
+  );
   const textColorClass = {
     dark: "text-graphite",
     light: "text-white",
@@ -44,11 +47,16 @@ export const Button = ({
     yellow: "bg-yellow hover:bg-yellowhover active:yellowactive rounded-full",
     darkblue:
       "bg-darkblue hover:bg-darkbluehover active:darkblueactive rounded-full",
+    none: "border-none bg-none",
   }[buttonType];
 
-  const content = <p className={`leading-[20px] ${textColorClass}`}>{text}</p>;
+  const content = (
+    <p className={` ${textColorClass} ${size ? "leading-[20px]" : ""}`}>
+      {text}
+    </p>
+  );
 
-  const combinedClassName = `${baseClasses} ${buttonTypeClasses} ${size ? "py-2 px-4" : "py-4 px-6 font-semibold"}`;
+  const combinedClassName = `${baseClasses} ${buttonTypeClasses} ${size ? "pt-2 pb-2 px-4 leading-[18px]" : "pt-2 px-4 pb-[10px]"}`;
 
   return link ? (
     <Link to={link} className={combinedClassName}>

@@ -1,7 +1,7 @@
-import { Layout } from "src/app/layout/ui/Layout";
+import { Layout } from "src/shared/ui/layout/ui/Layout";
 import { Apeals } from "src/widgets/apeals";
 
-export const AdminApealsPage = () => {
+export const AdminApealsPage = (): JSX.Element => {
   return (
     <Layout>
       <Apeals />

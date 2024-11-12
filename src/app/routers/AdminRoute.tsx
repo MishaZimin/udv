@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { getFromLocalStorage } from "src/shared/lib/local-storage";
+import { getFromLocalStorage } from "src/shared/lib";
 
 export const AdminRoute = () => {
   const isAdmin = getFromLocalStorage("isAdministrator");

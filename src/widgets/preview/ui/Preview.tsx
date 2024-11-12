@@ -1,21 +1,25 @@
-import { useImageStore } from "src/pages/settings/stores/useImageStore";
-import { useCardStore } from "src/pages/settings/stores/useCardStore";
-import { Benefit } from "src/entities/benefit";
-import { IBenefitCard } from "src/widgets/benefits";
+import { useEffect } from "react";
+import { useImageStore, useCardStore } from "src/shared/stores";
+import { Benefit, IBenefitCard } from "src/entities/benefit";
+import Default from "src/shared/assets/svgs/Default.svg";
 
 export const Preview = () => {
-  const name = useCardStore((state) => state.name);
-  const subtext = useCardStore((state) => state.subtext);
+  const { name, subtext } = useCardStore((state) => ({
+    name: state.name,
+    subtext: state.subtext,
+  }));
   const imageSrc = useImageStore((state) => state.imageSrc);
+
+  useEffect(() => {
+    console.log(imageSrc);
+  }, [imageSrc]);
 
   const benefit: IBenefitCard = {
     id: 0,
-    name: name,
+    name,
     card_name: subtext,
-    cover_url: imageSrc,
+    cover_url: imageSrc || Default,
   };
-
-  console.log(imageSrc);
 
   return (
     <div className="flex flex-col gap-[16px]">

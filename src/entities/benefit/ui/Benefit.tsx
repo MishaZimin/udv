@@ -1,44 +1,29 @@
 import { Link } from "react-router-dom";
-import { NewTag } from "src/entities/new-tag";
-import { IBenefitCard } from "src/widgets/benefits";
+import { Badge } from "src/shared/ui/badge/Badge";
+import { BenefitText, BenefitImage, IBenefitCard } from "..";
+import { ReactNode } from "react";
 
 type Props = {
   link: string;
   isNewTag: boolean;
   benefit: IBenefitCard;
+  actionSlot?: ReactNode;
 };
 
-export const Benefit = ({ link, isNewTag, benefit }: Props) => {
+export const Benefit = ({ link, isNewTag, benefit, actionSlot }: Props) => {
   return (
-    <>
+    <div className="relative">
       <Link
         to={`${link}?benefitId=${benefit.id}`}
-        className="animation mx-auto flex w-full min-w-[320px] flex-col justify-between gap-[16px] rounded-[16px] bg-card px-[16px] py-[16px]"
-      >
-        {isNewTag && <NewTag />}
-        <div className="flex flex-col gap-[8px]">
-          <p className="h-[20px] text-left text-[16px] font-semibold leading-[20px]">
-            {benefit.name}
-          </p>
-          <p className="h-[16px] text-left text-[12px] font-normal leading-[16px]">
-            {benefit.card_name}
-          </p>
-        </div>
-        <div
-          className="relative flex w-full items-center justify-center overflow-hidden rounded-[8px] bg-graphite bg-opacity-[0%]"
-          style={{ paddingBottom: "51.4%" }}
-        >
-          {benefit.cover_url ? (
-            <img
-              className="absolute left-0 top-0 h-full w-full object-contain"
-              src={benefit.cover_url}
-              alt="benefit img"
-            />
-          ) : (
-            <div className="absolute left-0 top-0 h-full w-full object-contain"></div>
-          )}
-        </div>
+        className="animation relative mx-auto flex w-full min-w-[320px] flex-col justify-between gap-[16px] rounded-[16px] bg-card px-[16px] py-[16px]">
+        {isNewTag && <Badge text={"Новое"} />}
+        <BenefitText name={benefit.name} card_name={benefit.card_name} />
+        <BenefitImage cover_url={benefit.cover_url} />
       </Link>
-    </>
+
+      {actionSlot && (
+        <div className="absolute bottom-[8px] right-[8px]">{actionSlot}</div>
+      )}
+    </div>
   );
 };

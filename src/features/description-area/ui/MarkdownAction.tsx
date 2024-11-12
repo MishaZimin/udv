@@ -1,0 +1,35 @@
+import { MarkdownActionBtn } from "./MarkdownActionBtn";
+
+type MarkdownActionProps = {
+  applyMarkdown: (type: string) => void;
+};
+
+export const MarkdownAction = ({ applyMarkdown }: MarkdownActionProps) => {
+  return (
+    <div className="absolute bottom-[8px] left-[8px] h-6 w-[160px] rounded-[4px] bg-white">
+      <div className="flex flex-row gap-2">
+        <MarkdownActionBtn
+          iconName="Bold"
+          onClick={() => applyMarkdown("Bold")}
+        />
+        <MarkdownActionBtn
+          iconName="Header"
+          onClick={() => applyMarkdown("Header")}
+        />
+        <div className="h-6 w-[1px] bg-graphite bg-opacity-[4%]"></div>
+        <MarkdownActionBtn
+          iconName="Link"
+          onClick={() => applyMarkdown("Link")}
+        />
+        <MarkdownActionBtn
+          iconName="OrderList"
+          onClick={() => applyMarkdown("OrderList")}
+        />
+        <MarkdownActionBtn
+          iconName="UnorderedList"
+          onClick={() => applyMarkdown("UnorderedList")}
+        />
+      </div>
+    </div>
+  );
+};
