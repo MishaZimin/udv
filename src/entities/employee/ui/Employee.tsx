@@ -1,9 +1,8 @@
 import { EditEmployeeModal, DeleteEmployeeModal } from "src/features/modals";
 import { ActionPanel } from "src/entities/action-panel";
 import { useModal, ButtonIcon } from "src/shared/ui";
-import { EmployeeIcon } from "./EmployeeIcon";
+import { EmployeeText, EmployeeIcon } from "..";
 import { IEmployee } from "../model/types/employee.type";
-import { EmployeeInfo } from "./EmployeeInfo";
 
 type EmployeeProps = {
   employee: IEmployee;
@@ -33,7 +32,7 @@ export const Employee = ({ employee }: EmployeeProps) => {
   return (
     <div className="flex flex-row gap-8 px-2 py-4 text-left">
       <EmployeeIcon isAdministration={employeeData.administration} />
-      <EmployeeInfo employee={employee} />
+      <EmployeeText employee={employee} />
 
       <ActionPanel>
         <ButtonIcon iconName={"Edit"} onClick={openEditModal} />

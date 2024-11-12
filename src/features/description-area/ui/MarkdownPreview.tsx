@@ -7,7 +7,7 @@ interface Props {
 
 export const MarkdownPreview = ({ description }: Props) => {
   return (
-    <div className="animation prose max-h-[320px] min-w-full overflow-y-auto rounded-[8px] border border-graphite border-opacity-[20%] bg-white px-[12px] pb-[40px] pt-[8px]">
+    <div className="animation prose min-h-[320px] min-w-full overflow-y-auto rounded-[8px] border border-graphite border-opacity-[20%] bg-white px-[12px] pb-[40px] pt-[8px]">
       <ReactMarkdown
         components={{
           a: ({ href, children }) => (
@@ -15,7 +15,7 @@ export const MarkdownPreview = ({ description }: Props) => {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="no-underline text-mint visited:text-mintactive hover:text-minthover">
+              className="text-mint no-underline visited:text-mintactive hover:text-minthover">
               {children}
             </a>
           ),

@@ -6,7 +6,7 @@ type MarkdownActionProps = {
 
 export const MarkdownAction = ({ applyMarkdown }: MarkdownActionProps) => {
   return (
-    <div className="absolute bottom-[8px] left-[8px] h-6 w-[160px] rounded-[4px] bg-white">
+    <div className="absolute bottom-[8px] left-[8px] h-6 rounded-[4px] bg-white">
       <div className="flex flex-row gap-2">
         <MarkdownActionBtn
           iconName="Bold"
