@@ -3,7 +3,7 @@ import { Button } from "src/shared/ui";
 import { FirstQuestion } from "./FirstQuestion";
 import { SecondQuestion } from "src/features/modals/survey/ui/SecondQuestion";
 import { Thank } from "./Thank";
-import { useSurveyModal } from "../model/use-survey-modal";
+import { useSurveyModal } from "../model/hooks/use-survey-modal";
 
 type Props = {
   isOpen: boolean;

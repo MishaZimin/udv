@@ -6,7 +6,7 @@ type MarkdownActionProps = {
 
 export const MarkdownAction = ({ applyMarkdown }: MarkdownActionProps) => {
   return (
-    <div className="absolute bottom-[8px] left-[8px] h-6 rounded-[4px] bg-white">
+    <div className="absolute bottom-[8px] left-[8px] h-6 rounded-[4px] bg-white bg-opacity-80 backdrop-blur-[1px]">
       <div className="flex flex-row gap-2">
         <MarkdownActionBtn
           iconName="Bold"
@@ -15,6 +15,10 @@ export const MarkdownAction = ({ applyMarkdown }: MarkdownActionProps) => {
         <MarkdownActionBtn
           iconName="Header"
           onClick={() => applyMarkdown("Header")}
+        />
+        <MarkdownActionBtn
+          iconName="Italic"
+          onClick={() => applyMarkdown("Italic")}
         />
         <div className="h-6 w-[1px] bg-graphite bg-opacity-[4%]"></div>
         <MarkdownActionBtn

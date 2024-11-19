@@ -20,18 +20,15 @@ export const Modal = ({
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-end ${position == "right" ? "justify-end" : "justify-center"} sm:items-center`}
-    >
+      className={`fixed inset-0 z-50 flex items-end ${position == "right" ? "justify-end" : "justify-center"} sm:items-center`}>
       <div
         className="fixed inset-0 bg-black opacity-[24%]"
-        onClick={onClose}
-      ></div>
+        onClick={onClose}></div>
       <div className="relative">
         {closeBtn && (
           <button
             onClick={onClose}
-            className="absolute right-[16px] top-[16px] z-50 h-[28px] w-[28px]"
-          >
+            className="absolute right-[16px] top-[16px] z-50 h-[28px] w-[28px]">
             <img className="h-[28px] w-[28px]" src={closeLine} />
           </button>
         )}

@@ -17,6 +17,10 @@
   .animation {
     @apply transform transition duration-300;
   }
+
+  .skeleton {
+    @apply from-shine-start via-shine-middle to-shine-end bg-200% animate-shine bg-gradient-to-r;
+  }
 }
 
 ::-webkit-scrollbar {

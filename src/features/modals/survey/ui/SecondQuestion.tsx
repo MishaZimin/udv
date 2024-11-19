@@ -1,5 +1,5 @@
 // src/features/survey/ui/SecondQuestion.tsx
-import { useSecondQuestion } from "../model/use-second-question";
+import { useSecondQuestion } from "../model/hooks/use-second-question";
 
 export const SecondQuestion = () => {
   const { smiles, selectedSmile, toggleSmile } = useSecondQuestion();

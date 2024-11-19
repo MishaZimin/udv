@@ -1,6 +1,6 @@
 import { useImageStore } from "src/shared/stores/use-image-store";
 import { useDragAndDrop, useImageUpload } from "..";
-import Delete from "src/shared/assets/svgs/Delete.svg";
+import { ButtonIcon } from "src/shared/ui";
 
 export const DropArea = () => {
   const { setImageSrc } = useImageStore();
@@ -30,13 +30,16 @@ export const DropArea = () => {
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}>
-        <div className="my-auto">
-          <p className="text-center font-semibold">
+        <div className={`my-auto`}>
+          <p
+            className={`text-center font-semibold ${isDragging || imageName ? "text-opacity-40" : ""}`}>
             Загрузите картинку 1280 x 720
           </p>
-          <p className="text-center">
+          <p
+            className={`text-center ${isDragging || imageName ? "text-graphite text-opacity-40" : ""}`}>
             Перетащите файл или{" "}
-            <label className="cursor-pointer text-mint">
+            <label
+              className={`cursor-pointer ${isDragging || imageName ? "text-graphite text-opacity-40" : "text-mint"}`}>
               нажмите загрузить
               <input
                 type="file"
@@ -51,11 +54,9 @@ export const DropArea = () => {
       </div>
 
       {imageName && (
-        <div className="mt-2 flex flex-row items-center gap-1">
+        <div className="flex flex-row items-center gap-1">
           <p className="text-gray-700">{imageName}</p>
-          <button onClick={clearImage} className="text-red-600">
-            <img src={Delete} alt="Delete" />
-          </button>
+          <ButtonIcon iconName="Delete" onClick={clearImage} />
         </div>
       )}
     </>

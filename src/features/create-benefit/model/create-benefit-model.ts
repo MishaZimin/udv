@@ -7,6 +7,7 @@ import { saveToLocalStorage } from "src/shared/lib";
 
 export const resetCreateBenefit = () => {
   saveToLocalStorage("edit-benefit-id", null);
+
   useCardStore.getState().setName("");
   useCardStore.getState().setSubtext("");
   useCardStore.getState().setDescription("");

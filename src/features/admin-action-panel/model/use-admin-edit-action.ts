@@ -1,6 +1,3 @@
-// src/features/admin-action/model/useAdminAction.ts
-
-import { useModal } from "src/shared/ui/modal";
 import { useBenefit } from "src/pages/benefit";
 import { useNavigate } from "react-router-dom";
 import {
@@ -13,7 +10,6 @@ import { IBenefitCard } from "src/entities/benefit";
 
 export const useAdminAction = (benefit: IBenefitCard) => {
   const navigate = useNavigate();
-  const { isOpen, openModal, closeModal } = useModal();
 
   const setName = useCardStore((state) => state.setName);
   const setSubtext = useCardStore((state) => state.setSubtext);
@@ -44,9 +40,6 @@ export const useAdminAction = (benefit: IBenefitCard) => {
   };
 
   return {
-    isOpen,
     handleButtonClick,
-    openModal,
-    closeModal,
   };
 };

@@ -1,6 +1,6 @@
 import { DeleteModal } from "src/features/modals/delete-benefit";
 
-import { ButtonIcon } from "src/shared/ui";
+import { ButtonIcon, useModal } from "src/shared/ui";
 
 import { IBenefitCard } from "src/entities/benefit";
 import { ActionPanel } from "src/entities/action-panel";
@@ -11,8 +11,9 @@ type Props = {
 };
 
 export const AdminActionPanel = ({ benefit }: Props) => {
-  const { handleButtonClick, isOpen, openModal, closeModal } =
-    useAdminAction(benefit);
+  const { isOpen, openModal, closeModal } = useModal();
+
+  const { handleButtonClick } = useAdminAction(benefit);
 
   return (
     <>

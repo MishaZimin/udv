@@ -12,7 +12,7 @@ export const Navbar = ({ navbar, orientation }: Props) => {
 
   return (
     <div
-      className={`"mx-4 flex w-full gap-[8px] overflow-x-auto whitespace-nowrap bg-none sm:mx-10 lg:mx-0 lg:w-[1024px] ${orientation === "vertical" ? "flex-col" : "flex-row"}`}>
+      className={`" animation mx-4 flex w-full gap-[8px] overflow-x-auto whitespace-nowrap bg-none sm:mx-10 lg:mx-0 lg:w-[1024px] ${orientation === "vertical" ? "flex-col" : "flex-row"}`}>
       {navbar.map((item: NavbarProps) => (
         <NavbarItem
           key={item.name}

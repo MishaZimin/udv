@@ -16,6 +16,7 @@ type Props = {
     | "none";
   fullWidth?: boolean;
   size?: "sm";
+  disabled?: boolean;
 };
 
 export const Button = ({
@@ -25,13 +26,14 @@ export const Button = ({
   textColor,
   buttonType,
   size,
+  disabled,
 }: Props) => {
   const baseClasses = clsx(
-    "rounded-[8px] text-center animation leading-[22px]",
+    "rounded-[8px] text-center animation leading-[22px] disabled:bg-opacity-[8%] disabled:bg-graphite disabled:cursor-default disabled:border-none ",
   );
   const textColorClass = {
-    dark: "text-graphite",
-    light: "text-white",
+    dark: "text-graphite ",
+    light: "text-white ",
     yellow: "text-yellow",
 
     darkblue: "text-darkblue",
@@ -39,7 +41,7 @@ export const Button = ({
     unActive: "text-graphite opacity-[40%]",
   }[textColor];
   const buttonTypeClasses = {
-    primary: "bg-mint hover:bg-minthover active:bg-mintactive",
+    primary: "bg-mint hover:bg-minthover active:bg-mintactive  ",
     secondary:
       "bg-none border-opacity-[20%] border border-graphite hover:bg-graphite hover:bg-opacity-[4%] hover:border-opacity-[0%] active:bg-graphite active:bg-opacity-[8%] active:border-opacity-[0%]",
     red: "bg-rose hover:bg-rosehover active:bg-roseactive",
@@ -51,19 +53,20 @@ export const Button = ({
   }[buttonType];
 
   const content = (
-    <p className={` ${textColorClass} ${size ? "leading-[20px]" : ""}`}>
+    <p
+      className={` ${textColorClass} ${size ? "leading-[20px]" : ""} ${disabled ? "!text-graphite opacity-[40%]" : ""}`}>
       {text}
     </p>
   );
 
-  const combinedClassName = `${baseClasses} ${buttonTypeClasses} ${size ? "pt-2 pb-2 px-4 leading-[18px]" : "pt-2 px-4 pb-[10px]"}`;
+  const combinedClassName = `${baseClasses} ${buttonTypeClasses}  ${size ? "pt-2 pb-2 px-4 leading-[18px]" : "pt-2 px-4 pb-[10px]"}`;
 
   return link ? (
     <Link to={link} className={combinedClassName}>
       {content}
     </Link>
   ) : (
-    <button onClick={onClick} className={combinedClassName}>
+    <button disabled={disabled} onClick={onClick} className={combinedClassName}>
       {content}
     </button>
   );

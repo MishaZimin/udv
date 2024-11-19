@@ -22,10 +22,10 @@ export const Preview = () => {
   };
 
   return (
-    <div className="flex flex-col gap-[16px]">
+    <div className="z-10 flex flex-col gap-[16px]">
       <p className="text-[20px] font-semibold">Превью</p>
       <div className="h-[240px] w-[320px]">
-        <Benefit benefit={benefit} isNewTag={true} link={""} />
+        <Benefit benefit={benefit} isNewTag={true} preview={true} />
       </div>
     </div>
   );

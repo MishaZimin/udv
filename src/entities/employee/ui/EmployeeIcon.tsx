@@ -8,7 +8,7 @@ type Props = {
 export const EmployeeIcon = ({ isAdministration }: Props) => {
   return (
     <div className="min-w-[22px]rounded-full my-auto mt-0 min-h-[22px] bg-opacity-[8%] bg-none">
-      <img className="w-[22px]" src={isAdministration ? Admin : Profile} />
+      <img className="min-w-[22px]" src={isAdministration ? Admin : Profile} />
     </div>
   );
 };

@@ -27,6 +27,7 @@ export const DescriptionArea = ({ description, setDescription }: Props) => {
       <MarkdownPreviewButton
         isMarkdownPreview={isMarkdownPreview}
         toggleMarkdownPreview={toggleMarkdownPreview}
+        isActive={isMarkdownPreview}
       />
     </div>
   );

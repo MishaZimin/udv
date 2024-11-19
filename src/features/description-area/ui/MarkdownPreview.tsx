@@ -15,7 +15,7 @@ export const MarkdownPreview = ({ description }: Props) => {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-mint no-underline visited:text-mintactive hover:text-minthover">
+              className="no-underline text-mint visited:text-mintactive hover:text-minthover">
               {children}
             </a>
           ),

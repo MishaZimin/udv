@@ -8,8 +8,9 @@ export const BenefitImage = ({ cover_url }: Props) => {
   return (
     <div className="relative flex w-full items-center justify-center overflow-hidden rounded-[8px] bg-graphite bg-opacity-[0%] pb-[51.4%]">
       <img
-        className="absolute left-0 top-0 h-full w-full object-contain"
+        className="absolute left-0 top-0 h-full w-full rounded-[8px] object-contain"
         src={cover_url ? cover_url : Default}
+        loading="lazy"
         alt="benefit img"
       />
     </div>

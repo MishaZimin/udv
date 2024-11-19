@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal } from "src/shared/ui/modal";
 import { Button, Input } from "src/shared/ui";
 import Toggle from "src/shared/ui/toggle/Toggle";
 import { useEditEmployee } from "../model/hooks/use-edit-employee";
 import { Employee } from "../model/type/employee.type";
-import { useEmployees } from "src/widgets/employees-list/api/queryes/use-employees";
+import { useEmployees } from "src/widgets/employees-list/api/queries/use-employees";
 import { Loader } from "src/shared/ui";
 
 type Props = {
@@ -12,6 +12,7 @@ type Props = {
   closeModal: () => void;
   employee?: Employee;
   id: string;
+  onPendingChange?: (isPending: boolean) => void;
 };
 
 export const EditEmployeeModal = ({
@@ -19,9 +20,16 @@ export const EditEmployeeModal = ({
   closeModal,
   employee,
   id,
+  onPendingChange,
 }: Props) => {
   const { mutateAsync: editEmployee, error, isPending } = useEditEmployee(id);
   const { refetch } = useEmployees();
+
+  useEffect(() => {
+    if (onPendingChange) {
+      onPendingChange(isPending);
+    }
+  }, [isPending, onPendingChange]);
 
   const [isChecked, setIsChecked] = useState(employee?.administration || false);
   const [employeeData, setEmployeeData] = useState({
@@ -163,6 +171,7 @@ export const EditEmployeeModal = ({
               buttonType={"primary"}
               size="sm"
               onClick={handleSubmit}
+              disabled={isPending}
             />
             <Button
               onClick={() => {
@@ -181,6 +190,7 @@ export const EditEmployeeModal = ({
               textColor={"dark"}
               buttonType={"secondary"}
               size="sm"
+              disabled={isPending}
             />
           </div>
         </div>

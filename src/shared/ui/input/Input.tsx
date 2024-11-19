@@ -1,5 +1,3 @@
-import clsx from "clsx";
-
 type Props = {
   inputType: "default" | "error";
   mail?: boolean;
@@ -7,6 +5,7 @@ type Props = {
   placeholder?: string;
   value: string;
   disabled?: boolean;
+  errorText?: string;
 };
 
 export const Input = ({
@@ -16,9 +15,10 @@ export const Input = ({
   placeholder,
   value,
   disabled,
+  errorText,
 }: Props) => {
   const baseClasses =
-    "bg-transparent w-full px-[12px] pt-[8px] pb-[10px] rounded-[8px] border h-10 focus:outline-none animation disabled:bg-opacity-[8%] disabled:!text-opacity-[2%] disabled:bg-graphite";
+    " w-full px-[12px] pt-[8px] pb-[10px] rounded-[8px] font-base border h-10 focus:outline-none animation";
   const inputTypeClasses = {
     default: "border-graphite border-opacity-[20%]",
     error: "border-rose border-opacity-[100%] focus:border-graphite",
@@ -37,10 +37,7 @@ export const Input = ({
           placeholder={placeholder}
           onChange={handleChange}
           disabled={disabled}
-          className={clsx(
-            mail ? "pr-[88px]" : "",
-            `${baseClasses} ${inputTypeClasses} ${mail}`,
-          )}
+          className={`${mail ? "pr-[88px]" : ""} ${baseClasses} ${inputTypeClasses} ${disabled ? "bg-graphite bg-opacity-[8%] text-graphite text-opacity-[20%]" : "bg-transparent"}`}
         />
         {mail && (
           <p className="absolute right-0 top-[8px] px-[12px] align-middle text-[16px] text-graphite opacity-[60%]">
@@ -48,6 +45,9 @@ export const Input = ({
           </p>
         )}
       </div>
+      {inputType === "error" && (
+        <p className="text-[12px] leading-[16px] text-rose">{errorText}</p>
+      )}
     </>
   );
 };

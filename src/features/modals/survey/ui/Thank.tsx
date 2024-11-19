@@ -1,4 +1,11 @@
+import { useSurveyStore } from "../model/stores/use-survey";
+
 export const Thank = () => {
+  const selectedBenefits = useSurveyStore((state) => state.selectedBenefits);
+  const selectedSmile = useSurveyStore((state) => state.selectedSmile);
+
+  console.log(selectedBenefits, selectedSmile);
+
   return (
     <div className="flex flex-col gap-[16px]">
       <p className="text-center text-[28px] font-semibold leading-[36px]">

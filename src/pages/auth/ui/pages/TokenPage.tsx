@@ -1,5 +1,5 @@
 import { getFromLocalStorage, saveToLocalStorage } from "src/shared/lib";
-import { useAuth } from "../../api/queryes/use-user-auth";
+import { useAuth } from "../../api/queries/use-user-auth";
 import { useProfile } from "src/widgets/profile-info/api/queryes/use-profile";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -28,7 +28,10 @@ export const TokenPage = () => {
 
       console.log("saved token:", getFromLocalStorage("token"));
     }
-  }, [token, isLoading]);
+    if (error) {
+      navigate("/");
+    }
+  }, [token, isLoading, error]);
 
   useEffect(() => {
     if (isTokenSaved && profile && !isProfileLoading) {
@@ -39,7 +42,7 @@ export const TokenPage = () => {
   }, [isTokenSaved, profile, isProfileLoading, navigate]);
 
   if (isLoading || isProfileLoading) return <Loader />;
-  if (error) return <>error: {error.message}</>;
+  if (error) return <>Ссылка недействительна</>;
   if (profileError) return <>error: {profileError.message}</>;
 
   return <></>;

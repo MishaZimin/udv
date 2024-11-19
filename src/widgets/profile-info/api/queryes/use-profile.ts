@@ -14,7 +14,7 @@ export const useProfile = () => {
       return response;
     },
     retry: 1,
-    staleTime: 5000,
+    // staleTime: 5000,
   });
 
   return { profile, error, isLoading, refetch };

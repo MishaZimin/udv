@@ -9,6 +9,7 @@ export default {
       colors: {
         card: "#F8F9FA",
         graphite: "#0B2027",
+        lightgraphite: "#0B202799",
 
         mint: "#00C08B",
         minthover: "#00AB7C",
@@ -27,6 +28,24 @@ export default {
         darkblue: "#003B4C",
         darkbluehover: "#004B61",
         darkblueactive: "#005B75",
+      },
+
+      backgroundSize: {
+        "200%": "200% 50%",
+      },
+      animation: {
+        shine: "shine 4s linear infinite",
+      },
+      keyframes: {
+        shine: {
+          "0%": { backgroundPosition: "200% 0%" },
+          "100%": { backgroundPosition: "-200% 0%" },
+        },
+      },
+      gradientColorStops: {
+        "shine-start": "#f8f9fa",
+        "shine-middle": "#ffffff",
+        "shine-end": "#f8f9fa",
       },
     },
   },

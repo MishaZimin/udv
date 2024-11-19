@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 import { AxiosError } from "axios";
-import { useAddEmployee } from "./use-add-employee";
-import { useEmployees } from "src/widgets/employees-list/api/queryes/use-employees";
+import { useAddEmployee } from "../../api/mutations/use-add-employee";
+import { useEmployees } from "src/widgets/employees-list/api/queries/use-employees";
 
 // Типы данных
 type EmployeeData = {
@@ -18,7 +18,6 @@ export const useInvitingEmployee = (closeModal: () => void) => {
   const { mutateAsync: addEmployee, error, isPending } = useAddEmployee();
   const { refetch } = useEmployees();
 
-  // Состояния
   const [isChecked, setIsChecked] = useState(false);
   const [employeeData, setEmployeeData] = useState<EmployeeData>({
     full_name: "",
@@ -30,7 +29,6 @@ export const useInvitingEmployee = (closeModal: () => void) => {
   });
   const [validationError, setValidationError] = useState<string | null>(null);
 
-  // Обработчики
   const handleChange = (field: keyof EmployeeData, value: string) => {
     setEmployeeData((prev) => ({ ...prev, [field]: value }));
   };
@@ -46,13 +44,11 @@ export const useInvitingEmployee = (closeModal: () => void) => {
   };
 
   const handleSubmit = async () => {
-    // Валидация даты
     if (!isDateValid(employeeData.employment_date)) {
       setValidationError("Дата должна быть в формате ГГГГ-ММ-ДД");
       return;
     }
 
-    // Проверка, заполнены ли все поля
     const isFormValid = Object.values(employeeData).every(
       (value) => value !== "",
     );
@@ -61,14 +57,12 @@ export const useInvitingEmployee = (closeModal: () => void) => {
       return;
     }
 
-    // Сброс ошибок валидации
     setValidationError(null);
 
-    // Попытка отправки данных
     try {
       await addEmployee(employeeData);
-      refetch(); // Обновляем список сотрудников
-      closeModal(); // Закрываем модалку после успешной отправки
+      refetch();
+      closeModal();
     } catch (err) {
       const axiosError = err as AxiosError;
       if (axiosError.response?.status === 400) {
@@ -79,7 +73,6 @@ export const useInvitingEmployee = (closeModal: () => void) => {
     }
   };
 
-  // Возвращаем состояния и обработчики для использования в UI компоненте
   return {
     employeeData,
     isChecked,

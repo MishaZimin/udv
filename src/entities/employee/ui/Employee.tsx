@@ -1,14 +1,16 @@
 import { EditEmployeeModal, DeleteEmployeeModal } from "src/features/modals";
-import { ActionPanel } from "src/entities/action-panel";
-import { useModal, ButtonIcon } from "src/shared/ui";
+import { useModal } from "src/shared/ui";
 import { EmployeeText, EmployeeIcon } from "..";
 import { IEmployee } from "../model/types/employee.type";
+import Dots from "src/shared/assets/svgs/Dots.svg";
+import { useState } from "react";
 
 type EmployeeProps = {
   employee: IEmployee;
+  onPendingChange?: (pending: boolean) => void;
 };
 
-export const Employee = ({ employee }: EmployeeProps) => {
+export const Employee = ({ employee, onPendingChange }: EmployeeProps) => {
   const {
     isOpen: isEditOpen,
     openModal: openEditModal,
@@ -20,37 +22,52 @@ export const Employee = ({ employee }: EmployeeProps) => {
     closeModal: closeDeleteModal,
   } = useModal();
 
-  const employeeData = {
-    full_name: employee.full_name,
-    place_of_employment: employee.place_of_employment,
-    position: employee.position,
-    employment_date: employee.employment_date,
-    email: employee.email,
-    administration: employee.administration,
+  const [isOpenPanel, setIsOpenPanel] = useState(false);
+
+  const handleClick = () => {
+    setIsOpenPanel(!isOpenPanel);
   };
 
   return (
-    <div className="flex flex-row gap-8 px-2 py-4 text-left">
-      <EmployeeIcon isAdministration={employeeData.administration} />
-      <EmployeeText employee={employee} />
+    <>
+      <div className="flex flex-row gap-8 px-2 py-4 text-left">
+        <EmployeeIcon isAdministration={employee.administration} />
+        <EmployeeText employee={employee} />
 
-      <ActionPanel>
-        <ButtonIcon iconName={"Edit"} onClick={openEditModal} />
-        <ButtonIcon iconName={"Delete"} onClick={openDeleteModal} />
-      </ActionPanel>
+        <button onClick={handleClick}>
+          <img src={Dots} />
+        </button>
 
-      <DeleteEmployeeModal
-        employeeId={employee.user_uuid}
-        isOpen={isDeleteOpen}
-        closeModal={closeDeleteModal}
-        closeBtn={false}
-      />
-      <EditEmployeeModal
-        isOpen={isEditOpen}
-        closeModal={closeEditModal}
-        employee={employeeData}
-        id={employee.user_uuid}
-      />
-    </div>
+        <DeleteEmployeeModal
+          employeeId={employee.user_uuid}
+          isOpen={isDeleteOpen}
+          closeModal={closeDeleteModal}
+          closeBtn={false}
+        />
+        <EditEmployeeModal
+          isOpen={isEditOpen}
+          closeModal={closeEditModal}
+          employee={employee}
+          id={employee.user_uuid}
+          onPendingChange={onPendingChange}
+        />
+      </div>
+      {isOpenPanel && (
+        <div className="я-10 -mt-[16px] mr-6 flex justify-end">
+          <div className="right-[100px] top-[0px] flex w-fit flex-col gap-2 rounded-[16px] bg-white p-2">
+            <button
+              className="h-[40px] px-4 pb-[10px] pt-2 text-left"
+              onClick={openEditModal}>
+              <p>Редактировать</p>
+            </button>
+            <button
+              className="h-[40px] px-4 pb-[10px] pt-2 text-left"
+              onClick={openDeleteModal}>
+              <p>Удалить сотрудника</p>
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
