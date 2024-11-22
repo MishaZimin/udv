@@ -19,7 +19,7 @@ export const ProfileInfo = () => {
   ];
 
   return (
-    <div className="mb-[32px] flex w-full flex-col justify-between gap-[16px] rounded-[16px] bg-card p-8 md:flex-row">
+    <div className="mb-[32px] flex w-full flex-col justify-between gap-[16px] rounded-[16px] bg-card p-8">
       {profileData.map((item, index) => (
         <div key={index} className="flex flex-col gap-[4px]">
           <p className="text-[14px] leading-[20px] opacity-[60%]">

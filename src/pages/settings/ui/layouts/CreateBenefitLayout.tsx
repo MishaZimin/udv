@@ -1,4 +1,3 @@
-// src/features/benefit-create/ui/CreateBenefitLayout.tsx
 import { Navbar, CREATEBENEFIT } from "src/widgets/navbar";
 import { BackButton } from "src/shared/ui/button/BackButton";
 import { Preview } from "src/widgets/preview/ui/Preview";

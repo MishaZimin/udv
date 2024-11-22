@@ -1,4 +1,3 @@
-// src/features/description/components/MarkdownPreview.tsx
 import ReactMarkdown from "react-markdown";
 
 interface Props {
@@ -15,7 +14,7 @@ export const MarkdownPreview = ({ description }: Props) => {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="no-underline text-mint visited:text-mintactive hover:text-minthover">
+              className="text-mint no-underline visited:text-mintactive hover:text-minthover">
               {children}
             </a>
           ),

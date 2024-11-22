@@ -55,13 +55,6 @@ export const useEditBenefitLogic = () => {
       throw new Error("Image source is missing");
     }
 
-    // const imageFile =
-    //   imageSrc.slice(0, 5) === "blob:"
-
-    //     ? {await urlToFile(imageSrc, "cover")}
-    //     : String(imageSrc);
-    // setIsFileProcessing(false);
-
     if (imageSrc.slice(0, 5) === "blob:") {
       const imageFile = await urlToFile(imageSrc, "cover");
       await uploadCover({ benefitId, imageFile });

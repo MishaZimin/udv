@@ -23,7 +23,7 @@ export const BigModal = ({
 }: Props) => {
   return (
     <Modal isOpen={isOpen} onClose={closeModal} position="right">
-      <div className="relative z-10 mx-auto mb-8 mr-8 mt-8 flex h-[calc(100vh-64px)] w-[600px] flex-col gap-[0px] rounded-[16px] bg-card p-6 px-[32px] py-[24px]">
+      <div className="md-full relative z-10 mx-0 mt-8 flex h-[calc(100vh-64px)] w-full flex-col gap-[0px] rounded-t-[16px] bg-card p-6 px-[32px] py-[24px] sm:mb-8 sm:ml-8 sm:mr-8 sm:rounded-[16px] md:w-[600px]">
         <div>
           {!isLoading ? (
             <h1 className="border-b pb-4 text-[28px] leading-[36px]">
@@ -35,12 +35,12 @@ export const BigModal = ({
 
           <button
             onClick={closeModal}
-            className="z-60 absolute right-[16px] top-[16px] h-[28px] w-[28px]">
+            className="z-60 absolute right-[24px] top-[24px] h-[28px] w-[28px]">
             <img className="h-[28px] w-[28px]" src={closeLine} />
           </button>
         </div>
 
-        <div className="flex max-h-[700px] flex-1 flex-col gap-4 overflow-y-auto border-b pt-2">
+        <div className="mt-4 flex max-h-[700px] w-full flex-1 flex-col gap-4 overflow-y-auto border-b">
           {children}
         </div>
 

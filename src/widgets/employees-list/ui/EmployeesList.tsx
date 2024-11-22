@@ -22,7 +22,7 @@ export const EmployeesList = () => {
   }
 
   return (
-    <div className="mb-10 w-full overflow-x-auto bg-white">
+    <div className="mb-10 w-full min-w-[1024px] overflow-x-auto bg-white">
       <div className="relative flex flex-row gap-8 px-[8px] py-[16px] text-left">
         <div className="my-auto h-[22px] min-w-[22px] rounded-full bg-white"></div>
         <div className="flex w-full flex-row gap-[32px]">

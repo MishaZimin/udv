@@ -1,5 +1,3 @@
-// src/features/submit-benefit/ui/SubmitButton.tsx
-
 import { Button } from "src/shared/ui";
 import { Loader } from "src/shared/ui";
 import { useSubmitBenefit } from "../model/hooks/use-submit";

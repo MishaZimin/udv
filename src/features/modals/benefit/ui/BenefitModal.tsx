@@ -5,14 +5,21 @@ import { BigModal } from "src/shared/ui/modal/ui/BigModal";
 import { useEffect } from "react";
 import { TextLoader } from "src/shared/ui/loader/TextLoader";
 import { LoadersList } from "src/shared/ui/loader/LoadersList";
+import { ImageLoader } from "src/shared/ui/loader/ImageLoader";
 
 type Props = {
   isOpen: boolean;
   closeModal: () => void;
   benefitId: string;
+  benefitImg?: string;
 };
 
-export const BenefitModal = ({ isOpen, closeModal, benefitId }: Props) => {
+export const BenefitModal = ({
+  isOpen,
+  closeModal,
+  benefitId,
+  benefitImg,
+}: Props) => {
   const { benefitData, error, isLoading } = useBenefit(Number(benefitId));
 
   useEffect(() => {
@@ -27,7 +34,6 @@ export const BenefitModal = ({ isOpen, closeModal, benefitId }: Props) => {
     <TextLoader height="36px" backgroundColor="bg-white" />
   ) : (
     <>{benefitData.name}</>
-    // <TextLoader height="36px" backgroundColor="bg-white" />
   );
 
   const footer = (
@@ -43,6 +49,7 @@ export const BenefitModal = ({ isOpen, closeModal, benefitId }: Props) => {
   );
   const children = isLoading ? (
     <div className="mt-2 flex flex-col gap-4">
+      <ImageLoader height="card" />
       <LoadersList count={3}>
         <div className="mb-4 w-1/2">
           <TextLoader backgroundColor="bg-white" />
@@ -55,8 +62,10 @@ export const BenefitModal = ({ isOpen, closeModal, benefitId }: Props) => {
       </LoadersList>
     </div>
   ) : (
-    <>
-      <p className="text-[14px] leading-[20px] text-opacity-[60%]">Описание</p>
+    <div>
+      <div className="mb-6 w-full">
+        <img className="w-full" src={benefitImg || ""} />
+      </div>
       <div className="prose">
         <Markdown
           components={{
@@ -73,7 +82,7 @@ export const BenefitModal = ({ isOpen, closeModal, benefitId }: Props) => {
           {benefitData.text}
         </Markdown>
       </div>
-    </>
+    </div>
   );
   return (
     <BigModal

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useImageStore } from "src/shared/stores";
 
-export const useDragAndDrop = (onFileDrop: (file: File | null) => void) => {
+export const useDragAndDrop = (onFileDrop: (file: File) => void) => {
   const [isDragging, setIsDragging] = useState(false);
   const [fileName, setFileName] = useState<string | null>(null);
   const { setImageName: setStoreImageName } = useImageStore();

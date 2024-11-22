@@ -1,4 +1,3 @@
-// src/shared/stores/surveyStore.ts
 import { create } from "zustand";
 
 interface SurveyState {

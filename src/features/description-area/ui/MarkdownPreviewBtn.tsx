@@ -1,4 +1,3 @@
-// src/features/description/components/MarkdownPreviewButton.tsx
 import { MarkdownActionBtn } from "./MarkdownActionBtn";
 
 interface Props {

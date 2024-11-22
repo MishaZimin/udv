@@ -1,4 +1,4 @@
-import { DropArea } from "src/features/drop-area";
+import { ImageUploader } from "src/features/drop-area";
 
 export const BenefitImageUpload = () => {
   return (
@@ -8,7 +8,7 @@ export const BenefitImageUpload = () => {
         <br />
         на фоне цвета #EEF0F2
       </p>
-      <DropArea />
+      <ImageUploader />
     </div>
   );
 };

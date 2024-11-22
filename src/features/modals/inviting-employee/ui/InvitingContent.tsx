@@ -50,11 +50,11 @@ export const InvitingContent = ({
       </p>
 
       {fields.map(({ label, field, placeholder }) => (
-        <div key={field} className="flex flex-col gap-1">
-          <p className="text-[14px] leading-[20px] opacity-[60%]">{label}</p>
+        <div key={field}>
           <Input
             inputType="default"
             value={employeeData[field]}
+            label={label}
             onChange={(value) => handleChange(field, value)}
             placeholder={placeholder || ""}
           />

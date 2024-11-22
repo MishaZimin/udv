@@ -43,6 +43,7 @@ export const Benefit = ({ isNewTag, benefit, actionSlot, preview }: Props) => {
           isOpen={isOpenBenefit}
           closeModal={closeBenefitModal}
           benefitId={benefit.id.toString()}
+          benefitImg={benefit.cover_url}
         />
       )}
     </div>

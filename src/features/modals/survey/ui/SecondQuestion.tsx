@@ -1,4 +1,3 @@
-// src/features/survey/ui/SecondQuestion.tsx
 import { useSecondQuestion } from "../model/hooks/use-second-question";
 
 export const SecondQuestion = () => {

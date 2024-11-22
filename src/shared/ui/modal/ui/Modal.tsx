@@ -20,11 +20,18 @@ export const Modal = ({
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-end ${position == "right" ? "justify-end" : "justify-center"} sm:items-center`}>
+      className={`fixed inset-0 z-50 flex items-end ${isOpen ? "visible" : "invisible"} ${position == "right" ? "justify-end" : "justify-center"} sm:items-center`}>
       <div
-        className="fixed inset-0 bg-black opacity-[24%]"
+        className={`fixed inset-0 bg-black transition-opacity duration-300 ${
+          isOpen ? "opacity-30" : "opacity-0"
+        }`}
         onClick={onClose}></div>
-      <div className="relative">
+      <div
+        className={`relative flex w-full transition-all duration-300 ${position === "right" ? "justify-end" : "justify-center"} ${
+          isOpen
+            ? "translate-y-0 scale-100 opacity-100"
+            : "translate-y-10 scale-95 opacity-0"
+        }`}>
         {closeBtn && (
           <button
             onClick={onClose}

@@ -1,4 +1,3 @@
-// src/features/description/hooks/useMarkdownPreview.ts
 import { useState } from "react";
 
 export const useMarkdownPreview = () => {

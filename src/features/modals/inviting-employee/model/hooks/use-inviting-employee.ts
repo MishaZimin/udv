@@ -4,7 +4,6 @@ import { AxiosError } from "axios";
 import { useAddEmployee } from "../../api/mutations/use-add-employee";
 import { useEmployees } from "src/widgets/employees-list/api/queries/use-employees";
 
-// Типы данных
 type EmployeeData = {
   full_name: string;
   place_of_employment: string;

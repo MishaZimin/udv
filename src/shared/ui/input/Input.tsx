@@ -6,6 +6,7 @@ type Props = {
   value: string;
   disabled?: boolean;
   errorText?: string;
+  label?: string;
 };
 
 export const Input = ({
@@ -16,6 +17,7 @@ export const Input = ({
   value,
   disabled,
   errorText,
+  label,
 }: Props) => {
   const baseClasses =
     " w-full px-[12px] pt-[8px] pb-[10px] rounded-[8px] font-base border h-10 focus:outline-none animation";
@@ -32,6 +34,11 @@ export const Input = ({
   return (
     <>
       <div className="relative">
+        {label && (
+          <p className="mb-1 text-[14px] leading-[20px] opacity-[60%]">
+            {label}
+          </p>
+        )}
         <input
           value={value}
           placeholder={placeholder}
