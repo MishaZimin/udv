@@ -56,6 +56,16 @@ export const Employee = ({
     onToggle(!isActive ? employee.user_uuid : null);
   };
 
+  const handleEditClick = () => {
+    openEditModal();
+    onToggle(null);
+  };
+
+  const handleDeleteClick = () => {
+    openDeleteModal();
+    onToggle(null);
+  };
+
   return (
     <div className="relative">
       <div className="flex flex-row gap-8 px-2 py-4 text-left">
@@ -85,12 +95,12 @@ export const Employee = ({
           <div className="right-[100px] top-[0px] flex w-fit flex-col gap-2 rounded-[16px] bg-white p-2">
             <button
               className="h-[40px] px-4 pb-[10px] pt-2 text-left"
-              onClick={openEditModal}>
+              onClick={handleEditClick}>
               <p>Редактировать</p>
             </button>
             <button
               className="h-[40px] px-4 pb-[10px] pt-2 text-left"
-              onClick={openDeleteModal}>
+              onClick={handleDeleteClick}>
               <p>Удалить сотрудника</p>
             </button>
           </div>
