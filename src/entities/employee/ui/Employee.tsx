@@ -3,7 +3,7 @@ import { useModal } from "src/shared/ui";
 import { EmployeeText, EmployeeIcon } from "..";
 import { IEmployee } from "../model/types/employee.type";
 import Dots from "src/shared/assets/svgs/Dots.svg";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 type EmployeeProps = {
   employee: IEmployee;
@@ -29,14 +29,7 @@ export const Employee = ({
     closeModal: closeDeleteModal,
   } = useModal();
 
-  const [isOpenPanel, setIsOpenPanel] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-
-  console.log(isActive);
-
-  // const handleClick = () => {
-  //   setIsOpenPanel(!isOpenPanel);
-  // };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleClickOutside = (event: MouseEvent) => {
