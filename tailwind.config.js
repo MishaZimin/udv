@@ -28,6 +28,8 @@ export default {
         darkblue: "#003B4C",
         darkbluehover: "#004B61",
         darkblueactive: "#005B75",
+
+        orange: "#FFBB00",
       },
 
       backgroundSize: {

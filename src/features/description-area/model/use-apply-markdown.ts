@@ -68,6 +68,7 @@ export const useApplyMarkdown = (
           const match = selectedText.match(linkRegex);
 
           if (match) {
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const [_, linkText] = match;
             newText = linkText;
             newStart = start;

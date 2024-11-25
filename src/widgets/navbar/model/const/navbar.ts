@@ -17,7 +17,7 @@ export const CREATEBENEFIT: NavbarProps[] = [
   },
   {
     icons: null,
-    name: "3. Доступность",
+    name: "3. Настройки",
     link: "/create-benefit/availability",
   },
 ];
@@ -42,5 +42,10 @@ export const HEADERNAVBAR: NavbarProps[] = [
     icons: null,
     name: "Сотрудники",
     link: "/admin/employees",
+  },
+  {
+    icons: null,
+    name: "Заявки",
+    link: "/admin/applications",
   },
 ];

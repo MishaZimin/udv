@@ -18,6 +18,7 @@ import { ProtectedRoutes } from "./ProtectedRoute";
 import { AdminRoute } from "./AdminRoute";
 import { AuthRoutes } from "./AuthRoute";
 import { ModalProvider } from "src/shared/ui/modal/ui/ModalProvider";
+import { AdminApplicationPage } from "src/pages/applications/ui/ApplicationsPage";
 
 const queryClient = new QueryClient();
 
@@ -54,6 +55,10 @@ export const AppRouter = () => {
                 <Route
                   path="/admin/employees"
                   element={<AdminEmployeesPage />}
+                />
+                <Route
+                  path="/admin/applications"
+                  element={<AdminApplicationPage />}
                 />
                 <Route
                   path="/admin/categories"

@@ -29,12 +29,12 @@ export const Employee = ({ employee, onPendingChange }: EmployeeProps) => {
   };
 
   return (
-    <>
+    <div className="relative">
       <div className="flex flex-row gap-8 px-2 py-4 text-left">
         <EmployeeIcon isAdministration={employee.administration} />
         <EmployeeText employee={employee} />
 
-        <button onClick={handleClick}>
+        <button className="min-w-[22px]" onClick={handleClick}>
           <img src={Dots} />
         </button>
 
@@ -53,7 +53,7 @@ export const Employee = ({ employee, onPendingChange }: EmployeeProps) => {
         />
       </div>
       {isOpenPanel && (
-        <div className="я-10 -mt-[16px] mr-6 flex justify-end">
+        <div className="absolute right-6 z-40 -mt-[16px] flex justify-end rounded-[16px] bg-white">
           <div className="right-[100px] top-[0px] flex w-fit flex-col gap-2 rounded-[16px] bg-white p-2">
             <button
               className="h-[40px] px-4 pb-[10px] pt-2 text-left"
@@ -68,6 +68,6 @@ export const Employee = ({ employee, onPendingChange }: EmployeeProps) => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };

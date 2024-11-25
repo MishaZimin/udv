@@ -5,7 +5,8 @@ export const BenefitAvailability = () => {
   const { checkboxes, toggleCheckbox } = useCheckboxStore();
 
   return (
-    <div className="flex w-full flex-col gap-[24px]">
+    <div className="flex w-full flex-col gap-4">
+      <h1>Доступность</h1>
       <div className="flex flex-col gap-[16px]">
         <p>Выберите кому будет доступен бенефит</p>
       </div>

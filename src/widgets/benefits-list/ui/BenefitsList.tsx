@@ -20,7 +20,7 @@ export const BenefitsList = () => {
         {!isLoading ? (
           benefits.map((benefit: IBenefitCard) => (
             <div key={benefit.id} className="md:w-full lg:w-[320px]">
-              <Benefit benefit={benefit} isNewTag={Math.random() < 0.4} />
+              <Benefit benefit={benefit} isNewTag={false} />
             </div>
           ))
         ) : (

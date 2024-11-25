@@ -10,7 +10,7 @@ export const Layout = (props: Props) => {
     <>
       <Header />
       <div
-        className={`mx-auto h-full w-full ${isAdmin ? "pt-[166px]" : "pt-[96px]"} lg:w-[1024px]`}>
+        className={`mx-auto h-svh w-full ${isAdmin ? "pt-[166px]" : "pt-[96px]"} lg:w-[1024px]`}>
         <div className="mx-4 sm:mx-10 lg:mx-0">{props.children}</div>
       </div>
     </>

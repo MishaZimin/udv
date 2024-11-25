@@ -7,7 +7,7 @@ import { useEditBenefit } from "../../api/mutations/use-edit-benefit";
 import { getFromLocalStorage } from "src/shared/lib";
 import { useUploadBenefitCover } from "../../api/mutations/use-upload-image";
 import { urlToFile } from "../utils/url-to-file";
-import { useState } from "react";
+import { usePossibilitiesStore } from "src/shared/stores/use-possibilities-store";
 
 export const useEditBenefitLogic = () => {
   const {
@@ -26,8 +26,12 @@ export const useEditBenefitLogic = () => {
   const description = useCardStore((state) => state.description);
   const imageSrc = useImageStore((state) => state.imageSrc);
   const { checkboxes } = useCheckboxStore();
-
-  const [isFileProcessing, setIsFileProcessing] = useState(false);
+  const isCheckedApplication = usePossibilitiesStore(
+    (state) => state.isCheckedApplication,
+  );
+  const isCheckedReceipt = usePossibilitiesStore(
+    (state) => state.isCheckedReceipt,
+  );
 
   const handleEdit = async () => {
     const checkedIds: number[] = checkboxes
@@ -39,8 +43,10 @@ export const useEditBenefitLogic = () => {
       card_name: subtext,
       text: description,
       categories: checkedIds,
+      // isCheckedApplication: isCheckedApplication,
+      // isCheckedReceipt: isCheckedReceipt,
     };
-
+    console.log("----", isCheckedApplication, isCheckedReceipt);
     console.log("updatedData:", updatedData);
 
     await EditBenefit({
@@ -49,7 +55,7 @@ export const useEditBenefitLogic = () => {
     });
 
     const benefitId = getFromLocalStorage("edit-benefit-id");
-    setIsFileProcessing(true);
+
     console.log("imageSrc.slice(0, 3)", imageSrc.slice(0, 5));
     if (!imageSrc) {
       throw new Error("Image source is missing");
@@ -64,6 +70,6 @@ export const useEditBenefitLogic = () => {
   return {
     handleEdit,
     error: errorUpload || errorEdit,
-    isPending: isPendingUpload || isPendingEdit || isFileProcessing,
+    isPending: isPendingUpload || isPendingEdit,
   };
 };

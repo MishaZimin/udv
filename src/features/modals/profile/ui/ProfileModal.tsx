@@ -1,9 +1,10 @@
 import { Loader } from "src/shared/ui";
 import { BigModal } from "src/shared/ui/modal/ui/BigModal";
 import { useProfile } from "src/widgets/profile-info";
-import { ProfileInfo } from "./ProfileText";
+import { ProfileMain } from "./ProfileMain";
 import { ProfileModalFooter } from "./ProfileModalFooter";
 import { TextLoader } from "src/shared/ui/loader/TextLoader";
+import { useProfileStore } from "../stores/use-profile-modal-store";
 
 type Props = {
   isOpen: boolean;
@@ -12,6 +13,7 @@ type Props = {
 
 export const ProfileModal = ({ isOpen, closeModal }: Props) => {
   const { profile, error, isLoading } = useProfile();
+  const { activeTab } = useProfileStore();
 
   if (isLoading) {
     return <Loader />;
@@ -21,16 +23,16 @@ export const ProfileModal = ({ isOpen, closeModal }: Props) => {
     return <p>error {error.message}</p>;
   }
 
-  const footerBtn = (
-    <ProfileModalFooter closeModal={closeModal} isLoading={isLoading} />
-  );
-  const children = <ProfileInfo profile={profile} isLoading={isLoading} />;
   const header = isLoading ? (
     <TextLoader height="36px" backgroundColor="bg-white" />
   ) : (
-    <>{profile.full_name}</>
-    // <TextLoader height="36px" backgroundColor="bg-white" />
+    <>{activeTab === "info" ? profile.full_name : "Мои заявки"}</>
   );
+  const children = <ProfileMain profile={profile} isLoading={isLoading} />;
+  const footer =
+    activeTab === "info" ? (
+      <ProfileModalFooter closeModal={closeModal} isLoading={isLoading} />
+    ) : null;
 
   return (
     <BigModal
@@ -38,7 +40,7 @@ export const ProfileModal = ({ isOpen, closeModal }: Props) => {
       onClose={closeModal}
       closeModal={closeModal}
       header={header}
-      footer={footerBtn}
+      footer={footer}
       children={children}></BigModal>
   );
 };

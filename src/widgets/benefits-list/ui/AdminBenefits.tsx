@@ -23,7 +23,8 @@ export const AdminBenefits = () => {
           <div key={benefit.id} className="md:w-full lg:w-[320px]">
             <Benefit
               benefit={benefit}
-              isNewTag={Math.random() < 0.4}
+              // isNewTag={Math.random() < 0.4}
+              isNewTag={false}
               actionSlot={<AdminActionPanel benefit={benefit} />}
             />
           </div>

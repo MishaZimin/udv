@@ -9,7 +9,7 @@ export const TextArea = ({ description, setDescription }: Props) => {
       value={description}
       onChange={(e) => setDescription(e.target.value)}
       placeholder="Описание блока"
-      className="animation h-full min-h-[320px] w-full resize-none rounded-[8px] border border-graphite border-opacity-[20%] px-[12px] pb-[92px] pt-[8px] font-base focus:outline-none"
+      className="animation h-full min-h-[330px] w-full resize-none rounded-[8px] border border-graphite border-opacity-[20%] px-[12px] pb-[92px] pt-[8px] font-base focus:outline-none"
     />
   );
 };

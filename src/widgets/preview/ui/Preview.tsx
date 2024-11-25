@@ -25,7 +25,7 @@ export const Preview = () => {
     <div className="z-10 flex flex-col gap-[16px]">
       <p className="text-[20px] font-semibold">Превью</p>
       <div className="h-[240px] w-[320px]">
-        <Benefit benefit={benefit} isNewTag={true} preview={true} />
+        <Benefit benefit={benefit} isNewTag={false} preview={true} />
       </div>
     </div>
   );

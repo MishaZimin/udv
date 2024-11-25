@@ -4,6 +4,7 @@ import { useCreateBenefit } from "../../api/mutations/use-create-benefit";
 import { useImageStore } from "src/shared/stores";
 import { useUploadBenefitCover } from "../../api/mutations/use-upload-image";
 import { urlToFile } from "../utils/url-to-file";
+import { usePossibilitiesStore } from "src/shared/stores/use-possibilities-store";
 
 export const useCreateBenefitLogic = () => {
   const {
@@ -22,6 +23,12 @@ export const useCreateBenefitLogic = () => {
   const description = useCardStore((state) => state.description);
   const imageSrc = useImageStore((state) => state.imageSrc);
   const { checkboxes } = useCheckboxStore();
+  const isCheckedApplication = usePossibilitiesStore(
+    (state) => state.isCheckedApplication,
+  );
+  const isCheckedReceipt = usePossibilitiesStore(
+    (state) => state.isCheckedReceipt,
+  );
 
   const handleSubmit = async () => {
     const checkedIds: number[] = checkboxes
@@ -33,10 +40,12 @@ export const useCreateBenefitLogic = () => {
       card_name: subtext,
       text: description,
       categories: checkedIds,
+      // isCheckedApplication: isCheckedApplication,
+      // isCheckedReceipt: isCheckedReceipt,
     });
 
     console.log("response create benefit:", data.success.id, "|", imageSrc);
-
+    console.log("----", isCheckedApplication, isCheckedReceipt);
     const benefitId = data.success.id;
 
     if (!imageSrc) {
