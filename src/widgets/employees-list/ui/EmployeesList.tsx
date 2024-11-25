@@ -16,6 +16,11 @@ export const EmployeesList = () => {
   const handlePendingChange = (pending: boolean) => {
     setIsModalPending(pending);
   };
+  const [activeItem, setActiveItem] = useState<string | null>(null);
+
+  const handleToggle = (id: string | null) => {
+    setActiveItem(id);
+  };
 
   if (error) {
     return <p className="text-red-500">error</p>;
@@ -58,7 +63,11 @@ export const EmployeesList = () => {
           </LoadersList> */}
           {employees.map((employee: IEmployee) => (
             <div key={employee.user_uuid}>
-              <Employee employee={employee} />
+              <Employee
+                employee={employee}
+                isActive={activeItem === employee.user_uuid}
+                onToggle={handleToggle}
+              />
             </div>
           ))}
           {isModalPending && <LoaderEmployee />}

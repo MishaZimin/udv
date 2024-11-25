@@ -3,14 +3,21 @@ import { useModal } from "src/shared/ui";
 import { EmployeeText, EmployeeIcon } from "..";
 import { IEmployee } from "../model/types/employee.type";
 import Dots from "src/shared/assets/svgs/Dots.svg";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type EmployeeProps = {
   employee: IEmployee;
   onPendingChange?: (pending: boolean) => void;
+  onToggle: (id: string | null) => void;
+  isActive: boolean;
 };
 
-export const Employee = ({ employee, onPendingChange }: EmployeeProps) => {
+export const Employee = ({
+  employee,
+  onPendingChange,
+  onToggle,
+  isActive,
+}: EmployeeProps) => {
   const {
     isOpen: isEditOpen,
     openModal: openEditModal,
@@ -23,9 +30,37 @@ export const Employee = ({ employee, onPendingChange }: EmployeeProps) => {
   } = useModal();
 
   const [isOpenPanel, setIsOpenPanel] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  console.log(isActive);
+
+  // const handleClick = () => {
+  //   setIsOpenPanel(!isOpenPanel);
+  // };
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target as Node)
+    ) {
+      onToggle(null);
+    }
+  };
+
+  useEffect(() => {
+    if (isActive) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [handleClickOutside, isActive]);
 
   const handleClick = () => {
-    setIsOpenPanel(!isOpenPanel);
+    onToggle(!isActive ? employee.user_uuid : null);
   };
 
   return (
@@ -52,8 +87,8 @@ export const Employee = ({ employee, onPendingChange }: EmployeeProps) => {
           onPendingChange={onPendingChange}
         />
       </div>
-      {isOpenPanel && (
-        <div className="absolute right-6 z-40 -mt-[16px] flex justify-end rounded-[16px] bg-white">
+      {isActive && (
+        <div className="absolute right-[26px] z-40 -mt-[16px] flex justify-end rounded-[16px] bg-white">
           <div className="right-[100px] top-[0px] flex w-fit flex-col gap-2 rounded-[16px] bg-white p-2">
             <button
               className="h-[40px] px-4 pb-[10px] pt-2 text-left"
