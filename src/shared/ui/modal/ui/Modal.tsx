@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import closeLine from "src/shared/assets/svgs/closeLine.svg";
 
 type Props = {
@@ -16,6 +16,20 @@ export const Modal = ({
   closeBtn,
   position,
 }: Props) => {
+  useEffect(() => {
+    // Заблокировать прокрутку при открытии модалки
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    // Очистить эффект при размонтировании компонента
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (

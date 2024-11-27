@@ -3,6 +3,7 @@ import {
   useImageStore,
   useCheckboxStore,
 } from "src/shared/stores";
+import { usePossibilitiesStore } from "src/shared/stores/use-possibilities-store";
 import { saveToLocalStorage } from "src/shared/lib";
 
 export const resetCreateBenefit = () => {
@@ -14,4 +15,5 @@ export const resetCreateBenefit = () => {
   useCheckboxStore.getState().setCheckboxesFromResponse([]);
   useImageStore.getState().setImageSrc("");
   useImageStore.getState().setImageName("");
+  usePossibilitiesStore.getState().resetAll();
 };

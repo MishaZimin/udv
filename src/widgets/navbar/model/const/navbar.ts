@@ -33,11 +33,11 @@ export const HEADERNAVBAR: NavbarProps[] = [
     name: "Настройка бенефитов",
     link: "/admin/benefit",
   },
-  {
-    icons: null,
-    name: "Опрос и фидбек",
-    link: "/admin/apeals",
-  },
+  // {
+  //   icons: null,
+  //   name: "Опрос и фидбек",
+  //   link: "/admin/apeals",
+  // },
   {
     icons: null,
     name: "Сотрудники",

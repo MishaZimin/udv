@@ -1,5 +1,6 @@
 import { Button } from "src/shared/ui";
 import { useDragAndDrop } from "../model/use-drag-and-drop";
+import { urlToFile } from "src/features/submit-benefit/model/utils/url-to-file";
 
 interface Props {
   onFileSelect: (files: File[]) => void;
@@ -19,13 +20,31 @@ export const FileUploaderMini = ({
 }: Props) => {
   const { handleDragOver, handleDragLeave, handleDrop, isDragging } =
     useDragAndDrop((file) => {
-      onFileSelect([file]);
+      // Получаем URL и обрабатываем файл через urlToFile
+      const fileUrl = URL.createObjectURL(file); // Создаем URL для Blob
+      urlToFile(fileUrl, "cover")
+        .then((processedFile) => {
+          onFileSelect([processedFile]);
+        })
+        .catch((error) => console.error("Error processing file:", error));
     });
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const selectedFiles = Array.from(e.target.files);
-      onFileSelect(selectedFiles);
+
+      // Обрабатываем каждый файл, создавая URL для Blob
+      const filePromises = selectedFiles.map((file) => {
+        const fileUrl = URL.createObjectURL(file);
+        return urlToFile(fileUrl, file.name);
+      });
+
+      // После обработки всех файлов обновляем состояние
+      Promise.all(filePromises)
+        .then((processedFiles) => {
+          onFileSelect(processedFiles);
+        })
+        .catch((error) => console.error("Error processing files:", error));
     }
   };
 

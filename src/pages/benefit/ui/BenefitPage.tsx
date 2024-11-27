@@ -1,6 +1,6 @@
 import { BackButton } from "src/shared/ui";
 import Markdown from "react-markdown";
-import { Feedback } from "src/features/feedback/ui/Feedback";
+// import { Feedback } from "src/features/feedback/ui/Feedback";
 import { useLocation } from "react-router-dom";
 import { useBenefit } from "..";
 import { Loader } from "src/shared/ui";
@@ -29,7 +29,7 @@ export const BenefitPage = () => {
             <p className="text-[32px] font-semibold leading-[40px]">
               {benefitData.name}
             </p>
-            <Feedback />
+            {/* <Feedback /> */}
           </div>
           <div className="prose mb-[32px] w-full px-2 pt-[144px] sm:px-10 sm:pt-[104px] md:ml-16 md:w-[600px]">
             <Markdown
@@ -39,7 +39,7 @@ export const BenefitPage = () => {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="no-underline text-mint visited:text-mintactive hover:text-minthover">
+                    className="text-mint no-underline visited:text-mintactive hover:text-minthover">
                     {children}
                   </a>
                 ),
@@ -49,7 +49,7 @@ export const BenefitPage = () => {
           </div>
         </div>
       </div>
-      <Feedback />
+      {/* <Feedback /> */}
     </>
   );
 };

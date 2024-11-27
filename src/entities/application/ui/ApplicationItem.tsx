@@ -1,9 +1,12 @@
 import { useEffect, useRef } from "react";
 import Dots from "src/shared/assets/svgs/Dots.svg";
 import { ApplicationText } from "./ApplicationText";
+import { TApplicationItem } from "../../../pages/applications/model/applicationItem.type";
+import { useDenyRequest } from "../api/mutations/use-deny-request";
+import { useApplyRequest } from "../api/mutations/use-apply-request";
 
 type Props = {
-  application: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  application: TApplicationItem;
   isActive: boolean;
   onToggle: (id: string | null) => void;
 };
@@ -11,7 +14,9 @@ type Props = {
 export const ApplicationItem = ({ application, isActive, onToggle }: Props) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const applyRequestMutation = useApplyRequest(); // Хук для "Принять"
+  const denyRequestMutation = useDenyRequest(); // Хук для "Отклонить"
+
   const handleClickOutside = (event: MouseEvent) => {
     if (
       dropdownRef.current &&
@@ -30,10 +35,36 @@ export const ApplicationItem = ({ application, isActive, onToggle }: Props) => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [handleClickOutside, isActive]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isActive]);
 
+  // Обработчик клика по кнопке
   const handleClick = () => {
-    onToggle(!isActive ? application.user_uuid : null);
+    onToggle(!isActive ? String(application.request_id) : null);
+  };
+
+  const handleApply = () => {
+    applyRequestMutation.mutate(application.request_id, {
+      onSuccess: () => {
+        console.log("Заявка принята", application.request_id);
+        onToggle(null); // Закрыть меню
+      },
+      onError: (error) => {
+        console.error("Ошибка принятия заявки:", error);
+      },
+    });
+  };
+
+  const handleDeny = () => {
+    denyRequestMutation.mutate(application.request_id, {
+      onSuccess: () => {
+        console.log("Заявка отклонена", application.request_id);
+        onToggle(null); // Закрыть меню
+      },
+      onError: (error) => {
+        console.error("Ошибка отклонения заявки:", error);
+      },
+    });
   };
 
   return (
@@ -51,16 +82,12 @@ export const ApplicationItem = ({ application, isActive, onToggle }: Props) => {
           <div className="z-10 flex w-fit flex-col gap-2 rounded-[16px] bg-card p-2">
             <button
               className="h-[40px] px-4 pb-[10px] pt-2 text-left"
-              onClick={() => {
-                console.log("Принять", application.user_uuid);
-              }}>
+              onClick={handleApply}>
               <p>Принять</p>
             </button>
             <button
               className="h-[40px] px-4 pb-[10px] pt-2 text-left"
-              onClick={() => {
-                console.log("Отклонить", application.user_uuid);
-              }}>
+              onClick={handleDeny}>
               <p>Отклонить</p>
             </button>
           </div>

@@ -19,4 +19,6 @@ export type IBenefitInfo = {
   card_name: string;
   text: string;
   categories: number[];
+  need_confirmation: boolean;
+  need_files: boolean;
 };

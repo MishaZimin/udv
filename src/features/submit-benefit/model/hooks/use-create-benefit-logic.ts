@@ -40,8 +40,8 @@ export const useCreateBenefitLogic = () => {
       card_name: subtext,
       text: description,
       categories: checkedIds,
-      // isCheckedApplication: isCheckedApplication,
-      // isCheckedReceipt: isCheckedReceipt,
+      need_confirmation: isCheckedApplication,
+      need_files: isCheckedReceipt,
     });
 
     console.log("response create benefit:", data.success.id, "|", imageSrc);
@@ -52,6 +52,7 @@ export const useCreateBenefitLogic = () => {
       throw new Error("Image source is missing");
     }
 
+    console.log(imageSrc);
     const imageFile = await urlToFile(imageSrc, "cover");
 
     await uploadCover({ benefitId, imageFile });

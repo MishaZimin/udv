@@ -1,7 +1,7 @@
 import { Button } from "src/shared/ui";
 import { LoadersList } from "src/shared/ui/loader/LoadersList";
 import { TextLoader } from "src/shared/ui/loader/TextLoader";
-import { ApplicationsList } from "./ApplicationsList";
+import { ApplicationsList } from "./MyApplicationsList";
 import { useProfileStore } from "../stores/use-profile-modal-store";
 
 type Props = {

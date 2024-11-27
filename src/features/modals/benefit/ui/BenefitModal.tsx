@@ -8,6 +8,7 @@ import { LoadersList } from "src/shared/ui/loader/LoadersList";
 import { ImageLoader } from "src/shared/ui/loader/ImageLoader";
 import { FileUploaderMini } from "src/shared/ui/drop-area/ui/DropAreaMini";
 import { SuccessModal } from "./SuccessModal";
+import { ApplyApi } from "../api/api/apply.api";
 
 type Props = {
   isOpen: boolean;
@@ -30,8 +31,9 @@ export const BenefitModal = ({
   } = useModal();
 
   const [files, setFiles] = useState<File[]>([]);
-
+  const [isSubmitLoading, setIsSubmitLoading] = useState<boolean>(false);
   const handleFileSelect = (newFiles: File[]) => {
+    console.log(newFiles);
     setFiles((prevFiles) => [...prevFiles, ...newFiles]);
   };
 
@@ -43,10 +45,33 @@ export const BenefitModal = ({
     return <p>error {error.message}</p>;
   }
 
-  const submitRequest = () => {
-    //запрос
-    // closeModal();
-    openModalSuccess();
+  const submitRequest = async () => {
+    if (benefitData.need_files && files.length === 0) {
+      alert("Необходимо прикрепить чеки.");
+      return;
+    }
+
+    setIsSubmitLoading(true);
+
+    try {
+      const formData = new FormData();
+
+      const fileNames = files.map((file) => file.name).join(",");
+
+      formData.append("files", fileNames);
+
+      const response = await ApplyApi.applyBenefit(Number(benefitId), formData);
+      console.log(response.detail);
+      if (response.detail === "Benefit request successfully created") {
+        openModalSuccess();
+      } else {
+        alert("Ошибка при отправке данных");
+      }
+    } catch (error) {
+      console.error("Ошибка при отправке данных", error);
+    } finally {
+      setIsSubmitLoading(false);
+    }
   };
 
   const header = isLoading ? (
@@ -55,24 +80,26 @@ export const BenefitModal = ({
     <>{benefitData.name}</>
   );
 
-  const footer = (
-    <>
-      <Button
-        text={"Отправить заявку"}
-        textColor={"light"}
-        buttonType={"primary"}
-        onClick={submitRequest}
-        disabled={isLoading}
-      />
-      <Button
-        text={"Отменить"}
-        textColor={"dark"}
-        buttonType={"secondary"}
-        onClick={closeModal}
-        disabled={isLoading}
-      />
-    </>
-  );
+  const footer =
+    !isLoading && benefitData.need_confirmation ? (
+      <>
+        <Button
+          text={"Отправить заявку"}
+          textColor={"light"}
+          buttonType={"primary"}
+          onClick={submitRequest}
+          disabled={isSubmitLoading}
+        />
+        <Button
+          text={"Отменить"}
+          textColor={"dark"}
+          buttonType={"secondary"}
+          onClick={closeModal}
+          disabled={isSubmitLoading}
+        />
+      </>
+    ) : null;
+
   const children = isLoading ? (
     <div className="mt-2 flex flex-col gap-4">
       <ImageLoader height="card" />
@@ -94,16 +121,19 @@ export const BenefitModal = ({
       <div className="mt-2 w-full">
         <img className="w-full" src={benefitImg || ""} />
       </div>
-      {/* тут проверка на загоузку чеков */}
-      <div className="">
-        <FileUploaderMini
-          onFileSelect={handleFileSelect}
-          placeholderText={"Прикрепить чеки PNG, JPG"}
-          acceptedFileTypes={"image/*"}
-          files={files}
-          clearFile={handleFileClear}
-        />
-      </div>
+      {/* Проверка на необходимость загрузки файлов */}
+      {benefitData.need_files && (
+        <div>
+          <FileUploaderMini
+            onFileSelect={handleFileSelect}
+            placeholderText={"Прикрепить чеки PNG, JPG"}
+            acceptedFileTypes={"image/*"}
+            files={files}
+            clearFile={handleFileClear}
+          />
+        </div>
+      )}
+
       <div className="prose">
         <Markdown
           components={{
@@ -122,6 +152,7 @@ export const BenefitModal = ({
       </div>
     </div>
   );
+
   return (
     <>
       <BigModal
@@ -130,7 +161,8 @@ export const BenefitModal = ({
         closeModal={closeModal}
         header={header}
         footer={footer}
-        children={children}></BigModal>
+        children={children}
+      />
       <SuccessModal
         isOpen={isOpenSuccess}
         closeModal={closeModalSuccess}

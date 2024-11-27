@@ -43,6 +43,8 @@ export const useEditBenefitLogic = () => {
       card_name: subtext,
       text: description,
       categories: checkedIds,
+      need_confirmation: isCheckedApplication,
+      need_files: isCheckedReceipt,
       // isCheckedApplication: isCheckedApplication,
       // isCheckedReceipt: isCheckedReceipt,
     };

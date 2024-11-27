@@ -5,6 +5,7 @@ import {
   useImageStore,
   useCheckboxStore,
 } from "src/shared/stores";
+import { usePossibilitiesStore } from "src/shared/stores/use-possibilities-store";
 import { saveToLocalStorage } from "src/shared/lib";
 import { IBenefitCard } from "src/entities/benefit";
 
@@ -15,6 +16,17 @@ export const useAdminAction = (benefit: IBenefitCard) => {
   const setSubtext = useCardStore((state) => state.setSubtext);
   const setDescription = useCardStore((state) => state.setDescription);
   const setImageSrc = useImageStore((state) => state.setImageSrc);
+  const isCheckedApplication = usePossibilitiesStore(
+    (state) => state.isCheckedApplication,
+  );
+  const isCheckedReceipt = usePossibilitiesStore(
+    (state) => state.isCheckedReceipt,
+  );
+
+  const toggleApplication = usePossibilitiesStore(
+    (state) => state.toggleApplication,
+  );
+  const toggleReceipt = usePossibilitiesStore((state) => state.toggleReceipt);
 
   const { setCheckboxesFromResponse } = useCheckboxStore();
   const { setImageName } = useImageStore();
@@ -33,6 +45,14 @@ export const useAdminAction = (benefit: IBenefitCard) => {
           ? "https://udv-benefits.ru/benefits/images/" + benefitData.cover_path
           : "",
       );
+
+      if (benefitData.need_confirmation !== isCheckedApplication) {
+        toggleApplication();
+      }
+
+      if (benefitData.need_files !== isCheckedReceipt) {
+        toggleReceipt();
+      }
 
       saveToLocalStorage("edit-benefit-id", benefit.id);
       navigate("/create-benefit/details");
