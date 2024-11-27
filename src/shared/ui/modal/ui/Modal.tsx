@@ -17,14 +17,12 @@ export const Modal = ({
   position,
 }: Props) => {
   useEffect(() => {
-    // Заблокировать прокрутку при открытии модалки
     if (isOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
 
-    // Очистить эффект при размонтировании компонента
     return () => {
       document.body.style.overflow = "auto";
     };

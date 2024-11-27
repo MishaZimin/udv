@@ -33,13 +33,11 @@ export const FileUploaderMini = ({
     if (e.target.files) {
       const selectedFiles = Array.from(e.target.files);
 
-      // Обрабатываем каждый файл, создавая URL для Blob
       const filePromises = selectedFiles.map((file) => {
         const fileUrl = URL.createObjectURL(file);
         return urlToFile(fileUrl, file.name);
       });
 
-      // После обработки всех файлов обновляем состояние
       Promise.all(filePromises)
         .then((processedFiles) => {
           onFileSelect(processedFiles);

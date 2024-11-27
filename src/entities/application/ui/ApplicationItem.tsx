@@ -38,7 +38,6 @@ export const ApplicationItem = ({ application, isActive, onToggle }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isActive]);
 
-  // Обработчик клика по кнопке
   const handleClick = () => {
     onToggle(!isActive ? String(application.request_id) : null);
   };

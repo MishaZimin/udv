@@ -117,11 +117,10 @@ export const BenefitModal = ({
       </LoadersList>
     </div>
   ) : (
-    <div className="flex flex-col gap-6">
+    <div className="mb-[16px] flex flex-col gap-6">
       <div className="mt-2 w-full">
-        <img className="w-full" src={benefitImg || ""} />
+        <img className="w-full rounded-[8px]" src={benefitImg || ""} />
       </div>
-      {/* Проверка на необходимость загрузки файлов */}
       {benefitData.need_files && (
         <div>
           <FileUploaderMini

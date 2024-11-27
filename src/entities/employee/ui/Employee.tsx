@@ -91,7 +91,7 @@ export const Employee = ({
         />
       </div>
       {isActive && (
-        <div className="absolute right-[0px] top-[38px] z-40 flex w-fit flex-col gap-2 rounded-[16px] bg-card p-2">
+        <div className="absolute right-[0px] top-[38px] z-10 flex w-fit flex-col gap-2 rounded-[16px] bg-card p-2">
           <button
             className="h-[40px] px-4 pb-[10px] pt-2 text-left"
             onClick={handleEditClick}>
