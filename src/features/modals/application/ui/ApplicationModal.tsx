@@ -1,18 +1,28 @@
 import { Button } from "src/shared/ui";
 import { BigModal } from "src/shared/ui/modal/ui/BigModal";
 import { TextLoader } from "src/shared/ui/loader/TextLoader";
+import { useApplyRequest } from "src/entities/application/api/mutations/use-apply-request";
+import { useDenyRequest } from "src/entities/application/api/mutations/use-deny-request";
 
 type Props = {
   isOpen: boolean;
   closeModal: () => void;
   applicationId: string;
   applicationImg?: string;
-  application?: {
+  application: {
     application_name: string;
     application_status: string;
     creation_date: string;
     user_name: string;
+    request_id: number;
   };
+};
+
+const nameStatus: { [key: string]: string } = {
+  "Заявка в обработке": "Ожидает",
+  "Заявка отклонена": "Отклонена",
+  "Заявка одобрена": "Завершена",
+  "Заявка завершена": "Завершена",
 };
 
 export const ApplicationModal = ({
@@ -22,6 +32,9 @@ export const ApplicationModal = ({
   //   applicationId,
   //   applicationImg,
 }: Props) => {
+  const applyRequestMutation = useApplyRequest();
+  const denyRequestMutation = useDenyRequest();
+
   const isLoading = false;
 
   const formatDate = (dateString: string): string => {
@@ -32,32 +45,57 @@ export const ApplicationModal = ({
     return `${day}.${month}.${year}`;
   };
 
+  const handleApply = () => {
+    console.log(application.request_id);
+    applyRequestMutation.mutate(application.request_id, {
+      onSuccess: () => {
+        console.log("Заявка принята", application.request_id);
+        closeModal();
+      },
+      onError: (error) => {
+        console.error("Ошибка принятия заявки:", error);
+      },
+    });
+  };
+
+  const handleDeny = () => {
+    denyRequestMutation.mutate(application.request_id, {
+      onSuccess: () => {
+        console.log("Заявка отклонена", application.request_id);
+        closeModal();
+      },
+      onError: (error) => {
+        console.error("Ошибка отклонения заявки:", error);
+      },
+    });
+  };
+
   const header = isLoading ? (
     <TextLoader height="36px" backgroundColor="bg-white" />
   ) : (
-    <>
-      <p>{application?.application_name}</p>
-    </>
+    <>{application?.application_name}</>
   );
 
-  const footer = (
-    <>
-      <Button
-        text={"Одобрить"}
-        textColor={"light"}
-        buttonType={"primary"}
-        onClick={() => {}}
-        //   disabled={isSubmitLoading}
-      />
-      <Button
-        text={"Отклонить"}
-        textColor={"light"}
-        buttonType={"red"}
-        onClick={closeModal}
-        //   disabled={isSubmitLoading}
-      />
-    </>
-  );
+  const footer =
+    application.application_status !== "Заявка отклонена" &&
+    application.application_status !== "Заявка одобрена" ? (
+      <>
+        <Button
+          text={"Одобрить"}
+          textColor={"light"}
+          buttonType={"primary"}
+          onClick={handleApply}
+          //   disabled={isSubmitLoading}
+        />
+        <Button
+          text={"Отклонить"}
+          textColor={"light"}
+          buttonType={"red"}
+          onClick={handleDeny}
+          //   disabled={isSubmitLoading}
+        />
+      </>
+    ) : null;
 
   const children = isLoading ? (
     <div className="mt-2 flex flex-col gap-4">
@@ -89,7 +127,7 @@ export const ApplicationModal = ({
       <div className="flex flex-col gap-[4px]">
         <p className="text-[14px] leading-[20px] opacity-[60%]">Статус</p>
         <p className="text-left text-[16px] leading-[22px]">
-          {application?.application_status}
+          {nameStatus[application?.application_status]}
         </p>
       </div>
     </div>

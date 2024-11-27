@@ -14,8 +14,8 @@ type Props = {
 export const ApplicationItem = ({ application, isActive, onToggle }: Props) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const applyRequestMutation = useApplyRequest(); // Хук для "Принять"
-  const denyRequestMutation = useDenyRequest(); // Хук для "Отклонить"
+  const applyRequestMutation = useApplyRequest();
+  const denyRequestMutation = useDenyRequest();
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
@@ -47,7 +47,7 @@ export const ApplicationItem = ({ application, isActive, onToggle }: Props) => {
     applyRequestMutation.mutate(application.request_id, {
       onSuccess: () => {
         console.log("Заявка принята", application.request_id);
-        onToggle(null); // Закрыть меню
+        onToggle(null);
       },
       onError: (error) => {
         console.error("Ошибка принятия заявки:", error);
@@ -59,7 +59,7 @@ export const ApplicationItem = ({ application, isActive, onToggle }: Props) => {
     denyRequestMutation.mutate(application.request_id, {
       onSuccess: () => {
         console.log("Заявка отклонена", application.request_id);
-        onToggle(null); // Закрыть меню
+        onToggle(null);
       },
       onError: (error) => {
         console.error("Ошибка отклонения заявки:", error);
@@ -77,22 +77,24 @@ export const ApplicationItem = ({ application, isActive, onToggle }: Props) => {
         <img src={Dots} />
       </button>
 
-      {isActive && (
-        <div className="absolute right-0 top-[40px] flex justify-end">
-          <div className="z-10 flex w-fit flex-col gap-2 rounded-[16px] bg-card p-2">
-            <button
-              className="h-[40px] px-4 pb-[10px] pt-2 text-left"
-              onClick={handleApply}>
-              <p>Принять</p>
-            </button>
-            <button
-              className="h-[40px] px-4 pb-[10px] pt-2 text-left"
-              onClick={handleDeny}>
-              <p>Отклонить</p>
-            </button>
+      {isActive &&
+        application.status !== "Заявка отклонена" &&
+        application.status !== "Заявка одобрена" && (
+          <div className="absolute right-0 top-[40px] flex justify-end">
+            <div className="z-10 flex w-fit flex-col gap-2 rounded-[16px] bg-card p-2">
+              <button
+                className="h-[40px] px-4 pb-[10px] pt-2 text-left"
+                onClick={handleApply}>
+                <p>Принять</p>
+              </button>
+              <button
+                className="h-[40px] px-4 pb-[10px] pt-2 text-left"
+                onClick={handleDeny}>
+                <p>Отклонить</p>
+              </button>
+            </div>
           </div>
-        </div>
-      )}
+        )}
     </div>
   );
 };

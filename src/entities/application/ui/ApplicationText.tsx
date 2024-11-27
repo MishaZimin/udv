@@ -6,6 +6,13 @@ type Props = {
   application: TApplicationItem;
 };
 
+const nameStatus: { [key: string]: string } = {
+  "Заявка в обработке": "Ожидает",
+  "Заявка отклонена": "Отклонена",
+  "Заявка одобрена": "Завершена",
+  "Заявка завершена": "Завершена",
+};
+
 export const ApplicationText = ({ application }: Props) => {
   const { isOpen, openModal, closeModal } = useModal();
 
@@ -27,7 +34,7 @@ export const ApplicationText = ({ application }: Props) => {
         <p className="w-[15%] text-left">
           {formatDate(application.creation_date)}
         </p>
-        <p className="w-[25%] text-left">{application.status}</p>
+        <p className="w-[25%] text-left">{nameStatus[application.status]}</p>
       </button>
       <ApplicationModal
         isOpen={isOpen}
@@ -38,6 +45,7 @@ export const ApplicationText = ({ application }: Props) => {
           application_status: application.status,
           creation_date: application.creation_date,
           user_name: application.user_name,
+          request_id: application.request_id,
         }}
       />
     </>

@@ -91,19 +91,17 @@ export const Employee = ({
         />
       </div>
       {isActive && (
-        <div className="absolute right-[26px] z-40 -mt-[16px] flex justify-end rounded-[16px] bg-white">
-          <div className="right-[100px] top-[0px] flex w-fit flex-col gap-2 rounded-[16px] bg-white p-2">
-            <button
-              className="h-[40px] px-4 pb-[10px] pt-2 text-left"
-              onClick={handleEditClick}>
-              <p>Редактировать</p>
-            </button>
-            <button
-              className="h-[40px] px-4 pb-[10px] pt-2 text-left"
-              onClick={handleDeleteClick}>
-              <p>Удалить сотрудника</p>
-            </button>
-          </div>
+        <div className="absolute right-[0px] top-[38px] z-40 flex w-fit flex-col gap-2 rounded-[16px] bg-card p-2">
+          <button
+            className="h-[40px] px-4 pb-[10px] pt-2 text-left"
+            onClick={handleEditClick}>
+            <p>Редактировать</p>
+          </button>
+          <button
+            className="h-[40px] px-4 pb-[10px] pt-2 text-left"
+            onClick={handleDeleteClick}>
+            <p>Удалить сотрудника</p>
+          </button>
         </div>
       )}
     </div>

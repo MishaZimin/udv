@@ -38,17 +38,19 @@ export const Applicaition = ({ date, name, status, id }: Props) => {
           <p className="text-[14px] leading-[20px]">{status}</p>
         </div>
       </div>
-      <div className="my-auto">
-        <Button
-          text={"Отменить"}
-          textColor={"red"}
-          buttonType={"none"}
-          postion="right"
-          onClick={() => {
-            handleCancel(id);
-          }}
-        />
-      </div>
+      {status !== "Заявка отклонена" && (
+        <div className="my-auto">
+          <Button
+            text={"Отменить"}
+            textColor={"red"}
+            buttonType={"none"}
+            postion="right"
+            onClick={() => {
+              handleCancel(id);
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 };
