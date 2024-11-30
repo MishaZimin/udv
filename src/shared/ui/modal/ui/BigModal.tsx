@@ -41,7 +41,7 @@ export const BigModal = ({
         </div>
 
         <div
-          className={`flex max-h-[700px] w-full flex-1 flex-col gap-4 overflow-y-auto ${footer ? "border-b" : ""} pt-2`}>
+          className={`flex w-full flex-1 flex-col gap-4 overflow-y-auto ${footer ? "border-b" : ""} pt-2`}>
           {children}
         </div>
         {footer && (

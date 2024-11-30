@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      transitionTimingFunction: {
+        "ease-out-custom": "cubic-bezier(0.25, 1, 0.5, 1)",
+      },
       fontFamily: {
         base: ["Golos Text", "sans-serif"],
       },

@@ -153,7 +153,7 @@ export const BenefitModal = ({
   );
 
   return (
-    <>
+    <div>
       <BigModal
         isOpen={isOpen}
         onClose={closeModal}
@@ -168,6 +168,6 @@ export const BenefitModal = ({
         closeBtn={true}
         closeBigModal={closeModal}
       />
-    </>
+    </div>
   );
 };
