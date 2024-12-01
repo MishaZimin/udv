@@ -23,11 +23,7 @@ export const SurveyBanner = () => {
             </div>
             <ButtonCross onClick={() => setClose(true)} />
           </div>
-          <SurveyModal
-            isOpen={isOpen}
-            closeModal={closeModal}
-            closeBtn={true}
-          />
+          <SurveyModal isOpen={isOpen} closeModal={closeModal} />
         </div>
       )}
     </>

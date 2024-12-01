@@ -16,7 +16,7 @@ export const EditEmployeeFooter = ({
   return (
     <div className="">
       {formError && <p className="text-red-500">{formError}</p>}
-      <div className="flex flex-row gap-4">
+      <div className="flex flex-row gap-2">
         <Button
           text={"Сохранить"}
           buttonType={"primary"}

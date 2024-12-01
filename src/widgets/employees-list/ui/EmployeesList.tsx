@@ -61,15 +61,19 @@ export const EmployeesList = () => {
           {/* <LoadersList count={12}>
             <LoaderEmployee />
           </LoadersList> */}
-          {employees.map((employee: IEmployee) => (
-            <div key={employee.user_uuid}>
-              <Employee
-                employee={employee}
-                isActive={activeItem === employee.user_uuid}
-                onToggle={handleToggle}
-              />
-            </div>
-          ))}
+          {employees && employees.length > 0 ? (
+            employees.map((employee: IEmployee) => (
+              <div key={employee.user_uuid}>
+                <Employee
+                  employee={employee}
+                  isActive={activeItem === employee.user_uuid}
+                  onToggle={handleToggle}
+                />
+              </div>
+            ))
+          ) : (
+            <p>Нет данных о сотрудниках</p>
+          )}
           {isModalPending && <LoaderEmployee />}
         </>
       )}

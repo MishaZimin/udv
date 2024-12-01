@@ -8,10 +8,9 @@ import { useSurveyModal } from "../model/hooks/use-survey-modal";
 type Props = {
   isOpen: boolean;
   closeModal: () => void;
-  closeBtn: boolean;
 };
 
-export const SurveyModal = ({ isOpen, closeModal, closeBtn }: Props) => {
+export const SurveyModal = ({ isOpen, closeModal }: Props) => {
   const { currentQuestion, handleNext } = useSurveyModal(isOpen, closeModal);
 
   const questionComponents: Record<number, JSX.Element> = {
@@ -23,7 +22,7 @@ export const SurveyModal = ({ isOpen, closeModal, closeBtn }: Props) => {
   const renderQuestion = () => questionComponents[currentQuestion] || null;
 
   return (
-    <Modal isOpen={isOpen} onClose={closeModal} closeBtn={closeBtn}>
+    <Modal isOpen={isOpen} onClose={closeModal}>
       <div
         className={`relative z-10 w-svw rounded-t-[16px] bg-card p-6 px-[40px] py-[48px] ${
           currentQuestion == 0 ? "sm:w-[600px]" : "sm:w-[500px]"

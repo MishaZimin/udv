@@ -19,18 +19,22 @@ export const AdminBenefits = () => {
   return (
     <>
       {!isLoading ? (
-        benefits.map((benefit: IBenefitCard) => (
-          <div key={benefit.id} className="md:w-full lg:w-[320px]">
-            <Benefit
-              benefit={benefit}
-              // isNewTag={Math.random() < 0.4}
-              isNewTag={false}
-              actionSlot={
-                benefit.id !== 102 && <AdminActionPanel benefit={benefit} />
-              }
-            />
-          </div>
-        ))
+        benefits.length > 0 ? (
+          benefits &&
+          benefits.map((benefit: IBenefitCard) => (
+            <div key={benefit.id} className="md:w-full lg:w-[320px]">
+              <Benefit
+                benefit={benefit}
+                isNewTag={false}
+                actionSlot={
+                  benefit.id !== 102 && <AdminActionPanel benefit={benefit} />
+                }
+              />
+            </div>
+          ))
+        ) : (
+          <p>Здесь пока нет бенефитов</p>
+        )
       ) : (
         // <LoadersList count={8}>
         //   <CardLoader />

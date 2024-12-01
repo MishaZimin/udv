@@ -16,10 +16,10 @@ export const MarkdownAction = ({ applyMarkdown }: MarkdownActionProps) => {
           iconName="Header"
           onClick={() => applyMarkdown("Header")}
         />
-        <MarkdownActionBtn
+        {/* <MarkdownActionBtn
           iconName="Italic"
           onClick={() => applyMarkdown("Italic")}
-        />
+        /> */}
         <div className="h-6 w-[1px] bg-graphite bg-opacity-[4%]"></div>
         <MarkdownActionBtn
           iconName="Link"

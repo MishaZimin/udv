@@ -35,16 +35,20 @@ export const ApplicationsList = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      {applications.map((application: any, index: number) => (
-        <div key={index}>
-          <Applicaition
-            date={formatDate(application.creation_date)}
-            name={application.name}
-            status={application.status}
-            id={application.request_id}
-          />
-        </div>
-      ))}
+      {applications && applications.length === 0 ? (
+        <p>У Вас нет заявок</p>
+      ) : (
+        applications.map((application: any, index: number) => (
+          <div key={index}>
+            <Applicaition
+              date={formatDate(application.creation_date)}
+              name={application.name}
+              status={application.status}
+              id={application.request_id}
+            />
+          </div>
+        ))
+      )}
     </div>
   );
 };

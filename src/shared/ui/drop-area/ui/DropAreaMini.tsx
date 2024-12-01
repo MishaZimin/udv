@@ -9,7 +9,7 @@ interface Props {
   errorText?: string;
   files: File[];
   clearFile: (index: number) => void;
-  dms?: boolean;
+  isDMS?: boolean;
 }
 
 export const FileUploaderMini = ({
@@ -18,7 +18,7 @@ export const FileUploaderMini = ({
   acceptedFileTypes,
   files,
   clearFile,
-  dms,
+  isDMS,
 }: Props) => {
   const { handleDragOver, handleDragLeave, handleDrop, isDragging } =
     useDragAndDrop((file) => {
@@ -96,9 +96,9 @@ export const FileUploaderMini = ({
               className="hidden"
             />
           </label>
-          {dms ? (
+          {isDMS ? (
             <p className="absolute bottom-[40px] left-1/2 z-50 hidden w-auto -translate-x-1/2 whitespace-nowrap rounded-[8px] bg-graphite p-2 text-[14px] leading-[20px] text-white group-hover:block">
-              Прикрепите фото паспорта,
+              Прикрепите фото,
               <br /> чтобы отправить заявку
               <span className="absolute left-1/2 top-full -translate-x-1/2 border-[6px] border-transparent border-t-graphite"></span>
             </p>

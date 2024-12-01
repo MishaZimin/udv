@@ -5,8 +5,19 @@ axios.defaults.baseURL = "https://udv-benefits.ru";
 const token = getFromLocalStorage("token");
 
 export const ApplyApi = {
-  async applyBenefit(id: number, formData: FormData) {
-    const response = await axios.post(`/benefits/apply/${id}`, formData, {
+  async applyBenefit(id: number, formData: FormData | string) {
+    let dataToSend;
+
+    if (formData === "") {
+      const emptyFormData = new FormData();
+      emptyFormData.append("files", "");
+      dataToSend = emptyFormData;
+    } else {
+      dataToSend = formData;
+    }
+
+    console.log(dataToSend);
+    const response = await axios.post(`/benefits/apply/${id}`, dataToSend, {
       headers: {
         Accept: "application/json",
         Authorization: `Bearer ${token}`,
@@ -38,16 +49,19 @@ export const ApplyApi = {
 
     files.forEach((file) => formData.append("files", file));
 
-    const response = await axios.post(
-      `https://udv-benefits.ru/benefits/insurance?benefit_id=${benefitId}&insurance_member=${insuranceMember}&insurance_type=${insuranceType}`,
-      formData,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
+    const encodedInsuranceMember = encodeURIComponent(insuranceMember);
+    const encodedInsuranceType = encodeURIComponent(insuranceType);
+
+    const url = `https://udv-benefits.ru/benefits/insurance?benefit_id=${benefitId}&insurance_member=${encodedInsuranceMember}&insurance_type=${encodedInsuranceType}`;
+
+    console.log(url);
+
+    const response = await axios.post(url, formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "multipart/form-data",
       },
-    );
+    });
 
     return response.data;
   },

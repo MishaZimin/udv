@@ -41,14 +41,20 @@ export const ApplicationModal = ({
   const applyRequestMutation = useApplyRequest();
   const denyRequestMutation = useDenyRequest();
 
-  // const isLoading = false;
-
   if (!isLoading) {
     console.log(data);
+  } else {
+    return;
   }
   if (isError) {
     return <p>error: {error.message}</p>;
   }
+  if (!data) {
+    return <p>no data</p>;
+  }
+
+  const dataUser = data.user;
+  console.log(dataUser);
 
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
@@ -147,7 +153,7 @@ export const ApplicationModal = ({
       {data.additional_info && (
         <>
           <div className="flex flex-col gap-[4px]">
-            <p className="text-[14px] leading-[20px] opacity-[60%]">Кому</p>
+            <p className="text-[14px] leading-[20px] opacity-[60%]">Для кого</p>
             <p className="text-left text-[16px] leading-[22px]">
               {data.additional_info[0] || ""}
             </p>
@@ -155,7 +161,7 @@ export const ApplicationModal = ({
 
           <div className="flex flex-col gap-[4px]">
             <p className="text-[14px] leading-[20px] opacity-[60%]">
-              Тип страховки
+              Тип страхования
             </p>
             <p className="text-left text-[16px] leading-[22px]">
               {data.additional_info[1] || ""}
@@ -163,26 +169,77 @@ export const ApplicationModal = ({
           </div>
         </>
       )}
-
-      <div className="flex flex-col gap-1">
-        <p className="text-[14px] leading-[20px] opacity-[60%]">Файлы</p>
-        <div className="grid grid-cols-2 gap-4">
-          {data?.attached_files?.map((file: string, index: number) => (
-            <div key={index} className="flex flex-col justify-between gap-2">
-              <div>
-                <img className="rounded-[8px]" src={file} alt="attached file" />
+      {data?.attached_files?.length > 0 && (
+        <div className="flex flex-col gap-1">
+          <p className="text-[14px] leading-[20px] opacity-[60%]">Файлы</p>
+          <div className="grid grid-cols-2 gap-4">
+            {data?.attached_files?.map((file: string, index: number) => (
+              <div key={index} className="flex flex-col justify-between gap-2">
+                <a href={file} target="_blank" rel="noopener noreferrer">
+                  <img
+                    className="rounded-[8px]"
+                    src={file}
+                    alt="attached file"
+                  />
+                </a>
+                <a
+                  href={file}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="animation hover:text-graphiteactive text-graphite">
+                  Файл {index + 1}
+                </a>
               </div>
-              <a
-                href={file}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="animation text-mint hover:text-minthover">
-                Файл {index + 1}
-              </a>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      )}
+      <div className="h-[1px] w-full bg-graphite bg-opacity-[8%]"></div>
+
+      {dataUser && (
+        <>
+          <div className="flex flex-col gap-[4px]">
+            <p className="text-[14px] leading-[20px] opacity-[60%]">
+              Сотрудник
+            </p>
+            <p className="text-left text-[16px] leading-[22px]">
+              {dataUser.full_name}
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-[4px]">
+            <p className="text-[14px] leading-[20px] opacity-[60%]">Почта</p>
+            <p className="text-left text-[16px] leading-[22px]">
+              {dataUser.email}
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-[4px]">
+            <p className="text-[14px] leading-[20px] opacity-[60%]">
+              Должность
+            </p>
+            <p className="text-left text-[16px] leading-[22px]">
+              {dataUser.position}
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-[4px]">
+            <p className="text-[14px] leading-[20px] opacity-[60%]">Стаж</p>
+            <p className="text-left text-[16px] leading-[22px]">
+              {dataUser.employment_date}
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-[4px]">
+            <p className="text-[14px] leading-[20px] opacity-[60%]">
+              Место работы
+            </p>
+            <p className="text-left text-[16px] leading-[22px]">
+              {dataUser.place_of_employment}
+            </p>
+          </div>
+        </>
+      )}
     </div>
   );
 

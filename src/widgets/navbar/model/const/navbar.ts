@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export type NavbarProps = {
   icons: string | null;
   name: string;
@@ -19,6 +20,17 @@ export const CREATEBENEFIT: NavbarProps[] = [
     icons: null,
     name: "3. Настройки",
     link: "/create-benefit/availability",
+  },
+];
+
+export const PROFILE: any = [
+  {
+    icons: null,
+    name: "1. Детали",
+  },
+  {
+    icons: null,
+    name: "2. Обложка",
   },
 ];
 

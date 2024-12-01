@@ -99,14 +99,16 @@ export const BenefitsUsageCircle = ({ data }: { data: any }) => {
 
 const getColor = (index: number) => {
   const colors = [
-    "#4CAF50",
     "#2196F3",
     "#FFC107",
     "#FF5722",
-    "#9C27B0",
-    "#03A9F4",
+    "#0B202799",
+    "#1C4D58",
+    "#D13838",
+    "#4CAF50",
     "#8BC34A",
     "#E91E63",
+    "#FF9800",
   ];
   return colors[index % colors.length];
 };

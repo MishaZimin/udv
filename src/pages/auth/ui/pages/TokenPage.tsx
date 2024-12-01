@@ -31,6 +31,7 @@ export const TokenPage = () => {
     if (error) {
       navigate("/");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token, isLoading, error]);
 
   useEffect(() => {

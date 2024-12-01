@@ -5,15 +5,9 @@ type Props = {
   isOpen: boolean;
   closeModal: () => void;
   closeBigModal: () => void;
-  closeBtn: boolean;
 };
 
-export const SuccessModal = ({
-  isOpen,
-  closeModal,
-  closeBtn,
-  closeBigModal,
-}: Props) => {
+export const SuccessModal = ({ isOpen, closeModal, closeBigModal }: Props) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       closeModal();
@@ -24,7 +18,7 @@ export const SuccessModal = ({
   }, [closeModal, closeBigModal]);
 
   return (
-    <Modal isOpen={isOpen} onClose={closeModal} closeBtn={closeBtn}>
+    <Modal isOpen={isOpen} onClose={closeModal}>
       <div className="relative z-10 w-svw rounded-t-[16px] bg-card p-6 px-[40px] py-[48px] sm:w-[420px] sm:rounded-[16px]">
         <button
           onClick={closeModal}

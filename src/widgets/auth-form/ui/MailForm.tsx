@@ -7,7 +7,7 @@ export const MailForm = () => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [mail, setMail] = useState<string>("");
   const [inputType, setInputType] = useState<"default" | "error">("default");
-  const [isMail, setIsMail] = useState(true);
+  // const [isMail, setIsMail] = useState(true);
 
   const { setMail: setMailToStore } = useMailStore();
 
@@ -32,11 +32,11 @@ export const MailForm = () => {
       setInputType("default");
     }
 
-    if (value.includes("@")) {
-      setIsMail(false);
-    } else {
-      setIsMail(true);
-    }
+    // if (value.includes("@")) {
+    //   setIsMail(false);
+    // } else {
+    //   setIsMail(true);
+    // }
   };
 
   return (
@@ -48,7 +48,7 @@ export const MailForm = () => {
             <p className="leading-[20px]">Почта</p>
             <Input
               inputType={inputType}
-              mail={isMail}
+              mail={false}
               onChange={handleMailChange}
               value={mail}
               errorText="Такой почты нет. Проверьте, возможно, вы ошиблись"

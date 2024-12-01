@@ -1,4 +1,4 @@
-import { Button, Input, useModal } from "src/shared/ui";
+import { Button, useModal } from "src/shared/ui";
 import { useBenefit } from "src/pages/benefit";
 import Markdown from "react-markdown";
 import { BigModal } from "src/shared/ui/modal/ui/BigModal";
@@ -9,6 +9,7 @@ import { ImageLoader } from "src/shared/ui/loader/ImageLoader";
 import { FileUploaderMini } from "src/shared/ui/drop-area/ui/DropAreaMini";
 import { SuccessModal } from "./SuccessModal";
 import { ApplyApi } from "../api/services/apply.api";
+import { DropDown } from "src/shared/ui/drop-down/DropDown";
 
 type Props = {
   isOpen: boolean;
@@ -84,9 +85,11 @@ export const BenefitModal = ({
           formData.append("files", file);
         });
 
+        console.log(formData, files);
+
         const response = await ApplyApi.applyBenefit(
           Number(benefitId),
-          formData,
+          files.length === 0 ? "" : formData,
         );
 
         if (response.detail === "Benefit request successfully created") {
@@ -102,6 +105,8 @@ export const BenefitModal = ({
       setIsSubmitLoading(false);
     }
   };
+
+  console.log(insuranceMember, insuranceType);
 
   const header = isLoading ? (
     <TextLoader height="36px" backgroundColor="bg-white" />
@@ -150,23 +155,9 @@ export const BenefitModal = ({
         <img className="w-full rounded-[8px]" src={benefitImg || ""} />
       </div>
 
-      {(benefitData.need_files || isDMS) && (
-        <div>
-          <FileUploaderMini
-            onFileSelect={handleFileSelect}
-            placeholderText={
-              !isDMS ? "Прикрепить чеки PNG, JPG" : "Прикрепить фото паспорта"
-            }
-            acceptedFileTypes={"image/*"}
-            files={files}
-            clearFile={handleFileClear}
-          />
-        </div>
-      )}
-
       {isDMS && (
-        <div className="flex flex-col gap-2">
-          <Input
+        <div className="flex flex-col gap-6">
+          {/* <Input
             inputType={"default"}
             onChange={setInsuranceMember}
             value={insuranceMember}
@@ -177,6 +168,44 @@ export const BenefitModal = ({
             onChange={setInsuranceType}
             value={insuranceType}
             label="Тип страховки"
+          /> */}
+          <DropDown
+            inputType={"default"}
+            options={["Для себя", "Для ребёнка", "Для родственника"]}
+            onChange={setInsuranceMember}
+            value={insuranceMember}
+            label="Для кого"
+          />
+          <DropDown
+            inputType={"default"}
+            options={[
+              "Поликлиника база",
+              "Поликлиника база + стомотология",
+              "Поликлиника база + поликлиника бизнес",
+              "Поликлиника бизнес + стомотология",
+              "Стоматология + программа с клиникой УГМК",
+              "Телемедицина и экстренная помощь",
+            ]}
+            onChange={setInsuranceType}
+            value={insuranceType}
+            label="Тип страхования"
+          />
+        </div>
+      )}
+
+      {(benefitData.need_files || isDMS) && (
+        <div>
+          <FileUploaderMini
+            onFileSelect={handleFileSelect}
+            placeholderText={
+              !isDMS
+                ? "Прикрепить чеки PNG, JPG"
+                : "Прикрепить фото паспорта, снилса, ОМС, ИНН"
+            }
+            acceptedFileTypes={"image/*"}
+            files={files}
+            clearFile={handleFileClear}
+            isDMS={isDMS}
           />
         </div>
       )}
@@ -201,7 +230,7 @@ export const BenefitModal = ({
   );
 
   return (
-    <div>
+    <>
       <BigModal
         isOpen={isOpen}
         onClose={closeModal}
@@ -213,9 +242,8 @@ export const BenefitModal = ({
       <SuccessModal
         isOpen={isOpenSuccess}
         closeModal={closeModalSuccess}
-        closeBtn={true}
         closeBigModal={closeModal}
       />
-    </div>
+    </>
   );
 };

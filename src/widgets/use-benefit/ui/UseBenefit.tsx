@@ -6,6 +6,7 @@ export const UseBenefit = () => {
 
   if (isLoading) return <div>Loading...</div>;
   if (error instanceof Error) return <div>Error: {error.message}</div>;
+  if (!data) return <div>Нет данных</div>;
 
   console.log(data);
   return (

@@ -48,17 +48,11 @@ export const useEditEmployeeModal = (
   };
 
   const isFormValid = () => {
-    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-    if (!dateRegex.test(employeeData.employment_date)) {
-      setFormError("Дата должна быть в формате YYYY-MM-DD.");
-      return false;
-    }
-
     const requiredFields = [
       "email",
       "full_name",
       "position",
-      "employment_date",
+      // "employment_date",
       "place_of_employment",
     ];
     for (const field of requiredFields) {
@@ -74,8 +68,16 @@ export const useEditEmployeeModal = (
 
   const handleSubmit = async () => {
     if (!isFormValid()) return;
+    console.log(employeeData);
 
-    await editEmployee(employeeData);
+    const data = {
+      full_name: employeeData?.full_name || "",
+      place_of_employment: employeeData?.place_of_employment || "",
+      position: employeeData?.position || "",
+      email: employeeData?.email || "",
+      administration: isChecked,
+    };
+    await editEmployee(data);
     refetch();
     closeModal();
   };

@@ -1,4 +1,3 @@
-import { Button } from "src/shared/ui";
 import { LoadersList } from "src/shared/ui/loader/LoadersList";
 import { TextLoader } from "src/shared/ui/loader/TextLoader";
 import { ApplicationsList } from "./MyApplicationsList";
@@ -37,23 +36,33 @@ export const ProfileMain = ({ profile, isLoading }: Props) => {
 
   return (
     <div className="mb-[32px] flex w-full flex-col justify-between gap-[16px] rounded-[16px] bg-card pt-2">
-      <div className="flex w-full flex-row gap-4">
-        <div className="flex w-1/2 flex-col">
+      <div className="flex w-full flex-row gap-2">
+        {/* <div className="flex flex-col w-1/2">
           <Button
             text={"Информация"}
             textColor={"dark"}
-            buttonType={"secondary"}
+            buttonType={"primary"}
             onClick={() => setActiveTab("info")}
           />
         </div>
-        <div className="flex w-1/2 flex-col">
+        <div className="flex flex-col w-1/2">
           <Button
             text={"Мои заявки"}
             textColor={"dark"}
-            buttonType={"secondary"}
+            buttonType={"primary"}
             onClick={() => setActiveTab("requests")}
           />
-        </div>
+        </div> */}
+        <button
+          onClick={() => setActiveTab("info")}
+          className={`animation flex cursor-pointer flex-row items-center gap-[8px] rounded-[8px] bg-graphite bg-opacity-[0%] px-[12px] pb-[10px] pt-[8px] ${activeTab === "info" ? "bg-opacity-[8%]" : "hover:bg-opacity-[4%]"} `}>
+          <p className="text-[16px] text-graphite md:text-[16px]">Информация</p>
+        </button>
+        <button
+          onClick={() => setActiveTab("requests")}
+          className={`animation flex cursor-pointer flex-row items-center gap-[8px] rounded-[8px] bg-graphite bg-opacity-[0%] px-[12px] pb-[10px] pt-[8px] ${activeTab === "requests" ? "bg-opacity-[8%]" : "hover:bg-opacity-[4%]"} `}>
+          <p className="text-[16px] text-graphite md:text-[16px]">Мои заявки</p>
+        </button>
       </div>
 
       {activeTab === "info" && (

@@ -46,17 +46,21 @@ export const AllApplicationsList = () => {
         </LoadersList>
       ) : (
         <>
-          {applications.map((application: TApplicationItem) => (
-            <div
-              key={application.request_id}
-              onClick={(e) => e.stopPropagation()}>
-              <ApplicationItem
-                application={application}
-                isActive={activeItem === String(application.request_id)}
-                onToggle={handleToggle}
-              />
-            </div>
-          ))}
+          {applications && applications.length > 0 ? (
+            applications.map((application: TApplicationItem) => (
+              <div
+                key={application.request_id}
+                onClick={(e) => e.stopPropagation()}>
+                <ApplicationItem
+                  application={application}
+                  isActive={activeItem === String(application.request_id)}
+                  onToggle={handleToggle}
+                />
+              </div>
+            ))
+          ) : (
+            <p>Нет заявок</p>
+          )}
         </>
       )}
     </div>

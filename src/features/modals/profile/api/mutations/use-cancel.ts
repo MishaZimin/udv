@@ -11,6 +11,7 @@ export const useCancelApplication = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["applications"] });
+      queryClient.invalidateQueries({ queryKey: ["allApplications"] });
     },
     onError: (err) => {
       console.error("Error deleting benefit:", err);
