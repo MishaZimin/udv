@@ -1,5 +1,5 @@
 import { ReactNode, useEffect } from "react";
-import closeLine from "src/shared/assets/svgs/closeLine.svg";
+// import closeLine from "src/shared/assets/svgs/closeLine.svg";
 
 type Props = {
   isOpen: boolean;
@@ -13,7 +13,7 @@ export const Modal = ({
   isOpen,
   onClose,
   children,
-  closeBtn,
+  // closeBtn,
   position,
 }: Props) => {
   useEffect(() => {
@@ -37,20 +37,13 @@ export const Modal = ({
         }}
         onClick={onClose}></div>
       <div
-        className={`relative flex w-full transform transition-all duration-75 ${
+        className={`flex w-full transform transition-all duration-75 ${
           position === "right" ? "justify-end" : "justify-center"
         } ${
           isOpen
             ? "translate-y-0 scale-100 opacity-100"
             : "translate-y-0 scale-100 opacity-50"
         }`}>
-        {closeBtn && (
-          <button
-            onClick={onClose}
-            className="absolute right-[16px] top-[16px] z-50 h-[28px] w-[28px]">
-            <img className="h-[28px] w-[28px]" src={closeLine} alt="Close" />
-          </button>
-        )}
         {children}
       </div>
     </div>

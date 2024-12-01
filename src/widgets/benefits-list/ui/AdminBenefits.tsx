@@ -25,7 +25,9 @@ export const AdminBenefits = () => {
               benefit={benefit}
               // isNewTag={Math.random() < 0.4}
               isNewTag={false}
-              actionSlot={<AdminActionPanel benefit={benefit} />}
+              actionSlot={
+                benefit.id !== 102 && <AdminActionPanel benefit={benefit} />
+              }
             />
           </div>
         ))

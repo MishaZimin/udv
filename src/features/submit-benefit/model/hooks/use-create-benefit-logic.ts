@@ -54,7 +54,7 @@ export const useCreateBenefitLogic = () => {
 
     console.log(imageSrc);
     const imageFile = await urlToFile(imageSrc, "cover");
-
+    console.log(imageSrc, "|", imageFile);
     await uploadCover({ benefitId, imageFile });
   };
 

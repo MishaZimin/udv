@@ -1,4 +1,4 @@
-import { Button, useModal } from "src/shared/ui";
+import { Button, Input, useModal } from "src/shared/ui";
 import { useBenefit } from "src/pages/benefit";
 import Markdown from "react-markdown";
 import { BigModal } from "src/shared/ui/modal/ui/BigModal";
@@ -8,7 +8,7 @@ import { LoadersList } from "src/shared/ui/loader/LoadersList";
 import { ImageLoader } from "src/shared/ui/loader/ImageLoader";
 import { FileUploaderMini } from "src/shared/ui/drop-area/ui/DropAreaMini";
 import { SuccessModal } from "./SuccessModal";
-import { ApplyApi } from "../api/api/apply.api";
+import { ApplyApi } from "../api/services/apply.api";
 
 type Props = {
   isOpen: boolean;
@@ -32,8 +32,13 @@ export const BenefitModal = ({
 
   const [files, setFiles] = useState<File[]>([]);
   const [isSubmitLoading, setIsSubmitLoading] = useState<boolean>(false);
+
+  const [insuranceMember, setInsuranceMember] = useState<string>("");
+  const [insuranceType, setInsuranceType] = useState<string>("");
+
+  const isDMS = benefitId === String(102);
+
   const handleFileSelect = (newFiles: File[]) => {
-    console.log(newFiles);
     setFiles((prevFiles) => [...prevFiles, ...newFiles]);
   };
 
@@ -46,7 +51,7 @@ export const BenefitModal = ({
   }
 
   const submitRequest = async () => {
-    if (benefitData.need_files && files.length === 0) {
+    if (files.length === 0 && (isDMS || benefitData.need_files)) {
       alert("Необходимо прикрепить чеки.");
       return;
     }
@@ -54,21 +59,45 @@ export const BenefitModal = ({
     setIsSubmitLoading(true);
 
     try {
-      const formData = new FormData();
+      if (isDMS) {
+        if (!insuranceMember || !insuranceType) {
+          alert("Заполните все поля");
+          setIsSubmitLoading(false);
+          return;
+        }
 
-      const fileNames = files.map((file) => file.name).join(",");
+        const response = await ApplyApi.submitInsuranceRequest(
+          benefitData.id,
+          insuranceMember,
+          insuranceType,
+          files,
+        );
 
-      formData.append("files", fileNames);
-
-      const response = await ApplyApi.applyBenefit(Number(benefitId), formData);
-      console.log(response.detail);
-      if (response.detail === "Benefit request successfully created") {
-        openModalSuccess();
+        if (response.detail === "Benefit request successfully created") {
+          openModalSuccess();
+        } else {
+          alert("Ошибка при отправке данных");
+        }
       } else {
-        alert("Ошибка при отправке данных");
+        const formData = new FormData();
+        files.forEach((file) => {
+          formData.append("files", file);
+        });
+
+        const response = await ApplyApi.applyBenefit(
+          Number(benefitId),
+          formData,
+        );
+
+        if (response.detail === "Benefit request successfully created") {
+          openModalSuccess();
+        } else {
+          alert("Ошибка при отправке данных");
+        }
       }
     } catch (error) {
       console.error("Ошибка при отправке данных", error);
+      alert("Произошла ошибка при отправке данных.");
     } finally {
       setIsSubmitLoading(false);
     }
@@ -104,7 +133,6 @@ export const BenefitModal = ({
     <div className="mt-2 flex flex-col gap-4">
       <ImageLoader height="card" />
       <ImageLoader height="40px" />
-
       <LoadersList count={3}>
         <div className="mb-4 w-1/2">
           <TextLoader backgroundColor="bg-white" />
@@ -121,14 +149,34 @@ export const BenefitModal = ({
       <div className="mt-2 w-full">
         <img className="w-full rounded-[8px]" src={benefitImg || ""} />
       </div>
-      {benefitData.need_files && (
+
+      {(benefitData.need_files || isDMS) && (
         <div>
           <FileUploaderMini
             onFileSelect={handleFileSelect}
-            placeholderText={"Прикрепить чеки PNG, JPG"}
+            placeholderText={
+              !isDMS ? "Прикрепить чеки PNG, JPG" : "Прикрепить фото паспорта"
+            }
             acceptedFileTypes={"image/*"}
             files={files}
             clearFile={handleFileClear}
+          />
+        </div>
+      )}
+
+      {isDMS && (
+        <div className="flex flex-col gap-2">
+          <Input
+            inputType={"default"}
+            onChange={setInsuranceMember}
+            value={insuranceMember}
+            label="Кому"
+          />
+          <Input
+            inputType={"default"}
+            onChange={setInsuranceType}
+            value={insuranceType}
+            label="Тип страховки"
           />
         </div>
       )}

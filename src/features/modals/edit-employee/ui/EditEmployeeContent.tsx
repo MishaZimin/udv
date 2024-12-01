@@ -40,8 +40,9 @@ export const EditEmployeeContent = ({
         inputType="default"
         value={employeeData.employment_date}
         onChange={(value) => handleChange("employment_date", value)}
-        label="Дата трудоустройства"
-        placeholder="YYYY-MM-DD"
+        label="Опыт в компании"
+        disabled
+        // placeholder="YYYY-MM-DD"
       />
       <Input
         inputType="default"

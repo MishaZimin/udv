@@ -36,18 +36,20 @@ export const ApplicationText = ({ application }: Props) => {
         </p>
         <p className="w-[25%] text-left">{nameStatus[application.status]}</p>
       </button>
-      <ApplicationModal
-        isOpen={isOpen}
-        closeModal={closeModal}
-        applicationId={"1"}
-        application={{
-          application_name: application.name,
-          application_status: application.status,
-          creation_date: application.creation_date,
-          user_name: application.user_name,
-          request_id: application.request_id,
-        }}
-      />
+      {isOpen && (
+        <ApplicationModal
+          isOpen={isOpen}
+          closeModal={closeModal}
+          applicationId={"1"}
+          application={{
+            application_name: application.name,
+            application_status: application.status,
+            creation_date: application.creation_date,
+            user_name: application.user_name,
+            request_id: application.request_id,
+          }}
+        />
+      )}
     </>
   );
 };

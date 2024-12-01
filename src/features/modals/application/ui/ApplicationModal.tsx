@@ -3,6 +3,8 @@ import { BigModal } from "src/shared/ui/modal/ui/BigModal";
 import { TextLoader } from "src/shared/ui/loader/TextLoader";
 import { useApplyRequest } from "src/entities/application/api/mutations/use-apply-request";
 import { useDenyRequest } from "src/entities/application/api/mutations/use-deny-request";
+import { useAdminRequest } from "../api/queries/use-application";
+import { LoadersList } from "src/shared/ui/loader/LoadersList";
 
 type Props = {
   isOpen: boolean;
@@ -32,10 +34,21 @@ export const ApplicationModal = ({
   //   applicationId,
   //   applicationImg,
 }: Props) => {
+  const { data, isLoading, isError, error } = useAdminRequest(
+    application.request_id,
+  );
+
   const applyRequestMutation = useApplyRequest();
   const denyRequestMutation = useDenyRequest();
 
-  const isLoading = false;
+  // const isLoading = false;
+
+  if (!isLoading) {
+    console.log(data);
+  }
+  if (isError) {
+    return <p>error: {error.message}</p>;
+  }
 
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
@@ -85,24 +98,24 @@ export const ApplicationModal = ({
           textColor={"light"}
           buttonType={"primary"}
           onClick={handleApply}
-          //   disabled={isSubmitLoading}
+          disabled={isLoading}
         />
         <Button
           text={"Отклонить"}
           textColor={"light"}
           buttonType={"red"}
           onClick={handleDeny}
-          //   disabled={isSubmitLoading}
+          disabled={isLoading}
         />
       </>
     ) : null;
 
   const children = isLoading ? (
-    <div className="mt-2 flex flex-col gap-4">
-      <p>application text</p>
-    </div>
+    <LoadersList count={8}>
+      <TextLoader />
+    </LoadersList>
   ) : (
-    <div className="mt-2 flex flex-col gap-4">
+    <div className="mb-4 mt-2 flex flex-col gap-4">
       <div className="flex flex-col gap-[4px]">
         <p className="text-[14px] leading-[20px] opacity-[60%]">Бенефит</p>
         <p className="text-left text-[16px] leading-[22px]">
@@ -129,6 +142,46 @@ export const ApplicationModal = ({
         <p className="text-left text-[16px] leading-[22px]">
           {nameStatus[application?.application_status]}
         </p>
+      </div>
+
+      {data.additional_info && (
+        <>
+          <div className="flex flex-col gap-[4px]">
+            <p className="text-[14px] leading-[20px] opacity-[60%]">Кому</p>
+            <p className="text-left text-[16px] leading-[22px]">
+              {data.additional_info[0] || ""}
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-[4px]">
+            <p className="text-[14px] leading-[20px] opacity-[60%]">
+              Тип страховки
+            </p>
+            <p className="text-left text-[16px] leading-[22px]">
+              {data.additional_info[1] || ""}
+            </p>
+          </div>
+        </>
+      )}
+
+      <div className="flex flex-col gap-1">
+        <p className="text-[14px] leading-[20px] opacity-[60%]">Файлы</p>
+        <div className="grid grid-cols-2 gap-4">
+          {data?.attached_files?.map((file: string, index: number) => (
+            <div key={index} className="flex flex-col justify-between gap-2">
+              <div>
+                <img className="rounded-[8px]" src={file} alt="attached file" />
+              </div>
+              <a
+                href={file}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="animation text-mint hover:text-minthover">
+                Файл {index + 1}
+              </a>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

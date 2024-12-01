@@ -1,13 +1,13 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Button } from "src/shared/ui";
-import Toggle from "src/shared/ui/toggle/Toggle";
+// import Toggle from "src/shared/ui/toggle/Toggle";
 
 export const Apeals = () => {
-  const [isChecked, setIsChecked] = useState(false);
+  // const [isChecked, setIsChecked] = useState(false);
 
-  const handleToggle = () => {
-    setIsChecked(!isChecked);
-  };
+  // const handleToggle = () => {
+  //   setIsChecked(!isChecked);
+  // };
 
   const handleClick = () => {
     window.open(
@@ -19,7 +19,7 @@ export const Apeals = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-4">
+      {/* <div className="flex flex-col gap-4">
         <h1>Опрос</h1>
         <p>
           В опросе два вопроса: какими бенефитами пользуются сотрудники
@@ -34,7 +34,7 @@ export const Apeals = () => {
           <Toggle isChecked={isChecked} onToggle={handleToggle} />
           <p>Опрос для пользователей</p>
         </div>
-      </div>
+      </div> */}
       <div className="flex flex-col gap-4 bg-white">
         <h1>Фидбек</h1>
         <p>Для обращений используем сервис Tally</p>

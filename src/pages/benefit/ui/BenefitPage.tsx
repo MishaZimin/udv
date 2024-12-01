@@ -4,6 +4,7 @@ import Markdown from "react-markdown";
 import { useLocation } from "react-router-dom";
 import { useBenefit } from "..";
 import { Loader } from "src/shared/ui";
+import { Feedback } from "src/features/feedback";
 
 export const BenefitPage = () => {
   const location = useLocation();
@@ -29,7 +30,7 @@ export const BenefitPage = () => {
             <p className="text-[32px] font-semibold leading-[40px]">
               {benefitData.name}
             </p>
-            {/* <Feedback /> */}
+            <Feedback />
           </div>
           <div className="prose mb-[32px] w-full px-2 pt-[144px] sm:px-10 sm:pt-[104px] md:ml-16 md:w-[600px]">
             <Markdown

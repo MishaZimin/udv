@@ -12,7 +12,7 @@ export const EditEmployeeInputs = ({ employee }: Props) => {
     full_name: employee?.full_name || "",
     place_of_employment: employee?.place_of_employment || "",
     position: employee?.position || "",
-    employment_date: "",
+    employment_date: employee?.employment_date || "",
     email: employee?.email || "",
     administration: isChecked,
   });

@@ -23,7 +23,7 @@ export const BigModal = ({
 }: Props) => {
   return (
     <Modal isOpen={isOpen} onClose={closeModal} position="right">
-      <div className="md-full relative z-30 mx-0 mt-8 flex h-[calc(100svh-64px)] w-full flex-col gap-[0px] rounded-t-[16px] bg-card p-6 px-[32px] py-[24px] sm:mb-8 sm:ml-8 sm:mr-8 sm:rounded-[16px] md:w-[600px]">
+      <div className="relative z-30 mx-0 mt-8 flex h-[calc(100svh-32px)] w-full flex-col gap-[0px] rounded-t-[16px] bg-card p-6 px-[32px] py-[24px] sm:mb-8 sm:ml-8 sm:mr-8 sm:h-[calc(100svh-64px)] sm:rounded-[16px] md:w-[600px]">
         <div className="w-full border-b">
           <div className="w-[93%]">
             {!isLoading ? (
