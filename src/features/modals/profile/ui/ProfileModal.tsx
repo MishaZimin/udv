@@ -37,7 +37,6 @@ export const ProfileModal = ({ isOpen, closeModal }: Props) => {
   return (
     <BigModal
       isOpen={isOpen}
-      onClose={closeModal}
       closeModal={closeModal}
       header={header}
       footer={footer}

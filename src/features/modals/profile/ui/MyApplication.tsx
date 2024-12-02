@@ -38,7 +38,7 @@ export const Applicaition = ({ date, name, status, id }: Props) => {
           <p className="text-[14px] leading-[20px]">{status}</p>
         </div>
       </div>
-      {status !== "Заявка отклонена" && (
+      {status !== "Заявка отклонена" && status !== "Заявка одобрена" && (
         <div className="my-auto">
           <Button
             text={"Отменить"}

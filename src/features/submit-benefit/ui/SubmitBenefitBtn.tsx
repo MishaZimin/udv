@@ -17,7 +17,7 @@ export const SubmitButton = () => {
         onClick={isValid ? handleClick : undefined}
         text={
           getFromLocalStorage("edit-benefit-id")
-            ? "Редактировать бенефит"
+            ? "Сохранить"
             : "Создать бенефит"
         }
         textColor={"light"}

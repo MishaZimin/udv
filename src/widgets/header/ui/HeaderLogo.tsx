@@ -7,7 +7,7 @@ export const HeaderLogo = () => {
         <LogoUDV type="mini" />
       </div>
       <div className="hidden sm:block">
-        <LogoUDV />
+        <LogoUDV type="big" />
       </div>
     </div>
   );

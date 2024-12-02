@@ -41,20 +41,9 @@ export const ApplicationModal = ({
   const applyRequestMutation = useApplyRequest();
   const denyRequestMutation = useDenyRequest();
 
-  if (!isLoading) {
-    console.log(data);
-  } else {
-    return;
-  }
   if (isError) {
     return <p>error: {error.message}</p>;
   }
-  if (!data) {
-    return <p>no data</p>;
-  }
-
-  const dataUser = data.user;
-  console.log(dataUser);
 
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
@@ -117,8 +106,10 @@ export const ApplicationModal = ({
     ) : null;
 
   const children = isLoading ? (
-    <LoadersList count={8}>
-      <TextLoader />
+    <LoadersList count={15}>
+      <div className="w-1/2">
+        <TextLoader />
+      </div>
     </LoadersList>
   ) : (
     <div className="mb-4 mt-2 flex flex-col gap-4">
@@ -196,21 +187,21 @@ export const ApplicationModal = ({
       )}
       <div className="h-[1px] w-full bg-graphite bg-opacity-[8%]"></div>
 
-      {dataUser && (
+      {data.user && (
         <>
           <div className="flex flex-col gap-[4px]">
             <p className="text-[14px] leading-[20px] opacity-[60%]">
               Сотрудник
             </p>
             <p className="text-left text-[16px] leading-[22px]">
-              {dataUser.full_name}
+              {data.user.full_name}
             </p>
           </div>
 
           <div className="flex flex-col gap-[4px]">
             <p className="text-[14px] leading-[20px] opacity-[60%]">Почта</p>
             <p className="text-left text-[16px] leading-[22px]">
-              {dataUser.email}
+              {data.user.email}
             </p>
           </div>
 
@@ -219,14 +210,14 @@ export const ApplicationModal = ({
               Должность
             </p>
             <p className="text-left text-[16px] leading-[22px]">
-              {dataUser.position}
+              {data.user.position}
             </p>
           </div>
 
           <div className="flex flex-col gap-[4px]">
             <p className="text-[14px] leading-[20px] opacity-[60%]">Стаж</p>
             <p className="text-left text-[16px] leading-[22px]">
-              {dataUser.employment_date}
+              {data.user.employment_date}
             </p>
           </div>
 
@@ -235,7 +226,7 @@ export const ApplicationModal = ({
               Место работы
             </p>
             <p className="text-left text-[16px] leading-[22px]">
-              {dataUser.place_of_employment}
+              {data.user.place_of_employment}
             </p>
           </div>
         </>
@@ -247,7 +238,6 @@ export const ApplicationModal = ({
     <>
       <BigModal
         isOpen={isOpen}
-        onClose={closeModal}
         closeModal={closeModal}
         header={header}
         footer={footer}

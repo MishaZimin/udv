@@ -72,9 +72,14 @@ export const ApplicationItem = ({ application, isActive, onToggle }: Props) => {
       className="relative flex w-full flex-row gap-8 px-2 py-4 text-left">
       <ApplicationText application={application} />
 
-      <button className="z-0 min-w-[22px]" onClick={handleClick}>
-        <img src={Dots} />
-      </button>
+      {application.status !== "Заявка отклонена" &&
+      application.status !== "Заявка одобрена" ? (
+        <button className="z-0 min-w-[22px]" onClick={handleClick}>
+          <img src={Dots} />
+        </button>
+      ) : (
+        <div className="z-0 min-w-[22px]"></div>
+      )}
 
       {isActive &&
         application.status !== "Заявка отклонена" &&

@@ -29,6 +29,7 @@ export const AdminBenefits = () => {
                 actionSlot={
                   benefit.id !== 102 && <AdminActionPanel benefit={benefit} />
                 }
+                preview={true}
               />
             </div>
           ))

@@ -77,12 +77,13 @@ export const EmployeesList = () => {
           {isModalPending && <LoaderEmployee />}
         </>
       )}
-
-      <InvitingEmployeeModal
-        isOpen={isOpen}
-        closeModal={closeModal}
-        onPendingChange={handlePendingChange}
-      />
+      {isOpen && !isModalPending && (
+        <InvitingEmployeeModal
+          isOpen={isOpen}
+          closeModal={closeModal}
+          onPendingChange={handlePendingChange}
+        />
+      )}
     </div>
   );
 };

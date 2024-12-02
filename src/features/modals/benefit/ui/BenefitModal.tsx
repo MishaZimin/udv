@@ -76,6 +76,10 @@ export const BenefitModal = ({
 
         if (response.detail === "Benefit request successfully created") {
           openModalSuccess();
+          setTimeout(() => {
+            closeModalSuccess();
+            closeModal();
+          }, 3000);
         } else {
           alert("Ошибка при отправке данных");
         }
@@ -85,8 +89,6 @@ export const BenefitModal = ({
           formData.append("files", file);
         });
 
-        console.log(formData, files);
-
         const response = await ApplyApi.applyBenefit(
           Number(benefitId),
           files.length === 0 ? "" : formData,
@@ -94,6 +96,10 @@ export const BenefitModal = ({
 
         if (response.detail === "Benefit request successfully created") {
           openModalSuccess();
+          setTimeout(() => {
+            closeModalSuccess();
+            closeModal();
+          }, 3000);
         } else {
           alert("Ошибка при отправке данных");
         }
@@ -233,7 +239,6 @@ export const BenefitModal = ({
     <>
       <BigModal
         isOpen={isOpen}
-        onClose={closeModal}
         closeModal={closeModal}
         header={header}
         footer={footer}
