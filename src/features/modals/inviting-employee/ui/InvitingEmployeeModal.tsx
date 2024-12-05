@@ -37,29 +37,28 @@ export const InvitingEmployeeModal = ({
   }
 
   return (
-    <>
-      {!isPending && (
-        <BigModal
-          isOpen={isOpen}
-          closeModal={closeModal}
-          header="Приглашение сотрудника"
-          children={
-            <InvitingContent
-              employeeData={employeeData}
-              handleChange={handleChange}
-              isChecked={isChecked}
-              handleToggle={handleToggle}
-            />
-          }
-          footer={
-            <InvitingFooter
-              validationError={validationError}
-              handleSubmit={handleSubmit}
-              closeModal={closeModal}
-              isLoading={isPending}
-            />
-          }></BigModal>
-      )}
-    </>
+    !isPending && (
+      <BigModal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        header="Приглашение сотрудника"
+        children={
+          <InvitingContent
+            employeeData={employeeData}
+            handleChange={handleChange}
+            isChecked={isChecked}
+            handleToggle={handleToggle}
+          />
+        }
+        footer={
+          <InvitingFooter
+            validationError={validationError}
+            handleSubmit={handleSubmit}
+            closeModal={closeModal}
+            isLoading={isPending}
+          />
+        }
+      />
+    )
   );
 };

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef } from "react";
 import Dots from "src/shared/assets/svgs/Dots.svg";
 import { ApplicationText } from "./ApplicationText";
@@ -35,7 +36,6 @@ export const ApplicationItem = ({ application, isActive, onToggle }: Props) => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isActive]);
 
   const handleClick = () => {

@@ -6,7 +6,6 @@ import { useAllApplications } from "../api/queries/use-all-applications";
 import { TApplicationItem } from "../model/applicationItem.type";
 
 export const AllApplicationsList = () => {
-  // const { employees, error, isLoading } = useEmployees();
   const { applications, error, isLoading } = useAllApplications();
 
   const [activeItem, setActiveItem] = useState<string | null>(null);

@@ -35,7 +35,7 @@ export const ApplicationsList = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      {applications && applications.length === 0 ? (
+      {!applications && applications.length === 0 ? (
         <p>У Вас нет заявок</p>
       ) : (
         applications.map((application: any, index: number) => (

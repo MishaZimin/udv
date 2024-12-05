@@ -67,7 +67,7 @@ export const Employee = ({
   };
 
   return (
-    <div className="relative">
+    <div ref={dropdownRef} className="relative">
       <div className="flex flex-row gap-8 px-2 py-4 text-left">
         <EmployeeIcon isAdministration={employee.administration} />
         <EmployeeText employee={employee} />
@@ -76,19 +76,23 @@ export const Employee = ({
           <img src={Dots} />
         </button>
 
-        <DeleteEmployeeModal
-          employeeId={employee.user_uuid}
-          isOpen={isDeleteOpen}
-          closeModal={closeDeleteModal}
-          closeBtn={false}
-        />
-        <EditEmployeeModal
-          isOpen={isEditOpen}
-          closeModal={closeEditModal}
-          employee={employee}
-          id={employee.user_uuid}
-          onPendingChange={onPendingChange}
-        />
+        {isDeleteOpen && (
+          <DeleteEmployeeModal
+            employeeId={employee.user_uuid}
+            isOpen={isDeleteOpen}
+            closeModal={closeDeleteModal}
+          />
+        )}
+
+        {isEditOpen && (
+          <EditEmployeeModal
+            isOpen={isEditOpen}
+            closeModal={closeEditModal}
+            employee={employee}
+            id={employee.user_uuid}
+            onPendingChange={onPendingChange}
+          />
+        )}
       </div>
       {isActive && (
         <div className="absolute right-[0px] top-[38px] z-10 flex w-fit flex-col gap-2 rounded-[16px] bg-card p-2">

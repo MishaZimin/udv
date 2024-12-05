@@ -6,7 +6,6 @@ import { useEmployees } from "src/widgets/employees-list/api/queries/use-employe
 type Props = {
   isOpen: boolean;
   closeModal: () => void;
-  closeBtn: boolean;
   employeeId: string;
 };
 

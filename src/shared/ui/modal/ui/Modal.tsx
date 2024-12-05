@@ -21,27 +21,20 @@ export const Modal = ({
     };
   }, [isOpen]);
 
-  if (!isOpen) return null;
-
   return ReactDOM.createPortal(
     <div
-      className={`fixed inset-0 z-50 flex ${
-        position === "right" ? "w-full justify-end" : "w-full justify-center"
-      } items-end transition-all duration-300 sm:items-center ${
-        isOpen ? "visible opacity-100" : "invisible opacity-0"
-      }`}>
+      className={`fixed inset-0 z-50 flex w-full items-end transition-all duration-300 sm:items-center ${
+        position === "right" ? "justify-end" : "justify-center"
+      } ${isOpen ? "visible opacity-100" : "invisible opacity-0"}`}>
+      {/* Overlay */}
       <div
-        className="absolute inset-0 bg-black transition-opacity duration-300"
-        style={{
-          opacity: isOpen ? 0.3 : 0,
-        }}
+        className="absolute inset-0 bg-black opacity-30"
         onClick={onClose}></div>
 
+      {/* Modal Content */}
       <div
-        className={`relative z-40 ${position === "right" ? "" : ""} w-auto transform rounded-[16px] bg-none transition-all duration-75 ${
-          isOpen
-            ? "translate-y-0 scale-100 opacity-100"
-            : "translate-y-4 scale-95 opacity-0"
+        className={`relative z-40 w-auto transform rounded-[16px] transition-all duration-300 ${
+          isOpen ? "scale-100 opacity-100" : "scale-100 opacity-50"
         }`}>
         {children}
       </div>

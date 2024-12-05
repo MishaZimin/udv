@@ -36,11 +36,12 @@ export const ApplicationText = ({ application }: Props) => {
         </p>
         <p className="w-[25%] text-left">{nameStatus[application.status]}</p>
       </button>
+
       {isOpen && (
         <ApplicationModal
           isOpen={isOpen}
           closeModal={closeModal}
-          applicationId={"1"}
+          applicationId={String(application.request_id)}
           application={{
             application_name: application.name,
             application_status: application.status,

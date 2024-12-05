@@ -43,29 +43,32 @@ export const EditEmployeeModal = ({
   }
 
   return (
-    <BigModal
-      isOpen={isOpen}
-      closeModal={() => {
-        resetForm();
-        closeModal();
-      }}
-      header="Редактирование сотрудника"
-      children={
-        <EditEmployeeContent
-          employeeData={employeeData}
-          handleChange={handleChange}
-          isChecked={isChecked}
-          handleToggle={handleToggle}
-        />
-      }
-      footer={
-        <EditEmployeeFooter
-          formError={formError}
-          handleSubmit={handleSubmit}
-          closeModal={closeModal}
-          isLoading={isPending}
-        />
-      }
-    />
+    !isPending &&
+    isOpen && (
+      <BigModal
+        isOpen={isOpen}
+        closeModal={() => {
+          resetForm();
+          closeModal();
+        }}
+        header="Редактирование сотрудника"
+        children={
+          <EditEmployeeContent
+            employeeData={employeeData}
+            handleChange={handleChange}
+            isChecked={isChecked}
+            handleToggle={handleToggle}
+          />
+        }
+        footer={
+          <EditEmployeeFooter
+            formError={formError}
+            handleSubmit={handleSubmit}
+            closeModal={closeModal}
+            isLoading={isPending}
+          />
+        }
+      />
+    )
   );
 };

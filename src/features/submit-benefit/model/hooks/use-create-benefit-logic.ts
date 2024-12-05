@@ -49,12 +49,11 @@ export const useCreateBenefitLogic = () => {
     const benefitId = data.success.id;
 
     if (!imageSrc) {
-      throw new Error("Image source is missing");
+      throw new Error("image source is missing");
     }
 
-    console.log(imageSrc);
     const imageFile = await urlToFile(imageSrc, "cover");
-    console.log(imageSrc, "|", imageFile);
+
     await uploadCover({ benefitId, imageFile });
   };
 

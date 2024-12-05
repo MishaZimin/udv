@@ -42,7 +42,9 @@ export const HeaderButtons = () => {
         )}
       </div>
 
-      <ProfileModal isOpen={isProfileOpen} closeModal={closeProfileModal} />
+      {isProfileOpen && (
+        <ProfileModal isOpen={isProfileOpen} closeModal={closeProfileModal} />
+      )}
     </>
   );
 };
