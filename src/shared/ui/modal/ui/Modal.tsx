@@ -23,8 +23,8 @@ export const Modal = ({
 
   return ReactDOM.createPortal(
     <div
-      className={`fixed inset-0 z-50 flex w-full items-end transition-all duration-300 sm:items-center ${
-        position === "right" ? "justify-end" : "justify-center"
+      className={`fixed inset-0 flex w-full items-end transition-all duration-300 sm:items-center ${
+        position === "right" ? "z-30 justify-end" : "z-50 justify-center"
       } ${isOpen ? "visible opacity-100" : "invisible opacity-0"}`}>
       {/* Overlay */}
       <div
@@ -33,7 +33,7 @@ export const Modal = ({
 
       {/* Modal Content */}
       <div
-        className={`relative z-40 w-auto transform rounded-[16px] transition-all duration-300 ${
+        className={`relative z-50 w-auto transform rounded-[16px] transition-all duration-300 ${
           isOpen ? "scale-100 opacity-100" : "scale-100 opacity-50"
         }`}>
         {children}
