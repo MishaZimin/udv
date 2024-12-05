@@ -35,6 +35,7 @@ export const InvitingEmployeeModal = ({
   if (error) {
     return <p>error {error.message}</p>;
   }
+  console.log(isPending);
 
   return (
     !isPending && (

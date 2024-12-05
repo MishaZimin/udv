@@ -40,14 +40,14 @@ export const useApplyMarkdown = (
           break;
 
         case "Header":
-          if (selectedText.startsWith("## ")) {
-            newText = selectedText.slice(3);
+          if (selectedText.startsWith("### ")) {
+            newText = selectedText.slice(4);
             newStart = start;
-            newEnd = end - 3;
+            newEnd = end - 4;
           } else {
-            newText = `## ${selectedText}`;
+            newText = `### ${selectedText}`;
             newStart = start;
-            newEnd = end + 3;
+            newEnd = end + 4;
           }
           break;
 

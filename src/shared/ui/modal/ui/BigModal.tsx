@@ -23,7 +23,8 @@ export const BigModal = ({
 }: Props) => {
   return (
     <Modal isOpen={isOpen} onClose={closeModal} position="right">
-      <div className="animate-fade animate-once animate-ease-in-out animate-normal animate-duration-1000 relative z-30 mx-0 mt-8 flex h-[calc(100svh-32px)] w-screen flex-col gap-[0px] rounded-t-[16px] bg-card p-6 px-[32px] py-[24px] sm:mb-8 sm:ml-8 sm:mr-8 sm:h-[calc(100svh-64px)] sm:w-[600px] sm:rounded-[16px]">
+      <div
+        className={`relative z-30 mx-0 mt-8 flex h-[calc(100svh-32px)] w-screen flex-col gap-[0px] rounded-t-[16px] bg-card p-6 px-[32px] py-[24px] transition-all duration-300 sm:mb-8 sm:ml-8 sm:mr-8 sm:h-[calc(100svh-64px)] sm:w-[600px] sm:rounded-[16px]`}>
         <div className="w-full border-b">
           <div className="w-[93%]">
             {!isLoading ? (
