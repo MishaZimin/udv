@@ -2,10 +2,10 @@ import { create } from "zustand";
 import { getFromLocalStorage, saveToLocalStorage } from "src/shared/lib";
 
 const LOCAL_STORAGE_KEY = "checkboxes";
-const STORAGE_VERSION = "v2";
+const STORAGE_VERSION = "v3";
 
 const defaultCheckboxes = [
-  { id: 1, label: "до адаптационного периода", checked: false },
+  { id: 1, label: "до прохождения адаптационного периода", checked: false },
   { id: 2, label: "до 1 года", checked: false },
   { id: 3, label: "до 3 лет", checked: false },
   { id: 4, label: "больше 3 лет", checked: false },
